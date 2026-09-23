@@ -1,0 +1,2 @@
+export const meta={path:'/404.html',title:'Page not found | Kensington Bathrooms',description:'This page could not be found.',noindex:true,noCanonical:true,excludeFromSitemap:true};
+export function render(){return `<section class="page-hero"><div class="page-hero__inner"><p class="eyebrow">404</p><h1>This page isn’t here.</h1><p class="page-hero__lede">The address may have changed, or the link may be mistyped.</p><a class="button button--ink" href="/">Return home</a></div></section>`}
