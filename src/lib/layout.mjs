@@ -60,7 +60,7 @@ export function header(cfg, currentPath) {
   </div>
   <div class="mobile-menu" id="mobile-menu" hidden>
     <ul>${links}<li><a href="/contact/">Arrange a consultation</a></li></ul>
-    <p class="mobile-menu__base">Based in West Kensington · W14</p>
+    <p class="mobile-menu__base">Bathroom renovation in Kensington</p>
   </div>
 </header>`;
 }
@@ -136,7 +136,7 @@ export function footer(cfg) {
   const co = cfg.company;
   return `
 <footer class="site-footer">
-  <div class="site-footer__topline"><span>Kensington W8</span><span>West Kensington W14</span><span>Holland Park W11</span><span>South Kensington SW7</span><span>Chelsea SW3 · SW10</span></div>
+  <div class="site-footer__topline"><span>Kensington</span><span>West Kensington</span><span>Holland Park</span><span>Notting Hill</span><span>South Kensington</span><span>Chelsea</span></div>
   <div class="site-footer__inner">
     <div class="site-footer__brand">
       ${wordmark(cfg, 'p')}
