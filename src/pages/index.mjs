@@ -5,7 +5,7 @@ export const meta = {
   path: '/',
   title: 'Bathroom Renovation in Kensington | Kensington Bathrooms',
   ogTitle: 'Kensington Bathrooms — bathroom renovation, design and installation',
-  description: 'Premium bathroom renovation, design and installation in Kensington from a genuinely local West Kensington W14 business. Complete projects with exceptional home protection.',
+  description: 'Bathroom renovation, design and installation in Kensington. Complete, carefully managed bathroom projects for homes across W8 and neighbouring Kensington areas.',
   schemaType: 'WebPage'
 };
 
@@ -23,11 +23,11 @@ export function render(cfg) {
   return `
 <section class="hero hero--editorial">
   <div class="hero__copy">
-    <p class="eyebrow">Kensington W8 · based in West Kensington W14</p>
-    <h1>Bathrooms made for Kensington homes.</h1>
-    <p class="hero__lede">Complete bathroom renovation, design, supply and installation — planned around the property, managed from first visit to final clean.</p>
+    <p class="eyebrow">Bathroom renovation · design · installation</p>
+    <h1>Bathrooms designed for Kensington homes.</h1>
+    <p class="hero__lede">Considered design, carefully managed installation and a finish worthy of the property around it.</p>
     <div class="hero__actions"><a class="button button--ink" href="/contact/">Arrange a home consultation</a><button class="text-button" type="button" data-open-drawer>Talk to a bathroom expert <span aria-hidden="true">↗</span></button></div>
-    <div class="hero__trust"><span>Genuinely local</span><span>Bathrooms only</span><span>Your home protected</span></div>
+    <div class="hero__trust"><span>Kensington</span><span>Design · Supply · Installation</span><span>Property protection</span></div>
   </div>
   <figure class="hero__image-frame">
     <img src="${esc(hero.src)}" alt="${esc(hero.alt)}" width="${hero.width}" height="${hero.height}" fetchpriority="high">
@@ -35,16 +35,15 @@ export function render(cfg) {
   </figure>
 </section>
 
-<section class="place-strip" aria-label="Local coverage"><div><strong>33 Gunterstone Road · W14</strong><span>Our genuine operating base</span></div><p>Working across Kensington W8, Holland Park, Notting Hill, South Kensington and Chelsea.</p></section>
-
 <section class="intro-grid section-shell">
-  <div><p class="eyebrow">The service</p><h2>Design-led bathrooms, backed by practical building experience.</h2></div>
+  <div><p class="eyebrow">The service</p><h2>A complete bathroom service, kept deliberately focused.</h2></div>
   <div class="intro-grid__copy"><p>We start with what is behind the finish: drainage, water, ventilation, floors, walls and access. Then we shape the layout, products and materials around a room that can actually be built well.</p><a class="arrow-link" href="/bathroom-renovation/">Explore complete bathroom renovation</a></div>
 </section>
 
-<section class="editorial-feature section-shell">
-  <figure class="editorial-feature__image"><img src="${esc(cfg.images.selectedWork[1].src)}" alt="${esc(cfg.images.selectedWork[1].alt)}" width="${cfg.images.selectedWork[1].width}" height="${cfg.images.selectedWork[1].height}" loading="lazy"><figcaption>Real completed work from our wider London portfolio.</figcaption></figure>
-  <div class="editorial-feature__content"><p class="eyebrow">Design · supply · installation</p><h2>One managed bathroom project.</h2><p>Sanitaryware, brassware, tiling, waterproofing, plumbing, electrical coordination, joinery and finishing are brought together as one programme rather than left for you to coordinate between separate trades.</p><div class="mini-list"><span>Survey-led planning</span><span>Specification support</span><span>Managed installation</span><span>Final handover</span></div><a class="arrow-link" href="/our-approach/">See how a project runs</a></div>
+<section class="lux-services section-shell" aria-label="Bathroom service">
+  <article><span>01</span><h3>Design</h3><p>Layout, clearances, storage, sanitaryware and finishes developed around the actual room rather than a catalogue plan.</p></article>
+  <article><span>02</span><h3>Supply</h3><p>Specification and product coordination so dimensions, lead times and finishes work together before installation starts.</p></article>
+  <article><span>03</span><h3>Installation</h3><p>Preparation, plumbing, waterproofing, tiling, electrical coordination, carpentry and finishing managed as one bathroom project.</p></article>
 </section>
 
 <section class="protection-showcase">
@@ -58,20 +57,20 @@ export function render(cfg) {
   <div class="section-shell protection-link"><a class="arrow-link" href="/our-approach/">Read the complete property-protection standard</a></div>
 </section>
 
-<section class="kensington-story section-shell">
-  <figure class="kensington-story__image"><img src="${esc(local.src)}" alt="${esc(local.alt)}" width="${local.width}" height="${local.height}" loading="lazy"><figcaption>${esc(local.credit)}</figcaption></figure>
-  <div class="kensington-story__copy"><p class="eyebrow">This part of London is home</p><h2>Local knowledge, not a Kensington landing page.</h2><p>Kensington Bathrooms operates from Gunterstone Road in West Kensington. Nick grew up locally, went to school in Kensington & Chelsea and has spent decades working hands-on in plumbing, bathrooms and older London property.</p><p>That matters when the room is upstairs in a period house, inside a portered block, reached across expensive timber floors or governed by building access rules.</p><a class="arrow-link" href="/about/">The story behind Kensington Bathrooms</a></div>
-</section>
-
 <section class="areas-preview section-shell">
-  <div class="areas-preview__head"><p class="eyebrow">Close to home</p><h2>A deliberately small working area.</h2><p>We are building this business around Kensington and the neighbourhoods immediately around our W14 base — not a list of every postcode in London.</p></div>
+  <div class="areas-preview__head"><p class="eyebrow">Where we work</p><h2>Kensington first. A small area by design.</h2><p>Our core market is Kensington, with selected projects across the neighbouring areas below.</p></div>
   <div class="area-lines">${areas.map(([name,post,path]) => `<a href="${path}"><span>${name}</span><small>${post}</small><b aria-hidden="true">↗</b></a>`).join('')}</div>
 </section>
 
-<section class="work-preview section-shell">
-  <div class="work-preview__head"><p class="eyebrow">Selected work</p><h2>Real bathrooms. Real locations.</h2><p>We will build the Kensington portfolio with genuine local projects as they are completed. Until then, we show existing work honestly rather than relabelling it.</p></div>
-  <div class="work-preview__grid">${cfg.images.selectedWork.map((w) => `<figure><img src="${esc(w.src)}" alt="${esc(w.alt)}" width="${w.width}" height="${w.height}" loading="lazy"><figcaption>${esc(w.caption)}</figcaption></figure>`).join('')}</div>
-  <a class="arrow-link" href="/projects/">View selected projects</a>
+<section class="lux-faq section-shell">
+  <div class="lux-faq__intro"><p class="eyebrow">Questions</p><h2>Planning a bathroom in Kensington?</h2></div>
+  <div class="lux-faq__list">
+    <details open><summary>Do you manage the whole bathroom renovation?</summary><p>Yes. A project can cover design development, specification, supply, strip-out, plumbing, waterproofing, tiling, electrical coordination, carpentry, heating, installation and finishing, with the scope agreed before work starts.</p></details>
+    <details><summary>Do you work in mansion blocks and managed buildings?</summary><p>Yes. Porter, lift, access, working-hour and managing-agent requirements are considered as part of the project planning where they apply.</p></details>
+    <details><summary>How do you protect the rest of the property?</summary><p>We plan the route from the entrance to the bathroom, protect the surfaces present, contain dust where appropriate, control waste movement and clean down at the end of each working day.</p></details>
+    <details><summary>Can you help with layout and product choices?</summary><p>Yes. Layout, sanitaryware, brassware, furniture, tile or stone, heating and other finishes can be developed around the room and its services.</p></details>
+    <details><summary>Which areas do you cover?</summary><p>Our core area is Kensington, together with West Kensington, Holland Park, Notting Hill, South Kensington and Chelsea.</p></details>
+  </div>
 </section>
 
 <section class="process-ribbon">
