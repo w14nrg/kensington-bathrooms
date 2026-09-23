@@ -38,22 +38,59 @@
     "provider": null
   },
   "areas": [
-    { "slug": "west-kensington", "name": "West Kensington", "postcodes": "W14" },
-    { "slug": "holland-park", "name": "Holland Park", "postcodes": "W8 · W11" },
-    { "slug": "notting-hill", "name": "Notting Hill", "postcodes": "W11" },
-    { "slug": "south-kensington", "name": "South Kensington", "postcodes": "SW7" },
-    { "slug": "chelsea", "name": "Chelsea", "postcodes": "SW3 · SW10" }
+    {
+      "slug": "west-kensington",
+      "name": "West Kensington",
+      "postcodes": "W14"
+    },
+    {
+      "slug": "holland-park",
+      "name": "Holland Park",
+      "postcodes": "W8 · W11"
+    },
+    {
+      "slug": "notting-hill",
+      "name": "Notting Hill",
+      "postcodes": "W11"
+    },
+    {
+      "slug": "south-kensington",
+      "name": "South Kensington",
+      "postcodes": "SW7"
+    },
+    {
+      "slug": "chelsea",
+      "name": "Chelsea",
+      "postcodes": "SW3 · SW10"
+    }
   ],
-  "investmentBands": ["£15,000–£25,000", "£25,000–£40,000", "£40,000+", "Not sure yet"],
-  "projectTypes": ["Main bathroom", "En-suite", "Shower room", "Cloakroom", "More than one room"],
-  "timeframes": ["Within 3 months", "3 to 6 months", "6 months or more", "Not sure yet"],
+  "investmentBands": [
+    "£15,000–£25,000",
+    "£25,000–£40,000",
+    "£40,000+",
+    "Not sure yet"
+  ],
+  "projectTypes": [
+    "Main bathroom",
+    "En-suite",
+    "Shower room",
+    "Cloakroom",
+    "More than one room"
+  ],
+  "timeframes": [
+    "Within 3 months",
+    "3 to 6 months",
+    "6 months or more",
+    "Not sure yet"
+  ],
   "images": {
     "hero": {
-      "src": "/images/projects/lr-finished-1.webp",
-      "alt": "Completed light-toned bathroom with brushed brass shower enclosure and fluted vanity",
-      "width": 756,
-      "height": 1008,
-      "caption": "Selected completed work · West London"
+      "src": "/images/local/kynance-mews.jpg",
+      "alt": "Kynance Mews in Kensington, London",
+      "width": 2000,
+      "height": 1496,
+      "credit": "Kynance Mews, Kensington — habiloid / Geograph, CC BY-SA 2.0",
+      "caption": "Kynance Mews · Kensington"
     },
     "selectedWork": [
       {
