@@ -13,5 +13,5 @@ export function render() { return areaRender({
     ['What needs permission?','For a flat or an altered historic building, the lease, managing agent and any applicable consent requirements should be checked early. We do not treat a bathroom as exempt just because the work is indoors.']
   ],
   protection:'Finished hallways, stairs and communal areas need an agreed route for tools, products and waste. Surfaces are protected for what they are, and the work area is kept organised throughout the project.',
-  close:'Chelsea is part of our deliberately close service area. Nick also has lifelong personal ties here; you can read more about those on our About page.'
+  close:'Chelsea is part of the connected area where we work. Nicholas has family memories here that go back to childhood; you can read more about those on our About page.'
 }); }
