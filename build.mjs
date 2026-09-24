@@ -15,7 +15,6 @@ const PAGES = [
   './src/pages/areas.mjs',
   './src/pages/areas/west-kensington.mjs',
   './src/pages/areas/holland-park.mjs',
-  './src/pages/areas/notting-hill.mjs',
   './src/pages/areas/south-kensington.mjs',
   './src/pages/areas/chelsea.mjs',
   './src/pages/projects.mjs',
