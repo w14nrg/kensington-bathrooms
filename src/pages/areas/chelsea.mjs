@@ -1,17 +1,16 @@
-import { areaMeta, areaRender } from '../../lib/area-page.mjs';
+import { areaMeta, areaHero, areaSplit, areaCards, areaClose } from '../../lib/area-page.mjs';
 export const meta = areaMeta('chelsea', 'Chelsea', 'SW3 · SW10', 'Bathroom renovation in Chelsea SW3 and SW10 for mews houses, mansion blocks and period homes, with design, specification and installation managed together.');
-export function render() { return areaRender({
-  name:'Chelsea', postcodes:'SW3 · SW10', kicker:'Mews houses and managed buildings',
-  headline:'A refined finish needs sound decisions underneath.',
-  lede:'A Chelsea bathroom can be highly detailed and still needs the basics done properly: an achievable layout, suitable supply, prepared surfaces, waterproofing and a way to carry out the work in the building.',
-  angles:[
-    ['Finish and buildability','Stone, large tiles, fitted furniture and specialist brassware all depend on dimensions and preparation. We talk through cuts, edges, storage, clearances and lead times before the final products are ordered, so the room is not designed around an impossible detail.'],
-    ['Mews and mansion-block access','A narrow mews entrance creates different delivery questions from a portered mansion block. Either can have restricted working arrangements or shared spaces to protect. We plan around the property in front of us, including any managing-agent or freeholder requirements.']
-  ],
-  questions:[
-    ['Will the chosen fittings work here?','We consider hot-water production, pressure and flow alongside the proposed shower and taps, and check what the room can accommodate before committing to a specification.'],
-    ['What needs permission?','For a flat or an altered historic building, the lease, managing agent and any applicable consent requirements should be checked early. We do not treat a bathroom as exempt just because the work is indoors.']
-  ],
-  protection:'Finished hallways, stairs and communal areas need an agreed route for tools, products and waste. Surfaces are protected for what they are, and the work area is kept organised throughout the project.',
-  close:'Chelsea is part of the connected area where we work. Nicholas has family memories here that go back to childhood; you can read more about those on our About page.'
-}); }
+export function render() { return `
+${areaHero({ name:'Chelsea', postcodes:'SW3 · SW10', kicker:'Mews houses and period flats', lede:'We work in Chelsea. A refined bathroom begins with good proportions and well-chosen finishes, then succeeds because the supply, structure and installation have been considered just as carefully.' })}
+${areaSplit({ eyebrow:'Design and detail', title:'The finish must work at full scale.', paragraphs:[
+  'In a Chelsea mews house, narrow access and compact rooms can make every clearance matter. In a mansion flat, a generous room may still be governed by a fixed waste route or shared services. We measure the actual space and discuss the building before settling on the visual brief.',
+  'Stone, large-format tiles, fitted furniture and brassware bring decisions about cuts, edges, storage, maintenance and lead times. We review samples and dimensions together so the detail looks deliberate when installed, not only on a mood board.'
+], link:{href:'/bathroom-renovation/',label:'How we specify a complete bathroom'} })}
+${areaSplit({ eyebrow:'Two different routes', title:'Mews entrance or mansion-block lobby?', dark:true, paragraphs:[
+  'Those properties ask different practical questions. We consider how the bath, stone and other products will reach the room; where waste will go; and which halls, stairs or shared spaces need protecting. A managed block may have booking procedures, working hours or freeholder requirements. We establish the rules for your building rather than applying a Chelsea-wide assumption.'
+], link:{href:'/our-approach/',label:'How we look after the property'} })}
+${areaCards({ eyebrow:'At the first visit', title:'Decisions we can make together.', cards:[
+  ['Fittings and water','We consider the boiler or cylinder, pressure and flow before promising that a chosen shower or several outlets will perform as expected.'],
+  ['Layout and permissions','We check the likely drainage route, what changing a wall or floor may involve, and whether the lease or other rules call for approval. Unknown conditions remain subject to investigation.']
+] })}
+${areaClose('Chelsea','Chelsea has been part of Nicholas’s life since childhood; his family memories are told on the About page. A project still begins with your home and what you want from its bathroom.')}`; }
