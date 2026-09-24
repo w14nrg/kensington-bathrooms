@@ -1,18 +1,8 @@
-// Builds one JSON-LD graph per page. Only verified config values are emitted:
-// null fields (postcode, phone, email, company number) are omitted, never guessed.
+// Builds one JSON-LD graph per page. Only verified public values are emitted.
 export function schemaGraph(cfg, page) {
   const base = cfg.site.url;
   const bizId = `${base}/#business`;
   const siteId = `${base}/#website`;
-  const a = cfg.operatingAddress;
-
-  const address = {
-    '@type': 'PostalAddress',
-    streetAddress: a.streetAddress,
-    addressLocality: 'London',
-    addressCountry: 'GB',
-  };
-  if (a.postcode) address.postalCode = a.postcode;
 
   const business = {
     '@type': 'HomeAndConstructionBusiness',
@@ -22,8 +12,7 @@ export function schemaGraph(cfg, page) {
     url: `${base}/`,
     logo: `${base}/brand/monogram-green-bg.svg`,
     description:
-      'Bathroom design, supply and installation for homes in Kensington and its immediate neighbourhoods, run from West Kensington, London W14.',
-    address,
+      'Bathroom design, supply and installation for homes in Kensington and its immediate neighbourhoods.',
     areaServed: [
       'Kensington',
       ...cfg.areas.map((x) => x.name),
