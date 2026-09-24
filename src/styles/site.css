@@ -251,13 +251,13 @@ body{background:var(--paper);color:var(--ink)}
 
  /* Mobile homepage: copy and map stay separate so no text can collide with map labels. */
  .map-home{display:block;min-height:0;overflow:hidden;background:var(--green)}
- .map-home__copy{display:block;padding:2.15rem 20px 1.45rem;background:var(--green)}
- .map-home__kicker{margin:0 0 1rem;font-size:.58rem;white-space:normal}
- .map-home h1{margin:0 0 1.15rem;white-space:normal;font-size:clamp(2.7rem,12.2vw,4.1rem);line-height:.99;max-width:8.6ch}
+ .map-home__copy{display:block;padding:1.8rem 20px 1.35rem;background:var(--green)}
+ .map-home__kicker{margin:0 0 .9rem;font-size:.56rem;white-space:normal}
+ .map-home h1{margin:0 0 1rem;white-space:normal;font-size:clamp(2.35rem,9.6vw,3.2rem);line-height:1.01;letter-spacing:-.03em;max-width:12.5ch}
  .map-home h1 br{display:none}
- .map-home__intro{margin:0 0 .9rem;max-width:540px;font-size:.9rem;line-height:1.6;color:#d0d6cf}
- .map-home__intro--continued{margin-top:.9rem}
- .map-home__actions{margin:1.15rem 0 0}
+ .map-home__intro{margin:0 0 .8rem;max-width:540px;font-size:.86rem;line-height:1.58;color:#d0d6cf}
+ .map-home__intro--continued{margin-top:.8rem}
+ .map-home__actions{margin:1rem 0 0}
  .map-home__actions .map-home__primary{display:none}
  .map-home__secondary{font-size:.81rem}
 
