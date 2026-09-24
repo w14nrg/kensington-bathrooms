@@ -32,7 +32,7 @@
 - [ ] Submit sitemap / Search Console after launch
 
 ## Legal
-- [ ] Confirm company address/company number one final time before launch
+- [ ] Confirm company number and final public legal wording before launch
 - [ ] Review privacy/cookie/terms against actual form, analytics and hosting setup
 - [ ] Confirm insurance/guarantee claims before adding any
 
