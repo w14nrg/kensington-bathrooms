@@ -13,5 +13,5 @@ export function render() { return areaRender({
     ['Can the water be isolated?','A bathroom connected to shared services may require coordination with the building. We establish the available arrangement rather than promising an isolation method from the postcode.']
   ],
   protection:'Where the route crosses a shared entrance, lift or corridor, we plan protection for those spaces as well as the flat. Waste movement and daily clean-down are agreed around the actual building.',
-  close:'South Kensington directly adjoins Kensington. This is part of the focused area we serve, with home consultations arranged at the property rather than a walk-in address.'
+  close:'We work in South Kensington and arrange home consultations at the property. We discuss the building and the bathroom together before suggesting a scope of work.'
 }); }
