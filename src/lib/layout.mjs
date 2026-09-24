@@ -38,7 +38,7 @@ ${page.noCanonical ? '' : `<link rel="canonical" href="${url}">`}
 <meta property="og:image" content="${cfg.site.url}/brand/og-default.png">
 <meta name="twitter:card" content="summary_large_image">
 <style>${assets.css}</style>
-<script type="application/ld+json">${schemaGraph(cfg, page)}</script>
+<script type="application/ld+json">${schemaGraph(page.path === '/' ? { ...cfg, areas: cfg.areas.filter((area) => area.slug !== 'notting-hill') } : cfg, page)}</script>
 </head>`;
 }
 
@@ -60,7 +60,7 @@ export function header(cfg, currentPath) {
   </div>
   <div class="mobile-menu" id="mobile-menu" hidden>
     <ul>${links}<li><a href="/contact/">Arrange a consultation</a></li></ul>
-    <p class="mobile-menu__base">Bathroom renovation in Kensington</p>
+    <p class="mobile-menu__base">${currentPath === '/' ? 'Our local base' : 'Bathroom renovation in Kensington'}</p>
   </div>
 </header>`;
 }
@@ -131,12 +131,12 @@ export function mobileBar() {
   return `<div class="mobile-bar"><button type="button" class="mobile-bar__item" data-open-drawer><span>Talk to an expert</span></button><a class="mobile-bar__item mobile-bar__item--strong" href="/contact/"><span>Home consultation</span></a></div>`;
 }
 
-export function footer(cfg) {
+export function footer(cfg, currentPath = '') {
   const a = addressLines(cfg.operatingAddress);
   const co = cfg.company;
   return `
 <footer class="site-footer">
-  <div class="site-footer__topline"><span>Kensington</span><span>West Kensington</span><span>Holland Park</span><span>Notting Hill</span><span>South Kensington</span><span>Chelsea</span></div>
+  <div class="site-footer__topline"><span>Kensington</span><span>${currentPath === '/' ? 'Our local base' : 'West Kensington'}</span><span>Holland Park</span>${currentPath === '/' ? '' : '<span>Notting Hill</span>'}<span>South Kensington</span><span>Chelsea</span></div>
   <div class="site-footer__inner">
     <div class="site-footer__brand">
       ${wordmark(cfg, 'p')}
@@ -145,7 +145,7 @@ export function footer(cfg) {
       <p class="site-footer__note">Operating base. Home consultations are by appointment at your property.</p>
     </div>
     <nav class="site-footer__col" aria-label="Footer"><h2>Explore</h2><ul><li><a href="/bathroom-renovation/">Bathroom renovation</a></li><li><a href="/our-approach/">Our approach</a></li><li><a href="/projects/">Projects</a></li><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li></ul></nav>
-    <nav class="site-footer__col" aria-label="Areas"><h2>Areas</h2><ul>${cfg.areas.map((x) => `<li><a href="/areas/${x.slug}/">${esc(x.name)}</a></li>`).join('')}</ul></nav>
+    <nav class="site-footer__col" aria-label="Areas"><h2>Areas</h2><ul>${cfg.areas.filter((x) => currentPath !== '/' || x.slug !== 'notting-hill').map((x) => `<li><a href="/areas/${x.slug}/">${esc(x.name)}</a></li>`).join('')}</ul></nav>
   </div>
   <div class="site-footer__legal">
     <p>${esc(cfg.brand.name)} is a trading name of ${esc(co.legalName)} · Company ${esc(co.companyNumber)} · Registered in ${esc(co.registeredIn)} · Registered office: ${esc(co.registeredOffice)}.</p>
@@ -155,5 +155,5 @@ export function footer(cfg) {
 }
 
 export function page(cfg, pageMeta, assets, mainHtml) {
-  return `${head(cfg, pageMeta, assets)}<body>${header(cfg, pageMeta.path)}<main id="main">${mainHtml}</main>${footer(cfg)}${drawer(cfg)}${mobileBar()}<script>window.KB_CONFIG=${JSON.stringify({ formEndpoint: cfg.forms.endpoint, whatsappMessage: cfg.contact.whatsappMessage })};</script><script src="/js/site.js" defer></script></body></html>`;
+  return `${head(cfg, pageMeta, assets)}<body class="${pageMeta.path === '/' ? 'is-map-home' : ''}">${header(cfg, pageMeta.path)}<main id="main">${mainHtml}</main>${footer(cfg, pageMeta.path)}${drawer(cfg)}${mobileBar()}<script>window.KB_CONFIG=${JSON.stringify({ formEndpoint: cfg.forms.endpoint, whatsappMessage: cfg.contact.whatsappMessage })};</script><script src="/js/site.js" defer></script></body></html>`;
 }

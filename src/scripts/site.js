@@ -134,4 +134,41 @@
         .finally(function () { btn.disabled = false; });
     });
   });
+
+  // Map panels use real HTML buttons and anchors. Hover, keyboard focus and
+  // touch all reveal the same content; a second tap on the link navigates.
+  var points = Array.from(document.querySelectorAll('[data-map-point]'));
+  if (points.length) {
+    function closePoints(except) {
+      points.forEach(function (point) {
+        if (point === except) return;
+        point.classList.remove('is-open');
+        point.querySelector('[data-map-trigger]').setAttribute('aria-expanded', 'false');
+      });
+    }
+    points.forEach(function (point) {
+      var trigger = point.querySelector('[data-map-trigger]');
+      trigger.addEventListener('click', function () {
+        var open = point.classList.contains('is-open');
+        closePoints(point);
+        point.classList.toggle('is-open', !open);
+        trigger.setAttribute('aria-expanded', String(!open));
+      });
+      point.addEventListener('focusout', function (e) {
+        if (!point.contains(e.relatedTarget)) {
+          point.classList.remove('is-open');
+          trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('[data-map-point]')) closePoints();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape' || !points.some(function (point) { return point.classList.contains('is-open'); })) return;
+      var active = points.find(function (point) { return point.contains(document.activeElement) || point.classList.contains('is-open'); });
+      closePoints();
+      if (active) active.querySelector('[data-map-trigger]').focus();
+    });
+  }
 })();
