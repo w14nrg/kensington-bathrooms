@@ -135,11 +135,10 @@ export function footer(cfg, currentPath = '') {
   const co = cfg.company;
   return `
 <footer class="site-footer">
-  <div class="site-footer__topline"><span>Kensington</span><span>West Kensington</span><span>Holland Park</span><span>South Kensington</span><span>Chelsea</span></div>
   <div class="site-footer__inner">
     <div class="site-footer__brand">
       ${wordmark(cfg, 'p')}
-      <p>Bathroom renovation, design and installation for Kensington and its immediate neighbourhoods.</p>
+      <p>Bathroom renovation, design and installation across the neighbourhoods shown on our map.</p>
       <p class="site-footer__note">Home consultations are arranged at your property.</p>
     </div>
     <nav class="site-footer__col" aria-label="Footer"><h2>Explore</h2><ul><li><a href="/bathroom-renovation/">Bathroom renovation</a></li><li><a href="/our-approach/">Our approach</a></li><li><a href="/projects/">Projects</a></li><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li></ul></nav>
