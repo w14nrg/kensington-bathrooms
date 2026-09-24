@@ -93,6 +93,120 @@
         "alt": "Completed compact shower room with brushed brass fittings and floating vanity",
         "width": 756,
         "height": 1008,
+        "caption": "Lillie Road, Fulham · completed shower-room refurbishment"
+      },
+      {
+        "src": "/images/projects/rr-finished-1.webp",
+        "alt": "Marble-effect shower room with brushed metal enclosure and heated towel rail",
+        "width": 756,
+        "height": 1008,
+        "caption": "Rosaline Road, Fulham · completed bathroom work"
+      }
+    ],
+    "localKensington": {
+      "src": "/images/local/kynance-mews.jpg",
+      "alt": "Kynance Mews in Kensington, London",
+      "width": 2000,
+      "height": 1496,
+      "credit": "Kynance Mews, Kensington — habiloid / Geograph, CC BY-SA 2.0"
+    }
+  }
+}
+{
+  "_readme": "Single source of truth for business, contact and legal details. Unknown contact values remain null and are not rendered.",
+  "site": {
+    "url": "https://kensingtonbathrooms.uk",
+    "indexable": false,
+    "language": "en-GB"
+  },
+  "brand": {
+    "name": "Kensington Bathrooms",
+    "strapline": "Design · Supply · Installation"
+  },
+  "company": {
+    "legalName": "En-Suites & Bathrooms Ltd",
+    "companyNumber": "17170498",
+    "registeredOffice": null,
+    "registeredIn": "England and Wales"
+  },
+  "operatingAddress": {
+    "streetAddress": "33 Gunterstone Road",
+    "locality": "West Kensington",
+    "city": "London",
+    "postcodeDistrict": "W14",
+    "postcode": "W14 9BP",
+    "_note": "Genuine operating base. Not a showroom or walk-in location; consultations are at the customer's property."
+  },
+  "contact": {
+    "phone": null,
+    "phoneDisplay": null,
+    "whatsapp": null,
+    "whatsappMessage": "Hi Kensington Bathrooms, I'm planning a bathroom project{postcode}.",
+    "email": null,
+    "callbackHours": null
+  },
+  "forms": {
+    "endpoint": null
+  },
+  "analytics": {
+    "provider": null
+  },
+  "areas": [
+    {
+      "slug": "west-kensington",
+      "name": "West Kensington",
+      "postcodes": "W14"
+    },
+    {
+      "slug": "holland-park",
+      "name": "Holland Park",
+      "postcodes": "W8 · W11"
+    },
+    {
+      "slug": "south-kensington",
+      "name": "South Kensington",
+      "postcodes": "SW7"
+    },
+    {
+      "slug": "chelsea",
+      "name": "Chelsea",
+      "postcodes": "SW3 · SW10"
+    }
+  ],
+  "investmentBands": [
+    "£15,000–£25,000",
+    "£25,000–£40,000",
+    "£40,000+",
+    "Not sure yet"
+  ],
+  "projectTypes": [
+    "Main bathroom",
+    "En-suite",
+    "Shower room",
+    "Cloakroom",
+    "More than one room"
+  ],
+  "timeframes": [
+    "Within 3 months",
+    "3 to 6 months",
+    "6 months or more",
+    "Not sure yet"
+  ],
+  "images": {
+    "hero": {
+      "src": "/images/local/kynance-mews.jpg",
+      "alt": "Kynance Mews in Kensington, London",
+      "width": 2000,
+      "height": 1496,
+      "credit": "Kynance Mews, Kensington — habiloid / Geograph, CC BY-SA 2.0",
+      "caption": "Kynance Mews · Kensington"
+    },
+    "selectedWork": [
+      {
+        "src": "/images/projects/lr-finished-2.webp",
+        "alt": "Completed compact shower room with brushed brass fittings and floating vanity",
+        "width": 756,
+        "height": 1008,
         "caption": "Lille Road, Fulham · completed shower-room refurbishment"
       },
       {
