@@ -196,7 +196,7 @@ body{background:var(--paper);color:var(--ink)}
 .map-point--kensington{left:67%;top:31%}
 .map-point--south-kensington{left:78%;top:55%}
 .map-point--chelsea{left:82%;top:79%}
-.map-point--west-kensington{left:28%;top:52%}
+.map-point--west-kensington{left:29%;top:71%}
 .map-point--local-base{left:14%;top:67%}
 .map-point__button{border:0;background:none;color:#eae5da;display:flex;align-items:center;flex-direction:column;gap:2px;padding:14px;cursor:pointer;white-space:nowrap;text-shadow:0 2px 10px #000}
 .map-point__symbol{display:block;width:7px;height:7px;background:#bd9b5b;transform:rotate(45deg);box-shadow:0 0 18px #bca572aa;margin-bottom:8px}
@@ -337,7 +337,8 @@ body{background:var(--paper);color:var(--ink)}
   .page-hero__media{min-height:560px}
 }
 @media(max-width:760px){
-  .map-point--west-kensington{left:29%;top:54%}
+  .map-point--west-kensington{left:32%;top:69%}
+  .map-point--local-base{left:12%;top:84%}
   .page-hero__inner--split{display:flex;flex-direction:column;width:100%;gap:0;min-height:auto}
   .page-hero__copy{padding:68px 20px 50px}
   .page-hero__copy h1{font-size:clamp(3rem,14vw,4.5rem)}
@@ -378,6 +379,8 @@ body:not(.is-map-home) .site-footer .wordmark__bathrooms{color:#bca577}
 .page-hero__copy h1{max-width:14ch}
 .page-hero__media{min-height:520px}
 .page-hero--projects:not(.page-hero--photo){padding:clamp(65px,7vw,100px) 0}
+.page-hero.page-hero--areas,.page-hero.page-hero--projects{background:#1a2923;border-color:#455348}
+.page-hero--projects .page-hero__project-images figure{background:#22382f}
 .page-hero__projects-copy h1{font-size:clamp(2.6rem,4.4vw,4.6rem);max-width:14ch}
 .page-hero__project-images img{aspect-ratio:5/4}
 
@@ -418,6 +421,7 @@ body:not(.is-map-home) .site-footer .wordmark__bathrooms{color:#bca577}
 .area-lines--detailed{border-top:1px solid #58645a;margin-top:3rem}
 .area-lines--detailed a{display:grid;grid-template-columns:minmax(170px,1.2fr) 100px minmax(160px,1.5fr) 20px;gap:1.4rem;align-items:center;border-bottom:1px solid #58645a;text-decoration:none;padding:1.4rem 0;color:#eeeae0}
 .area-lines--detailed a:hover{color:#e5c68a}
+.area-lines--detailed a:hover,.area-lines--detailed a:focus-visible{background:#22382f}
 .area-lines--detailed span{font-family:var(--serif);font-size:clamp(1.4rem,2.2vw,2rem)}
 .area-lines--detailed small{font-size:.75rem;color:#cfb487;letter-spacing:.1em}
 .area-lines--detailed em{font-style:normal;font-size:.84rem;color:#b6bdb4;line-height:1.5}
