@@ -12,6 +12,10 @@ jobs:
         run: |
           echo "A records:"
           dig +short A kensingtonbathrooms.uk
+          echo "AAAA records:"
+          dig +short AAAA kensingtonbathrooms.uk
+          echo "CAA records:"
+          dig +short CAA kensingtonbathrooms.uk
           echo "WWW CNAME:"
           dig +short CNAME www.kensingtonbathrooms.uk
           echo "HTTP:"
