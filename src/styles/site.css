@@ -218,6 +218,7 @@ body{background:var(--paper);color:var(--ink)}
 .map-home__legend span{color:#bd9b5b;margin-right:.4rem}
 .map-home__legend span+span{margin-left:1.35rem}
 .map-area-list{display:none}
+#kensington{scroll-margin-top:100px}
 .map-reading{background:#111512;padding:clamp(5rem,9vw,9rem) 0 6rem;border-top:1px solid #272b26}
 .map-reading__inner{width:min(1280px,calc(100% - 12vw));margin:auto;display:grid;grid-template-columns:41% 1fr;gap:8%}
 .map-reading__lead h2{font-size:clamp(2.3rem,3.5vw,4.2rem);line-height:1.04;max-width:12ch;color:#f0ece5}
