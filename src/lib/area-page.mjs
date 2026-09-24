@@ -8,11 +8,18 @@ export function areaMeta(slug, name, postcodes, description) {
   };
 }
 
-export function areaRender({ name, postcodes, kicker, headline, lede, angles, questions, protection, close }) {
-  return `
-<section class="page-hero page-hero--compact"><div class="page-hero__inner"><p class="eyebrow">${postcodes} · ${kicker}</p><h1>Bathroom renovation in ${name}.</h1><p class="page-hero__lede">${lede}</p></div></section>
-<section class="content-band content-band--ink"><div class="section-shell"><div class="content-grid"><div><p class="eyebrow">The property comes first</p><h2>${headline}</h2></div><div class="content-copy">${angles.map(([h,p])=>`<h3>${h}</h3><p>${p}</p>`).join('')}<a class="arrow-link" href="/bathroom-renovation/">What a complete bathroom renovation includes</a></div></div></div></section>
-<section class="content-band content-band--deep"><div class="section-shell"><p class="eyebrow">At the first visit</p><h2 class="section-heading">Questions worth asking before the design is fixed.</h2><div class="detail-grid detail-grid--compact">${questions.map(([h,p])=>`<article><h3>${h}</h3><p>${p}</p></article>`).join('')}</div></div></section>
-<section class="content-band content-band--ink"><div class="section-shell"><div class="content-grid"><div><p class="eyebrow">Care for the property</p><h2>The route to the bathroom matters.</h2></div><div class="content-copy"><p>${protection}</p><a class="arrow-link" href="/our-approach/">How we protect your home</a></div></div></div></section>
-<section class="area-close"><div class="section-shell"><p>${close}</p><a class="button button--light" href="/contact/">Talk through a bathroom in ${name}</a></div></section>`;
+export function areaHero({ name, postcodes, kicker, lede }) {
+  return `<section class="page-hero page-hero--compact"><div class="page-hero__inner"><p class="eyebrow">${postcodes} · ${kicker}</p><h1>Bathroom renovation in ${name}.</h1><p class="page-hero__lede">${lede}</p></div></section>`;
+}
+
+export function areaSplit({ eyebrow, title, paragraphs, link, dark = false }) {
+  return `<section class="content-band content-band--${dark ? 'deep' : 'ink'}"><div class="section-shell"><div class="content-grid"><div><p class="eyebrow">${eyebrow}</p><h2>${title}</h2></div><div class="content-copy">${paragraphs.map(p => `<p>${p}</p>`).join('')}${link ? `<a class="arrow-link" href="${link.href}">${link.label}</a>` : ''}</div></div></div></section>`;
+}
+
+export function areaCards({ eyebrow, title, cards, dark = true }) {
+  return `<section class="content-band content-band--${dark ? 'deep' : 'ink'}"><div class="section-shell"><p class="eyebrow">${eyebrow}</p><h2 class="section-heading">${title}</h2><div class="detail-grid detail-grid--compact">${cards.map(([heading, body]) => `<article><h3>${heading}</h3><p>${body}</p></article>`).join('')}</div></div></section>`;
+}
+
+export function areaClose(name, body) {
+  return `<section class="area-close"><div class="section-shell"><p>${body}</p><a class="button button--light" href="/contact/">Talk through a bathroom in ${name}</a></div></section>`;
 }
