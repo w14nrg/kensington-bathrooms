@@ -28,20 +28,39 @@ export function schemaGraph(cfg, page) {
     };
   }
 
+  const webpage = {
+    '@type': page.schemaType || 'WebPage',
+    '@id': `${base}${page.path}#webpage`,
+    url: `${base}${page.path}`,
+    name: page.title,
+    description: page.description,
+    isPartOf: { '@id': siteId },
+    about: { '@id': bizId },
+    inLanguage: cfg.site.language,
+  };
+
   const graph = [
     { '@type': 'WebSite', '@id': siteId, url: `${base}/`, name: cfg.brand.name, inLanguage: cfg.site.language, publisher: { '@id': bizId } },
     business,
-    {
-      '@type': page.schemaType || 'WebPage',
-      '@id': `${base}${page.path}#webpage`,
-      url: `${base}${page.path}`,
-      name: page.title,
-      description: page.description,
-      isPartOf: { '@id': siteId },
-      about: { '@id': bizId },
-      inLanguage: cfg.site.language,
-    },
+    webpage,
   ];
+
+  if (page.serviceSchema) {
+    const serviceId = `${base}${page.path}#service`;
+    webpage.mainEntity = { '@id': serviceId };
+    graph.push({
+      '@type': 'Service',
+      '@id': serviceId,
+      name: page.serviceSchema.name,
+      serviceType: page.serviceSchema.serviceType,
+      description: page.description,
+      provider: { '@id': bizId },
+      areaServed: [
+        'Kensington',
+        ...cfg.areas.map((x) => x.name),
+      ].map((name) => ({ '@type': 'Place', name: `${name}, London` })),
+    });
+  }
   if (page.breadcrumbs && page.breadcrumbs.length > 1) {
     graph.push({
       '@type': 'BreadcrumbList',
