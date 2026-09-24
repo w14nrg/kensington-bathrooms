@@ -7,7 +7,7 @@
 5. Earl's Court is coverage only at launch, not a dedicated page.
 6. No keyword-synonym doorway pages.
 7. Bathroom brand only: no kitchens, general building or emergency plumbing.
-8. Visual direction: near-black/dark green, restrained brass, premium editorial typography; homepage remains map-led.
+8. Visual direction: near-black/dark green on all pages, restrained brass, premium editorial typography; homepage remains map-led. The Areas and Projects pages must visibly use this palette.
 9. Homepage contains useful visible service text beneath the map; no hidden SEO copy and no word-count target.
 10. Property-protection detail belongs on Our Approach, including the confirmed new-clean-boots practice.
 11. Bathroom Renovation owns design, supply, installation, specification and room types; its title/H1 do not compete with the homepage for Kensington.
@@ -20,3 +20,6 @@
 18. Site remains noindex until final launch checks are passed.
 19. Production domain: `kensingtonbathrooms.uk`.
 20. Existing En-Suites & Bathrooms Kensington/nearby content may be checked near launch before any redirect decision.
+21. Kensington, West Kensington, Holland Park, South Kensington and Chelsea are presented as one connected service area; do not call any neighbourhood the principal area or imply other areas are secondary. The Kensington homepage retains its agreed keyword ownership.
+22. West Kensington map point sits by the station at North End Road and West Cromwell Road; the distinct base marker says “We're here.” The map is an illustration, not a street-by-street geographic survey.
+23. Use Nicholas throughout, not Nick. His About story includes going to Bousfield Primary School on South Bolton Gardens near The Little Boltons, childhood visits to friends' houses around Kensington, an interest in buildings and architecture, and the separately told Chelsea family memories.
