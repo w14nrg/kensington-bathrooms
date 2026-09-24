@@ -25,11 +25,9 @@ const mapMarker = ([id, name, post, description, link, label]) => `<li class="ma
 export function render() {
   return `<section class="map-home" aria-labelledby="map-home-title">
   <div class="map-home__copy">
-    <div class="map-home__lead-copy">
-      <p class="map-home__kicker">Bathroom renovation · Kensington</p>
-      <h1 id="map-home-title">Bathroom design <br>and installation <br>in Kensington</h1>
-      <p class="map-home__intro">We design, supply and install complete bathrooms across Kensington, West Kensington, Holland Park, South Kensington and Chelsea, working from our local base within this area.</p>
-    </div>
+    <p class="map-home__kicker">Bathroom renovation · Kensington</p>
+    <h1 id="map-home-title">Bathroom design <br>and installation <br>in Kensington</h1>
+    <p class="map-home__intro">We design, supply and install complete bathrooms across Kensington, West Kensington, Holland Park, South Kensington and Chelsea, working from our local base within this area.</p>
     <p class="map-home__intro map-home__intro--continued">One team manages the whole project, from design and specification to plumbing, waterproofing, tiling and joinery.</p>
     <div class="map-home__actions"><a class="map-home__primary" href="/contact/">Arrange a home consultation</a><button type="button" data-open-drawer class="map-home__secondary">Talk to a bathroom expert <span aria-hidden="true">↗</span></button></div>
   </div>
