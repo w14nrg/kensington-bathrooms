@@ -13,6 +13,7 @@ const areas = [
   ['holland-park', 'Holland Park', 'W8 · W11', 'Large period houses, often with several bathrooms and long, finished hallways.', '/areas/holland-park/', 'Bathrooms in Holland Park'],
   ['south-kensington', 'South Kensington', 'SW7', 'Portered buildings and garden-square flats, where access is planned around the building.', '/areas/south-kensington/', 'Bathrooms in South Kensington'],
   ['chelsea', 'Chelsea', 'SW3 · SW10', 'Mansion blocks and mews houses, many within managed buildings.', '/areas/chelsea/', 'Bathrooms in Chelsea'],
+  ['west-kensington', 'West Kensington', 'W14', 'Period houses, mansion flats and conversions close to our local base.', '/areas/west-kensington/', 'Bathrooms in West Kensington'],
   ['local-base', 'Our local base', '', 'Projects are run from our local base, a short distance from Kensington.', '/about/', 'About Kensington Bathrooms']
 ];
 
@@ -31,7 +32,7 @@ export function render() {
     <div class="map-home__actions"><a class="map-home__primary" href="/contact/">Arrange a home consultation</a><button type="button" data-open-drawer class="map-home__secondary">Talk to a bathroom expert <span aria-hidden="true">↗</span></button></div>
   </div>
   <div class="map-home__map" aria-label="Illustrated map of the neighbourhoods Kensington Bathrooms serves">
-    <svg class="map-art" viewBox="0 0 1000 740" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Simplified map showing our local base near Kensington, Holland Park, South Kensington and Chelsea">
+    <svg class="map-art" viewBox="0 0 1000 740" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Simplified map showing our local base near Kensington, West Kensington, Holland Park, South Kensington and Chelsea">
       <defs><pattern id="map-streets" width="80" height="64" patternUnits="userSpaceOnUse" patternTransform="rotate(-12)"><path d="M0 0H80M0 32H80M0 0V64M40 0V64" fill="none" stroke="#666960" stroke-opacity=".2" stroke-width="1"/></pattern><linearGradient id="map-vignette"><stop stop-color="#101411" stop-opacity=".85"/><stop offset=".4" stop-color="#101411" stop-opacity=".04"/><stop offset="1" stop-color="#101411" stop-opacity=".08"/></linearGradient></defs>
       <rect width="1000" height="740" fill="#121714"/><path fill="#1a2420" d="M0 0h215l75 120-28 166-102 25L0 262zM865 0h135v210l-72 18-90-70zM645 320l138-57 144 94-78 174-149-34zM0 610l128-82 173 43 15 169H0z"/><path fill="#19251e" d="M0 132q125-84 254-43l101 96-19 79-165 89-171-18z"/><rect width="1000" height="740" fill="url(#map-streets)"/>
       <g fill="none" stroke="#8d8977" stroke-opacity=".3" stroke-width="2"><path d="M-60 236C215 186 359 166 625 146s314-18 440-60"/><path d="M-80 492c207-39 410-47 665-41 157 4 327 0 500-67"/><path d="M178 0c110 166 140 272 120 422-11 82-44 191-66 330"/><path d="M625-30c-14 154-28 304-17 455 8 109 45 219 91 352"/><path d="M-20 663c180-127 303-182 518-201 176-17 325-20 532-93"/><path d="M842 121c-92 163-135 302-126 451 4 67 33 151 56 197"/></g>
