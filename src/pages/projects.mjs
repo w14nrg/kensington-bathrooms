@@ -14,13 +14,13 @@ export function render(cfg){
   <div class="page-hero__inner">
     <div class="page-hero__projects-copy">
       <p class="eyebrow">Selected work</p>
-      <h1>Real bathrooms. Real locations.</h1>
-      <p class="page-hero__lede">The Kensington Bathrooms brand is new. The trade experience is not. Existing work is shown with its real location, and Kensington projects will be added only as they are completed and documented.</p>
+      <h1>Completed bathroom work.</h1>
+      <p class="page-hero__lede">A first look at finished rooms from the team behind Kensington Bathrooms. Each photograph carries its real location; these are examples of the work, not projects relabelled as Kensington homes.</p>
     </div>
     <div class="page-hero__project-images">
       ${works.map(w=>`<figure><img src="${w.src}" alt="${w.alt}" width="${w.width}" height="${w.height}"><figcaption>${w.caption}</figcaption></figure>`).join('')}
     </div>
   </div>
 </section>
-<section class="content-band content-band--white"><div class="section-shell"><div class="content-grid"><div><p class="eyebrow">What we document</p><h2>A finished room is only part of the story.</h2></div><div class="content-copy"><p>As the portfolio grows, project pages will record the real area, property type, brief, access and protection requirements, design decisions, installation challenges and finished result. Nothing will be assigned a Kensington, W8, SW7 or Chelsea location unless that is where the project actually took place.</p><p>This page remains outside search indexing until the Kensington Bathrooms portfolio contains enough properly documented work to stand on its own.</p></div></div></div></section>`;
+<section class="content-band content-band--ink"><div class="section-shell"><div class="content-grid"><div><p class="eyebrow">Beyond the photograph</p><h2>What makes a finished bathroom work.</h2></div><div class="content-copy"><p>A photograph shows the fittings and finish. When we discuss your own room, we also look at the layout, hot-water supply, drainage, ventilation, waterproofing and how the work can be carried out in your property.</p><p>Future project stories will include the real location and the decisions behind the finished room. We only describe a Kensington or Chelsea bathroom as such when that is where the work was done.</p><a class="arrow-link" href="/bathroom-renovation/">How we plan a complete renovation</a></div></div></div></section>`;
 }
