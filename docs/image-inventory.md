@@ -16,7 +16,7 @@ Source repository: `w14nrg/en-suite-bathrooms`
 - Use: selected work card
 
 - `assets/projects/rosaline-road/rr-finished-1.webp`
-- Actual project: Rosaline Road, London
+- Actual project: Rosaline Road, Fulham
 - Use: selected work / service imagery
 
 ## Local Kensington context
