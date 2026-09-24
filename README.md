@@ -4,14 +4,18 @@ Premium local bathroom website for **Kensington Bathrooms**, a trading name of *
 
 ## Status
 
-- Built from the approved Kensington SEO/brand strategy.
-- 16 generated pages.
-- `site.indexable` is deliberately `false` while the site is under review.
+- Built from the approved Kensington SEO/brand strategy and Claude Rev 2 homepage assessment.
+- 15 generated pages.
+- `site.indexable` remains deliberately `false` while the site is under review.
+- Canonical production domain is `https://kensingtonbathrooms.uk`.
 - Phone, WhatsApp, email and form endpoint remain unset until real details exist.
-- The design is intentionally light, editorial and image-led: warm white, charcoal, restrained heritage green and brass details.
-- Property protection is a primary brand differentiator, not a minor FAQ.
-- Homepage owns the Kensington/W8 commercial cluster.
-- Dedicated area pages: West Kensington, Holland Park, Notting Hill, South Kensington, Chelsea.
+- Visual direction: near-black/dark green map-led homepage with restrained brass detail; internal page heroes now use the same dark premium language.
+- Homepage owns the Kensington/W8 commercial search cluster.
+- Bathroom Renovation owns the service rather than a second Kensington location target.
+- Dedicated area pages: West Kensington, Holland Park, South Kensington and Chelsea.
+- Notting Hill is excluded.
+- Projects remains noindex until the portfolio is sufficiently documented.
+- Public footer shows the trading-name disclosure and company number only; no private/registered address is published.
 
 ## Build
 
@@ -31,22 +35,18 @@ npm run preview
 
 ## Git strategy
 
-This code should live in its own repository:
+Repository: `w14nrg/kensington-bathrooms`
 
-`w14nrg/kensington-bathrooms`
+Review branch: `feature/chatgpt-premium-build`
 
-Recommended branch for this version:
-
-`feature/chatgpt-premium-build`
-
-Do not place it inside or merge it into `w14nrg/en-suite-bathrooms`.
+Do not place it inside or merge it into `w14nrg/en-suite-bathrooms`. Keep `main` untouched until review is complete.
 
 ## Images
 
-The prototype references two genuine owned project images from the existing En-Suites & Bathrooms GitHub repository and one Creative Commons photograph of Kynance Mews for local Kensington context. Before launch, copy the owned project image files into this repository and localise the Kensington image or replace it with an original local photograph. See `docs/image-inventory.md`.
+The build uses genuine owned project photography from the existing En-Suites & Bathrooms work, with truthful project locations. No Fulham/London project is relabelled as Kensington.
 
-No existing Fulham/London project is relabelled as Kensington.
+See `docs/image-inventory.md` for the current image inventory and launch rules.
 
 ## Important pre-launch work
 
-See `docs/pre-launch.md`. Key blockers include final phone/WhatsApp/email, real form handling, image localisation, analytics/consent decisions, and an overlap audit of existing Kensington pages on en-suite.co.uk before indexing.
+See `docs/pre-launch.md`. The site stays noindex until the final contact, form, visual, link, schema and launch checks are complete.
