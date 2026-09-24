@@ -26,7 +26,7 @@ export function head(cfg, page, assets) {
 <meta name="description" content="${esc(page.description)}">
 ${cfg.site.indexable && !page.noindex ? '' : '<meta name="robots" content="noindex, nofollow">'}
 ${page.noCanonical ? '' : `<link rel="canonical" href="${url}">`}
-<meta name="theme-color" content="#fbfaf7">
+<meta name="theme-color" content="#111512">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
@@ -60,7 +60,7 @@ export function header(cfg, currentPath) {
   </div>
   <div class="mobile-menu" id="mobile-menu" hidden>
     <ul>${links}<li><a href="/contact/">Arrange a consultation</a></li></ul>
-    <p class="mobile-menu__base">${currentPath === '/' ? 'Our local base' : 'Bathroom renovation in Kensington'}</p>
+    <p class="mobile-menu__base">Our local base</p>
   </div>
 </header>`;
 }
@@ -88,7 +88,7 @@ export function consultationForm(cfg, idPrefix = 'c') {
     ${field(p('budget'), 'Anticipated investment', select(p('budget'), 'investment', cfg.investmentBands))}
     ${field(p('when'), 'Preferred timing', select(p('when'), 'timeframe', cfg.timeframes))}
   </div>
-  ${field(p('brief'), 'Tell us about the room', `<textarea id="${p('brief')}" name="description" rows="5" aria-describedby="${p('brief')}-hint ${p('brief')}-error"></textarea>`, 'A short outline is enough. Photos can be shared later by WhatsApp or reply.')}
+  ${field(p('brief'), 'Tell us about the room', `<textarea id="${p('brief')}" name="description" rows="5" aria-describedby="${p('brief')}-hint ${p('brief')}-error"></textarea>`, 'A short outline is enough. We can discuss photographs during the consultation.')}
   <div class="hp" aria-hidden="true"><label for="${p('website')}">Leave this empty</label><input id="${p('website')}" name="website" tabindex="-1" autocomplete="off"></div>
   <p class="form__privacy">We use these details only to respond to your enquiry. See our <a href="/privacy/">privacy notice</a>.</p>
   <button class="button button--ink" type="submit">Request a home consultation</button>
