@@ -1,7 +1,7 @@
 {
   "_readme": "Single source of truth for business, contact and legal details. Unknown contact values remain null and are not rendered.",
   "site": {
-    "url": "https://kensingtonbathrooms.co.uk",
+    "url": "https://kensingtonbathrooms.uk",
     "indexable": false,
     "language": "en-GB"
   },
@@ -12,7 +12,7 @@
   "company": {
     "legalName": "En-Suites & Bathrooms Ltd",
     "companyNumber": "17170498",
-    "registeredOffice": "33 Gunterstone Road, London W14 9BP",
+    "registeredOffice": null,
     "registeredIn": "England and Wales"
   },
   "operatingAddress": {
@@ -47,11 +47,6 @@
       "slug": "holland-park",
       "name": "Holland Park",
       "postcodes": "W8 · W11"
-    },
-    {
-      "slug": "notting-hill",
-      "name": "Notting Hill",
-      "postcodes": "W11"
     },
     {
       "slug": "south-kensington",
