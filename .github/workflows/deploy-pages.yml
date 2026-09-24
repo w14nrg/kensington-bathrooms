@@ -1,3 +1,4 @@
+# Pages enabled for production deployment
 name: Deploy Kensington Bathrooms
 
 on:
