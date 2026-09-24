@@ -196,6 +196,7 @@ body{background:var(--paper);color:var(--ink)}
 .map-point--kensington{left:67%;top:31%}
 .map-point--south-kensington{left:78%;top:55%}
 .map-point--chelsea{left:82%;top:79%}
+.map-point--west-kensington{left:28%;top:52%}
 .map-point--local-base{left:14%;top:67%}
 .map-point__button{border:0;background:none;color:#eae5da;display:flex;align-items:center;flex-direction:column;gap:2px;padding:14px;cursor:pointer;white-space:nowrap;text-shadow:0 2px 10px #000}
 .map-point__symbol{display:block;width:7px;height:7px;background:#bd9b5b;transform:rotate(45deg);box-shadow:0 0 18px #bca572aa;margin-bottom:8px}
@@ -291,3 +292,59 @@ body{background:var(--paper);color:var(--ink)}
  .map-close__inner>div{display:grid;justify-items:start}
 }
 @media(prefers-reduced-motion:reduce){.map-point *{transition:none!important}}
+
+
+/* Approved inner-page treatment: keep Claude's page ownership and content, align the visual system with the map-led home. */
+.page-hero{
+  background:#111512;
+  color:#eeeae0;
+  border-bottom:1px solid #2d322d;
+}
+.page-hero .eyebrow{color:#c4ad81}
+.page-hero h1{color:#f2eee6}
+.page-hero__lede{color:#a9aca4}
+.button--light{background:#f3efe7;color:#182019;border-color:#f3efe7}
+.button--light:hover{background:#d7c29c;border-color:#d7c29c}
+.page-hero--photo{padding:0}
+.page-hero__inner--split{
+  width:min(var(--max),calc(100% - (var(--side)*2)));
+  display:grid;
+  grid-template-columns:minmax(0,.9fr) minmax(380px,1.1fr);
+  gap:clamp(40px,7vw,110px);
+  align-items:center;
+  min-height:calc(100svh - 82px);
+}
+.page-hero__copy{padding-block:clamp(80px,10vw,140px)}
+.page-hero__copy h1{font-size:clamp(3.1rem,5.9vw,6.3rem);max-width:10ch}
+.page-hero__media{margin:0;align-self:stretch;min-height:620px;position:relative;overflow:hidden;background:#17201b}
+.page-hero__media img{width:100%;height:100%;object-fit:cover}
+.page-hero__media:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 62%,rgba(0,0,0,.38));pointer-events:none}
+.page-hero__media figcaption{position:absolute;z-index:2;left:1.25rem;right:1.25rem;bottom:1rem;color:#f0ece3;font-size:.66rem;letter-spacing:.06em}
+.page-hero--projects{padding:clamp(75px,8vw,110px) 0}
+.page-hero--projects .page-hero__inner{width:min(var(--max),calc(100% - (var(--side)*2)))}
+.page-hero__projects-copy{display:grid;grid-template-columns:.8fr 1.2fr;gap:4vw;align-items:end;margin-bottom:3rem}
+.page-hero__projects-copy .eyebrow{grid-column:1/-1}
+.page-hero__projects-copy h1{margin:0;font-size:clamp(3.2rem,6.2vw,6.5rem);max-width:8ch}
+.page-hero__projects-copy .page-hero__lede{margin:0;max-width:620px}
+.page-hero__project-images{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.page-hero__project-images figure{margin:0;position:relative;background:#17201b}
+.page-hero__project-images img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.page-hero__project-images figcaption{padding:.8rem 0 0;color:#aaa99f;font-size:.7rem}
+.site-footer address{display:none}
+
+@media(max-width:1050px){
+  .page-hero__inner--split{grid-template-columns:1fr 1fr}
+  .page-hero__media{min-height:560px}
+}
+@media(max-width:760px){
+  .map-point--west-kensington{left:29%;top:54%}
+  .page-hero__inner--split{display:flex;flex-direction:column;width:100%;gap:0;min-height:auto}
+  .page-hero__copy{padding:68px 20px 50px}
+  .page-hero__copy h1{font-size:clamp(3rem,14vw,4.5rem)}
+  .page-hero__media{width:100%;min-height:0;aspect-ratio:4/5}
+  .page-hero--projects{padding:68px 0}
+  .page-hero--projects .page-hero__inner{width:calc(100% - 40px)}
+  .page-hero__projects-copy{grid-template-columns:1fr;gap:1rem}
+  .page-hero__projects-copy .eyebrow{grid-column:auto}
+  .page-hero__project-images{grid-template-columns:1fr;gap:1.6rem}
+}
