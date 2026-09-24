@@ -13,5 +13,5 @@ export function render() { return areaRender({
     ['Will the new shower suit the supply?','We look at the boiler or hot-water arrangement and the existing supply before specifying shower fittings, especially where other outlets are used at the same time.']
   ],
   protection:'We agree how the team reaches the room through halls, landings and stairs, then protect the surfaces present. In flats, shared areas and the building\'s own requirements are part of that conversation.',
-  close:'West Kensington is immediately beside the Kensington neighbourhoods we serve. Our local base is nearby, and each visit starts with your actual room rather than a standard plan for W14.'
+  close:'West Kensington is one of the neighbourhoods where we work. Our local base is nearby, and each visit starts with your actual room rather than a standard plan for W14.'
 }); }
