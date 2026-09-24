@@ -256,6 +256,7 @@ body{background:var(--paper);color:var(--ink)}
  .map-home__map{order:4;height:min(72vw,420px);min-height:300px;width:100%;overflow:hidden}
  .map-home__map:before{background:linear-gradient(180deg,#111512 0%,transparent 17%)}
  .map-art{width:100%;height:100%}
+ .map-point{transform:none}
  .map-point__button{padding:8px}
  .map-point__name{font-size:clamp(.9rem,3.1vw,1.4rem)}
  .map-point__button small{font-size:.46rem}
@@ -290,4 +291,3 @@ body{background:var(--paper);color:var(--ink)}
  .map-close__inner>div{display:grid;justify-items:start}
 }
 @media(prefers-reduced-motion:reduce){.map-point *{transition:none!important}}
-
