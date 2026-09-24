@@ -1,4 +1,4 @@
-import { esc, join, addressLines } from './util.mjs';
+import { esc, join } from './util.mjs';
 import { schemaGraph } from './schema.mjs';
 
 export const NAV = [
@@ -132,23 +132,21 @@ export function mobileBar() {
 }
 
 export function footer(cfg, currentPath = '') {
-  const a = addressLines(cfg.operatingAddress);
   const co = cfg.company;
   return `
 <footer class="site-footer">
-  <div class="site-footer__topline"><span>Kensington</span><span>${currentPath === '/' ? 'Our local base' : 'West Kensington'}</span><span>Holland Park</span>${currentPath === '/' ? '' : '<span>Notting Hill</span>'}<span>South Kensington</span><span>Chelsea</span></div>
+  <div class="site-footer__topline"><span>Kensington</span><span>West Kensington</span><span>Holland Park</span><span>South Kensington</span><span>Chelsea</span></div>
   <div class="site-footer__inner">
     <div class="site-footer__brand">
       ${wordmark(cfg, 'p')}
       <p>Bathroom renovation, design and installation for Kensington and its immediate neighbourhoods.</p>
-      <address>${a.map(esc).join('<br>')}</address>
-      <p class="site-footer__note">Operating base. Home consultations are by appointment at your property.</p>
+      <p class="site-footer__note">Home consultations are arranged at your property.</p>
     </div>
     <nav class="site-footer__col" aria-label="Footer"><h2>Explore</h2><ul><li><a href="/bathroom-renovation/">Bathroom renovation</a></li><li><a href="/our-approach/">Our approach</a></li><li><a href="/projects/">Projects</a></li><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li></ul></nav>
-    <nav class="site-footer__col" aria-label="Areas"><h2>Areas</h2><ul>${cfg.areas.filter((x) => currentPath !== '/' || x.slug !== 'notting-hill').map((x) => `<li><a href="/areas/${x.slug}/">${esc(x.name)}</a></li>`).join('')}</ul></nav>
+    <nav class="site-footer__col" aria-label="Areas"><h2>Areas</h2><ul>${cfg.areas.map((x) => `<li><a href="/areas/${x.slug}/">${esc(x.name)}</a></li>`).join('')}</ul></nav>
   </div>
   <div class="site-footer__legal">
-    <p>${esc(cfg.brand.name)} is a trading name of ${esc(co.legalName)} · Company ${esc(co.companyNumber)} · Registered in ${esc(co.registeredIn)} · Registered office: ${esc(co.registeredOffice)}.</p>
+    <p>${esc(cfg.brand.name)} is a trading name of ${esc(co.legalName)} · Company ${esc(co.companyNumber)} · Registered in ${esc(co.registeredIn)}.</p>
     <p><a href="/privacy/">Privacy</a><a href="/cookies/">Cookies</a><a href="/terms/">Terms</a><span>© ${new Date().getFullYear()} ${esc(co.legalName)}</span></p>
   </div>
 </footer>`;
