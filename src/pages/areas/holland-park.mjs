@@ -13,5 +13,5 @@ export function render() { return areaRender({
     ['How much can we change?','A change to the layout can affect joists, drainage, ventilation or historic fabric. We identify what can be established on survey and what needs further investigation.']
   ],
   protection:'Long hallways, stair runners, timber floors and carefully finished entrances deserve the same attention as the bathroom. The route for people, materials and waste is discussed before the first day on site.',
-  close:'Holland Park sits next to Kensington and close to our local base. We focus on this small group of neighbouring areas so each project receives a proper visit and a plan specific to the home.'
+  close:'We work in Holland Park, close to our local base. Each project begins with a proper visit and a plan specific to the home.'
 }); }
