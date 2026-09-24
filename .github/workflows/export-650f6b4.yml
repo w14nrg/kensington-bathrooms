@@ -1,0 +1,28 @@
+name: Export source 650f6b4
+
+on:
+  push:
+    branches: [export-650f6b4]
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact commit
+        uses: actions/checkout@v6
+        with:
+          ref: 650f6b4d1548847fce9d2b0198bbe734a266c32e
+          path: source
+      - name: Create exact source ZIP
+        run: |
+          cd source
+          zip -qr ../kensington-bathrooms-650f6b4.zip . -x ".git/*"
+      - name: Upload ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: kensington-bathrooms-650f6b4
+          path: kensington-bathrooms-650f6b4.zip
+          if-no-files-found: error
