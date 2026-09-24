@@ -135,10 +135,11 @@
     });
   });
 
-  // Map panels use real HTML buttons and anchors. Hover, keyboard focus and
-  // touch all reveal the same content; a second tap on the link navigates.
+  // Desktop map markers open their information panels. On mobile, service-area
+  // markers open the matching accordion row below the map and scroll it into view.
   var points = Array.from(document.querySelectorAll('[data-map-point]'));
   if (points.length) {
+    var mobileMap = window.matchMedia('(max-width: 760px)');
     function closePoints(except) {
       points.forEach(function (point) {
         if (point === except) return;
@@ -149,23 +150,32 @@
     points.forEach(function (point) {
       var trigger = point.querySelector('[data-map-trigger]');
       trigger.addEventListener('click', function () {
+        if (mobileMap.matches) {
+          var targetId = trigger.getAttribute('data-area-target');
+          if (!targetId) return;
+          var row = document.getElementById(targetId);
+          if (!row) return;
+          row.open = true;
+          row.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          return;
+        }
         var open = point.classList.contains('is-open');
         closePoints(point);
         point.classList.toggle('is-open', !open);
         trigger.setAttribute('aria-expanded', String(!open));
       });
       point.addEventListener('focusout', function (e) {
-        if (!point.contains(e.relatedTarget)) {
+        if (!mobileMap.matches && !point.contains(e.relatedTarget)) {
           point.classList.remove('is-open');
           trigger.setAttribute('aria-expanded', 'false');
         }
       });
     });
     document.addEventListener('click', function (e) {
-      if (!e.target.closest('[data-map-point]')) closePoints();
+      if (!mobileMap.matches && !e.target.closest('[data-map-point]')) closePoints();
     });
     document.addEventListener('keydown', function (e) {
-      if (e.key !== 'Escape' || !points.some(function (point) { return point.classList.contains('is-open'); })) return;
+      if (mobileMap.matches || e.key !== 'Escape' || !points.some(function (point) { return point.classList.contains('is-open'); })) return;
       var active = points.find(function (point) { return point.contains(document.activeElement) || point.classList.contains('is-open'); });
       closePoints();
       if (active) active.querySelector('[data-map-trigger]').focus();
