@@ -196,7 +196,7 @@ body{background:var(--paper);color:var(--ink)}
 .map-point--kensington{left:67%;top:31%}
 .map-point--south-kensington{left:78%;top:55%}
 .map-point--chelsea{left:82%;top:79%}
-.map-point--local-base{left:24%;top:67%}
+.map-point--local-base{left:14%;top:67%}
 .map-point__button{border:0;background:none;color:#eae5da;display:flex;align-items:center;flex-direction:column;gap:2px;padding:14px;cursor:pointer;white-space:nowrap;text-shadow:0 2px 10px #000}
 .map-point__symbol{display:block;width:7px;height:7px;background:#bd9b5b;transform:rotate(45deg);box-shadow:0 0 18px #bca572aa;margin-bottom:8px}
 .map-point__name{font-family:var(--serif);font-size:clamp(1.08rem,1.6vw,1.75rem);line-height:1.1}
