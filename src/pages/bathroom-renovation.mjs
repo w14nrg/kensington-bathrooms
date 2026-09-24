@@ -2,7 +2,11 @@ export const meta = {
   path: '/bathroom-renovation/',
   title: 'Complete Bathroom Renovation | Kensington Bathrooms',
   description: 'Bathroom design, specification, supply and managed installation. How a first home visit turns your ideas into a buildable bathroom plan.',
-  schemaType: 'Service',
+  schemaType: 'WebPage',
+  serviceSchema: {
+    name: 'Complete bathroom renovation',
+    serviceType: 'Bathroom renovation',
+  },
   breadcrumbs: [{ name: 'Home', path: '/' }, { name: 'Bathroom renovation', path: '/bathroom-renovation/' }]
 };
 
