@@ -1,0 +1,26 @@
+name: Export exact site zip
+
+on:
+  push:
+    branches:
+      - chatgpt-export-2effa01a
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact audited commit
+        uses: actions/checkout@v4
+        with:
+          ref: 2effa01a48cdab1f9ad7f0137851a60345945205
+      - name: Create exact source zip
+        run: zip -r kensington-bathrooms-2effa01a.zip . -x ".git/*" "kensington-bathrooms-2effa01a.zip"
+      - name: Upload zip
+        uses: actions/upload-artifact@v4
+        with:
+          name: kensington-bathrooms-2effa01a
+          path: kensington-bathrooms-2effa01a.zip
+          if-no-files-found: error
