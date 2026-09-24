@@ -60,7 +60,7 @@ export function header(cfg, currentPath) {
   </div>
   <div class="mobile-menu" id="mobile-menu" hidden>
     <ul>${links}<li><a href="/contact/">Arrange a consultation</a></li></ul>
-    <p class="mobile-menu__base">Our local base</p>
+    <p class="mobile-menu__base">We're here</p>
   </div>
 </header>`;
 }
