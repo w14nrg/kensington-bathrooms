@@ -1,0 +1,20 @@
+name: Check Kensington domain
+
+on:
+  push:
+    branches: [domain-check-650f6b4]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: DNS and HTTPS check
+        run: |
+          echo "A records:"
+          dig +short A kensingtonbathrooms.uk
+          echo "WWW CNAME:"
+          dig +short CNAME www.kensingtonbathrooms.uk
+          echo "HTTP:"
+          curl -sSIL --max-time 20 http://kensingtonbathrooms.uk/ | head -20
+          echo "HTTPS:"
+          curl -sSIL --max-time 20 https://kensingtonbathrooms.uk/ | head -20
