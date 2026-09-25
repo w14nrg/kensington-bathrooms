@@ -1,7 +1,7 @@
 import { areaMeta, areaHero, areaSplit, areaCards, areaClose } from '../../lib/area-page.mjs';
 export const meta = areaMeta('south-kensington', 'South Kensington', 'SW7', 'Bathroom renovation in South Kensington SW7 for portered flats, garden-square homes and period properties, with building access and installation carefully planned.');
-export function render() { return `
-${areaHero({ name:'South Kensington', postcodes:'SW7', kicker:'Flats, terraces and managed buildings', lede:'In South Kensington, the route to the bathroom can be as important to the programme as the room itself. We discuss the building arrangements at the home visit, then design around what we find.' })}
+export function render(cfg) { return `
+${areaHero({ name:'South Kensington', postcodes:'SW7', kicker:'Flats, terraces and managed buildings', lede:'In South Kensington, the route to the bathroom can be as important to the programme as the room itself. We discuss the building arrangements at the home visit, then design around what we find.', image:cfg.images?.areaHeroes?.southKensington })}
 ${areaSplit({ eyebrow:'Behind the front door', title:'First, understand the building.', dark:true, paragraphs:[
   'South Kensington includes large terraced houses, converted flats and mansion buildings around Queen’s Gate and its neighbouring streets. A flat may involve a porter, shared entrance or lift. We ask about deliveries, working hours and protection of communal areas before agreeing dates; we do not assume every building has the same rules.',
   'If an alteration needs a managing agent or freeholder’s approval, it is better to establish that before products are ordered. Where the flat relies on shared water services, isolation may also need to be coordinated with the building.'
