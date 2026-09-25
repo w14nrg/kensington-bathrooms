@@ -14,7 +14,7 @@ const areas = [
   ['south-kensington', 'South Kensington', 'SW7', 'Portered buildings and garden-square flats, where access is planned around the building.', '/areas/south-kensington/', 'Bathrooms in South Kensington'],
   ['chelsea', 'Chelsea', 'SW3 · SW10', 'Mansion blocks and mews houses, many within managed buildings.', '/areas/chelsea/', 'Bathrooms in Chelsea'],
   ['west-kensington', 'West Kensington', 'W14', 'By West Kensington station: period houses, mansion flats and conversions.', '/areas/west-kensington/', 'Bathrooms in West Kensington'],
-  ['local-base', "We're here", '', 'Our local base. Consultations take place at your home.', '/about/', 'About Kensington Bathrooms']
+  ['local-base', "We're here", '', 'Our local base in West Kensington. Home consultations, or design meetings by appointment.', '/contact/', 'Contact Kensington Bathrooms']
 ];
 
 const serviceAreas = areas.filter(([id]) => id !== 'local-base');
@@ -49,6 +49,7 @@ export function render() {
     <ul class="map-points" aria-label="Choose an area">${areas.map(mapMarker).join('')}</ul>
     <p class="map-home__legend"><span aria-hidden="true">◆</span> Areas we serve <span aria-hidden="true">◎</span> We're here</p>
   </div>
+  <div class="map-base-note" id="map-base-note" hidden><p><strong>Our local base in West Kensington.</strong> Home consultations, or design meetings by appointment.</p><a href="/contact/">Contact Kensington Bathrooms</a></div>
 </section>
 <nav class="map-area-list" aria-label="Areas we serve"><p class="map-area-list__label">Areas we serve</p>${serviceAreas.map(([id, name, post, description, link, label]) => `<details class="map-area-list__item" id="map-area-${id}"><summary><span class="map-area-list__name">${esc(name)}</span><small>${esc(post)}</small><span class="map-area-list__chevron" aria-hidden="true">⌄</span></summary><div class="map-area-list__content"><p>${esc(description)}</p><a href="${link}">${esc(label)}</a></div></details>`).join('')}</nav>
 <section class="map-reading" aria-labelledby="map-reading-title"><div class="map-reading__inner"><div class="map-reading__lead"><p class="map-reading__kicker">Kensington Bathrooms</p><h2 id="map-reading-title">Bathroom renovation in Kensington, from first visit to final clean</h2></div><div class="map-reading__blocks">
