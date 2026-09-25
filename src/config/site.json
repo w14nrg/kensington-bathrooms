@@ -15,20 +15,12 @@
     "registeredOffice": null,
     "registeredIn": "England and Wales"
   },
-  "operatingAddress": {
-    "streetAddress": "33 Gunterstone Road",
-    "locality": "West Kensington",
-    "city": "London",
-    "postcodeDistrict": "W14",
-    "postcode": "W14 9BP",
-    "_note": "Genuine operating base. Not a showroom or walk-in location; consultations are at the customer's property."
-  },
   "contact": {
-    "phone": null,
-    "phoneDisplay": null,
-    "whatsapp": null,
+    "phone": "+442073860000",
+    "phoneDisplay": "0207 386 0000",
+    "whatsapp": "442073860000",
     "whatsappMessage": "Hi Kensington Bathrooms, I'm planning a bathroom project{postcode}.",
-    "email": null,
+    "email": "info@en-suite.co.uk",
     "callbackHours": null
   },
   "forms": {
@@ -79,14 +71,6 @@
     "Not sure yet"
   ],
   "images": {
-    "hero": {
-      "src": "/images/local/kynance-mews.jpg",
-      "alt": "Kynance Mews in Kensington, London",
-      "width": 2000,
-      "height": 1496,
-      "credit": "Kynance Mews, Kensington — habiloid / Geograph, CC BY-SA 2.0",
-      "caption": "Kynance Mews · Kensington"
-    },
     "selectedWork": [
       {
         "src": "/images/projects/lr-finished-2.webp",
@@ -102,13 +86,6 @@
         "height": 1008,
         "caption": "Rosaline Road, Fulham · completed bathroom work"
       }
-    ],
-    "localKensington": {
-      "src": "/images/local/kynance-mews.jpg",
-      "alt": "Kynance Mews in Kensington, London",
-      "width": 2000,
-      "height": 1496,
-      "credit": "Kynance Mews, Kensington — habiloid / Geograph, CC BY-SA 2.0"
-    }
+    ]
   }
 }
