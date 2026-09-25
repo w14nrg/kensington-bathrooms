@@ -105,7 +105,8 @@ export function drawer(cfg) {
   const c = cfg.contact;
   const direct = join(
     c.phone && `<a class="drawer__option" href="tel:${esc(c.phone)}" data-track="call_click"><span>Call</span><strong>${esc(c.phoneDisplay || c.phone)}</strong></a>`,
-    c.whatsapp && `<a class="drawer__option" href="https://wa.me/${esc(c.whatsapp)}" data-whatsapp data-track="whatsapp_click" target="_blank" rel="noopener"><span>WhatsApp</span><strong>Send photos and a short note</strong></a>`
+    c.whatsapp && `<a class="drawer__option" href="https://wa.me/${esc(c.whatsapp)}" data-whatsapp data-track="whatsapp_click" target="_blank" rel="noopener"><span>WhatsApp</span><strong>Send photos and a short note</strong></a>`,
+    c.email && `<a class="drawer__option" href="mailto:${esc(c.email)}"><span>Email</span><strong>${esc(c.email)}</strong></a>`
   );
   return `
 <dialog class="drawer" id="contact-drawer" aria-labelledby="drawer-title">
