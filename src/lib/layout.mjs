@@ -147,11 +147,11 @@ export function footer(cfg, currentPath = '') {
       <p>Bathroom renovation, design and installation across the neighbourhoods shown on our map.</p>
       <p class="site-footer__note">Home consultations are arranged at your property.</p>
     </div>
-    <nav class="site-footer__col" aria-label="Footer"><h2>Explore</h2><ul><li><a href="/bathroom-renovation/">Bathroom renovation</a></li><li><a href="/our-approach/">Our approach</a></li><li><a href="/projects/">Projects</a></li><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li></ul></nav>
+    <nav class="site-footer__col" aria-label="Footer"><h2>Explore</h2><ul><li><a href="/bathroom-renovation/">Bathroom renovation</a></li><li><a href="/our-approach/">Our approach</a></li><li><a href="/guides/">Guides</a></li><li><a href="/projects/">Projects</a></li><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li></ul></nav>
     <nav class="site-footer__col" aria-label="Areas"><h2>Areas</h2><ul>${cfg.areas.map((x) => `<li><a href="/areas/${x.slug}/">${esc(x.name)}</a></li>`).join('')}</ul></nav>
   </div>
   <div class="site-footer__legal">
-    <p>${esc(cfg.brand.name)} is a trading name of ${esc(co.legalName)} · Company ${esc(co.companyNumber)} · Registered in ${esc(co.registeredIn)}.</p>
+    <p>${esc(cfg.brand.name)} is a trading name of ${esc(co.legalName)} · Company ${esc(co.companyNumber)} · Registered in ${esc(co.registeredIn)}.${co.registeredOffice ? ` Registered office: ${esc(co.registeredOffice)}.` : ``}</p>
     <p><a href="/privacy/">Privacy</a><a href="/cookies/">Cookies</a><a href="/terms/">Terms</a><span>© ${new Date().getFullYear()} ${esc(co.legalName)}</span></p>
   </div>
 </footer>`;
