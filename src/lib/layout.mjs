@@ -112,7 +112,8 @@ export function drawer(cfg) {
       <button type="button" class="drawer__close" data-close-drawer aria-label="Close">×</button>
     </div>
     <h2 id="drawer-title" class="drawer__title">Talk to a bathroom expert</h2>
-    <p class="drawer__intro">Speak directly with our bathroom team about the room, the property and the practical next step.${c.callbackHours ? ` Callbacks: ${esc(c.callbackHours)}.` : ''}</p>
+    <p class="drawer__intro">Home consultations, or design meetings by appointment at our base in West Kensington.${c.callbackHours ? ` Callbacks: ${esc(c.callbackHours)}.` : ''}</p>
+    ${cfg.localBase ? `<address class="local-base-address">${esc(cfg.localBase.streetAddress)}<br>${esc(cfg.localBase.city)} ${esc(cfg.localBase.postcode)}</address>` : ''}
     ${direct ? `<div class="drawer__options">${direct}</div>` : ''}
     ${cfg.forms.endpoint ? `<div class="drawer__rule"></div>
     <h3 class="drawer__subtitle">Request a callback</h3>
@@ -124,7 +125,7 @@ export function drawer(cfg) {
       <button class="button button--ink" type="submit">Request a callback</button>
       <p class="form__status" role="status" aria-live="polite"></p>
     </form>` : ''}
-    <p class="drawer__alt">Prefer a visit? <a href="/contact/">Arrange a home consultation</a></p>
+    <p class="drawer__alt"><a href="/contact/">See consultation options</a></p>
   </div>
 </dialog>`;
 }
