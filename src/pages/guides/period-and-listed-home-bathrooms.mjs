@@ -1,9 +1,12 @@
 export const meta={
   path:'/guides/period-and-listed-home-bathrooms/',
-  title:'Bathrooms in Period and Listed Homes: Practical Checks Before You Start | Kensington Bathrooms',
+  title:'Period & Listed Home Bathroom Guide | Kensington Bathrooms',
   description:'General practical guidance on bathroom drainage, older floors, ventilation and consent checks in period and listed homes in Kensington and West London.',
   schemaType:'Article',
   articleHeadline:'Bathrooms in Period and Listed Homes: Practical Checks Before You Start',
+  articleAuthor:'Nicholas',
+  datePublished:'2026-09-25',
+  dateModified:'2026-09-25',
   breadcrumbs:[{name:'Home',path:'/'},{name:'Guides',path:'/guides/'},{name:'Period and listed home bathrooms',path:'/guides/period-and-listed-home-bathrooms/'}]
 };
 export function render(){return `
