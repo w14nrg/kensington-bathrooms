@@ -44,6 +44,7 @@ jobs:
           def norm(s):
               s=re.sub(r'<style>.*?</style>','<style></style>',s,flags=re.S)
               s=s.replace("<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('js-motion')</script>","")
+              s=re.sub(r'>\s+<','><',s)
               return s
           bp=sorted(p.relative_to(b) for p in b.rglob('*.html'))
           cp=sorted(p.relative_to(c) for p in c.rglob('*.html'))
