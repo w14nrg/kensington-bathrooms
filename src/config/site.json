@@ -16,11 +16,11 @@
     "registeredIn": "England and Wales"
   },
   "contact": {
-    "phone": "+442073860000",
-    "phoneDisplay": "0207 386 0000",
-    "whatsapp": "442073860000",
+    "phone": null,
+    "phoneDisplay": null,
+    "whatsapp": null,
     "whatsappMessage": "Hi Kensington Bathrooms, I'm planning a bathroom project{postcode}.",
-    "email": "info@en-suite.co.uk",
+    "email": null,
     "callbackHours": null
   },
   "forms": {
