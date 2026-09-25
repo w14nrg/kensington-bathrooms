@@ -77,11 +77,7 @@ const select = (id, name, options, required = true) =>
 
 export function consultationForm(cfg, idPrefix = 'c') {
   const p = (s) => `${idPrefix}-${s}`;
-  if (!cfg.forms.endpoint) {
-    const email = cfg.contact.email ? `<a href="mailto:${esc(cfg.contact.email)}">${esc(cfg.contact.email)}</a>` : '';
-    const phone = cfg.contact.phone ? `<a href="tel:${esc(cfg.contact.phone)}">${esc(cfg.contact.phoneDisplay || cfg.contact.phone)}</a>` : '';
-    return `<div class="form-unavailable"><p class="eyebrow">Direct contact</p><h3>Enquiry forms are not enabled yet.</h3><p>Until the secure form endpoint is connected, please contact us directly.</p><p>${phone}${phone && email ? ' · ' : ''}${email}</p></div>`;
-  }
+  if (!cfg.forms.endpoint) return '';
   return `
 <form class="form" data-kb-form="consultation" novalidate>
   <div class="form__grid">
@@ -139,13 +135,15 @@ export function mobileBar() {
 
 export function footer(cfg, currentPath = '') {
   const co = cfg.company;
+  const base = cfg.localBase;
   return `
 <footer class="site-footer">
   <div class="site-footer__inner">
     <div class="site-footer__brand">
       ${wordmark(cfg, 'p')}
       <p>Bathroom renovation, design and installation across the neighbourhoods shown on our map.</p>
-      <p class="site-footer__note">Home consultations are arranged at your property.</p>
+      ${base ? `<address>${esc(base.streetAddress)}<br>${esc(base.city)} ${esc(base.postcode)}</address>` : ''}
+      <p class="site-footer__note">Home consultations, or design meetings by appointment at our base in West Kensington.</p>
     </div>
     <nav class="site-footer__col" aria-label="Footer"><h2>Explore</h2><ul><li><a href="/bathroom-renovation/">Bathroom renovation</a></li><li><a href="/our-approach/">Our approach</a></li><li><a href="/guides/">Guides</a></li><li><a href="/projects/">Projects</a></li><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li></ul></nav>
     <nav class="site-footer__col" aria-label="Areas"><h2>Areas</h2><ul>${cfg.areas.map((x) => `<li><a href="/areas/${x.slug}/">${esc(x.name)}</a></li>`).join('')}</ul></nav>
