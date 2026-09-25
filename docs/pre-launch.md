@@ -52,7 +52,7 @@
 ## 2026-09-25 consolidated launch blockers
 - [x] Mobile homepage brief retained on the live-site codebase.
 - [x] Draft Kensington, mansion-block and period/listed-home guides added to the feature branch for Nicholas + Claude review.
-- [x] Public phone, WhatsApp and email populated in config.
+- [ ] Final Kensington Bathrooms phone, WhatsApp and email must be supplied and added to config before launch.
 - [x] Enquiry and callback forms hidden while no production form endpoint is configured.
 - [x] UK GDPR privacy notice expanded with lawful bases, retention criteria, rights and contact details.
 - [x] Private operating/home address removed from site config.
