@@ -47,3 +47,19 @@
 - [ ] 404
 - [ ] No staging URLs indexed
 - [ ] No invented reviews/project locations/awards
+
+
+## 2026-09-25 consolidated launch blockers
+- [x] Mobile homepage brief retained on the live-site codebase.
+- [x] Draft Kensington, mansion-block and period/listed-home guides added to the feature branch for Nicholas + Claude review.
+- [x] Public phone, WhatsApp and email populated in config.
+- [x] Enquiry and callback forms hidden while no production form endpoint is configured.
+- [x] UK GDPR privacy notice expanded with lawful bases, retention criteria, rights and contact details.
+- [x] Private operating/home address removed from site config.
+- [x] Unused Kynance Mews image/config references removed.
+- [ ] Registered office: confirm a non-private registered-office address with the accountant or a registered-office service, then add it to `company.registeredOffice` before launch.
+- [ ] HTTPS: GitHub Pages certificate must finish provisioning and **Enforce HTTPS** must be enabled in repository Settings → Pages. The connected GitHub integration cannot toggle this account setting; GitHub returned 403 when attempted.
+- [ ] Self-hosted fonts: confirm licensed serif and sans font files before adding them. The review ZIP intentionally contains no redistributed font binaries.
+- [ ] Nicholas to confirm all trade-experience statements marked in the guide drafts.
+- [ ] Claude to review the guide drafts and final branch ZIP before publication.
+- [ ] At launch only: set `site.indexable=true`; keep Projects noindex; verify Search Console and submit the sitemap.
