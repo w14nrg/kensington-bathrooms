@@ -1,6 +1,6 @@
 export const meta={
   path:'/guides/renovating-a-bathroom-in-kensington/',
-  title:'Renovating a Bathroom in Kensington: What to Check | Kensington Bathrooms',
+  title:'Kensington Bathroom Renovation Guide | Kensington Bathrooms',
   description:'A practical guide to the building, access, drainage, hot water and consent questions to check before renovating a bathroom in Kensington.',
   schemaType:'Article',
   articleHeadline:'Renovating a Bathroom in a Kensington Home: What to Check',
