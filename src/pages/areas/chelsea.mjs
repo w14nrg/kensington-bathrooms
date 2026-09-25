@@ -13,4 +13,5 @@ ${areaCards({ eyebrow:'At the first visit', title:'Decisions we can make togethe
   ['Fittings and water','We consider the boiler or cylinder, pressure and flow before promising that a chosen shower or several outlets will perform as expected.'],
   ['Layout and permissions','We check the likely drainage route, what changing a wall or floor may involve, and whether the lease or other rules call for approval. Unknown conditions remain subject to investigation.']
 ] })}
+${areaSplit({ eyebrow:'Guide', title:'Mansion-block project?', paragraphs:['Our mansion-block guide covers the practical questions to settle before work starts: approvals, porter arrangements, lifts, shared services, working hours and protection of communal areas.'], link:{href:'/guides/mansion-block-bathroom-renovation/',label:'Read the mansion-block bathroom guide'} })}
 ${areaClose('Chelsea','Chelsea has been part of Nicholas’s life since childhood; his family memories are told on the About page. A project still begins with your home and what you want from its bathroom.')}`; }
