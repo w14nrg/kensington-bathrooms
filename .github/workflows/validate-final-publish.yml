@@ -1,0 +1,126 @@
+name: Validate final Kensington publish tree
+
+on:
+  push:
+    branches:
+      - feature/chatgpt-premium-build
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact final tree
+        uses: actions/checkout@v6
+        with:
+          ref: 32c467ee3c1a5f4a69cc604a3c7ba291962fdd61
+          path: source
+
+      - name: Build and static checks
+        working-directory: source
+        run: |
+          set -euo pipefail
+          npm run build
+
+          grep -Fq '"indexable": false' src/config/site.json
+          grep -Fq 'Disallow: /' dist/robots.txt
+          ! grep -R "7386" src dist
+          ! grep -R "en-suite.co.uk" src dist
+          ! grep -R "Nicholas to confirm" src dist
+          ! grep -R "Draft for Nicholas and Claude review" src dist
+          ! grep -R "fonts.googleapis" src dist
+          ! grep -R "fonts.gstatic" src dist
+
+          test -f public/fonts/inter-latin-wght-normal.woff2
+          test -f public/fonts/libre-baskerville-latin-wght-normal.woff2
+          test -f public/fonts/LICENSE-Inter.txt
+          test -f public/fonts/LICENSE-Libre-Baskerville.txt
+          grep -Fq 'font-display:swap' src/styles/site.css
+
+          python3 - <<'PY'
+          from pathlib import Path
+          import json,re
+          root=Path('dist')
+          pages=list(root.rglob('*.html'))
+          assert len(pages)==19, len(pages)
+          for p in pages:
+              t=p.read_text()
+              assert '<meta name="robots" content="noindex, nofollow">' in t, p
+
+          home=(root/'index.html').read_text()
+          assert '<title>Bathroom Renovation in Kensington | Kensington Bathrooms</title>' in home
+          assert '<h1 id="map-home-title">Bathroom design <br>and installation <br>in Kensington</h1>' in home
+          assert 'id="kensington"' in home
+          assert 'application/ld+json' in home
+          assert '33 Gunterstone Road' in home
+
+          privacy=(root/'privacy/index.html').read_text()
+          assert 'Our local base is 33 Gunterstone Road, London W14 9BP, for design meetings by appointment.' in privacy
+          assert 'Registered office' not in privacy
+
+          k=(root/'guides/renovating-a-bathroom-in-kensington/index.html').read_text()
+          assert '<title>Renovating a Bathroom in Kensington: What to Check | Kensington Bathrooms</title>' in k
+          print('STATIC_CHECKS_OK')
+          PY
+
+      - name: Mobile overflow and map interaction check
+        working-directory: source
+        run: |
+          set -euo pipefail
+          CHROME="$(command -v google-chrome || command -v chromium || command -v chromium-browser || true)"
+          if [ -z "$CHROME" ]; then
+            echo "No Chromium binary available"
+            exit 1
+          fi
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('dist/index.html')
+          t=p.read_text()
+          probe=r'''<script>
+          window.addEventListener('load',function(){
+            setTimeout(function(){
+              var trigger=document.querySelector('[data-area-target]');
+              var row=null;
+              if(trigger){
+                trigger.click();
+                var id=trigger.getAttribute('data-area-target');
+                row=id&&document.getElementById(id);
+              }
+              document.body.setAttribute('data-kb-probe',
+                window.innerWidth+'|'+document.documentElement.scrollWidth+'|'+(row&&row.open?'open':'closed'));
+            },250);
+          });
+          </script>'''
+          p.write_text(t.replace('</body>',probe+'</body>'))
+          PY
+          python3 -m http.server 8765 --directory dist >/tmp/kb-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID || true' EXIT
+          sleep 1
+          for W in 360 390 412; do
+            OUT="$($CHROME --headless --no-sandbox --disable-gpu --hide-scrollbars --window-size=$W,900 --virtual-time-budget=1600 --dump-dom http://127.0.0.1:8765/ 2>/dev/null)"
+            PROBE="$(printf '%s' "$OUT" | sed -n 's/.*data-kb-probe="\([^"]*\)".*/\1/p' | head -1)"
+            echo "WIDTH_$W=$PROBE"
+            python3 - "$W" "$PROBE" <<'PY'
+          import sys
+          requested=int(sys.argv[1]); probe=sys.argv[2]
+          inner,scroll,state=probe.split('|')
+          inner=int(inner); scroll=int(scroll)
+          assert scroll <= inner, (requested,inner,scroll)
+          assert state == 'open', (requested,state)
+          PY
+          done
+
+      - name: Create Claude ZIP
+        run: |
+          cd source
+          zip -qr ../kensington-bathrooms-final-publish-32c467e.zip . -x ".git/*" "dist/*"
+
+      - name: Upload Claude ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: kensington-bathrooms-final-publish-32c467e
+          path: kensington-bathrooms-final-publish-32c467e.zip
+          if-no-files-found: error
