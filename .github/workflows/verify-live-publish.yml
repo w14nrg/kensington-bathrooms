@@ -1,0 +1,55 @@
+name: Verify live Kensington publish
+
+on:
+  push:
+    branches:
+      - feature/chatgpt-premium-build
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check live URLs and noindex
+        run: |
+          set -euo pipefail
+          paths=(
+            /
+            /bathroom-renovation/
+            /our-approach/
+            /about/
+            /areas/
+            /areas/west-kensington/
+            /areas/holland-park/
+            /areas/south-kensington/
+            /areas/chelsea/
+            /projects/
+            /contact/
+            /guides/
+            /guides/renovating-a-bathroom-in-kensington/
+            /guides/mansion-block-bathroom-renovation/
+            /guides/period-and-listed-home-bathrooms/
+          )
+          for p in "${paths[@]}"; do
+            code="$(curl -sS -o /tmp/page -w '%{http_code}' "http://kensingtonbathrooms.uk$p")"
+            echo "$p $code"
+            test "$code" = "200"
+          done
+          curl -sS http://kensingtonbathrooms.uk/ -o /tmp/home
+          grep -Fq '<meta name="robots" content="noindex, nofollow">' /tmp/home
+          grep -Fq '<title>Bathroom Renovation in Kensington | Kensington Bathrooms</title>' /tmp/home
+          curl -sS http://kensingtonbathrooms.uk/guides/renovating-a-bathroom-in-kensington/ -o /tmp/kg
+          grep -Fq '<title>Renovating a Bathroom in Kensington: What to Check | Kensington Bathrooms</title>' /tmp/kg
+          ! grep -R "7386" /tmp/home /tmp/kg
+          ! grep -R "en-suite.co.uk" /tmp/home /tmp/kg
+
+      - name: Check HTTP, www and TLS state
+        run: |
+          set +e
+          echo "APEX_HTTP $(curl -I -sS -L --max-redirs 5 -o /dev/null -w 'status=%{http_code} final=%{url_effective}' http://kensingtonbathrooms.uk/)"
+          echo "WWW_HTTP $(curl -I -sS -L --max-redirs 5 -o /dev/null -w 'status=%{http_code} final=%{url_effective}' http://www.kensingtonbathrooms.uk/)"
+          echo "APEX_HTTPS_STRICT $(curl -I -sS -L --max-redirs 5 -o /dev/null -w 'status=%{http_code} final=%{url_effective}' https://kensingtonbathrooms.uk/)"
+          echo "WWW_HTTPS_STRICT $(curl -I -sS -L --max-redirs 5 -o /dev/null -w 'status=%{http_code} final=%{url_effective}' https://www.kensingtonbathrooms.uk/)"
+          echo | openssl s_client -connect kensingtonbathrooms.uk:443 -servername kensingtonbathrooms.uk 2>/dev/null | openssl x509 -noout -subject -issuer -dates -ext subjectAltName 2>/dev/null
