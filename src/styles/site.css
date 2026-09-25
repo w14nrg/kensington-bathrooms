@@ -272,7 +272,7 @@ body{background:var(--paper);color:var(--ink)}
  .map-point--south-kensington{left:54%;top:56%}
  .map-point--chelsea{left:66%;top:79%}
  .map-point--west-kensington{left:20%;top:70%}
- .map-point--local-base{display:block;left:9%;top:84%}
+ .map-point--local-base{display:block;left:10%;top:58%}
  .map-panel{display:none!important}
  .map-home__legend{left:20px;bottom:.65rem;font-size:.45rem;letter-spacing:.13em;white-space:nowrap}
 
