@@ -86,6 +86,45 @@
         "height": 1008,
         "caption": "Rosaline Road, Fulham · completed bathroom work"
       }
-    ]
+    ],
+    "areaHeroes": {
+      "hollandPark": {
+        "landscape": null,
+        "portrait": null,
+        "alt": "Holland Park",
+        "caption": "Holland Park"
+      },
+      "chelsea": {
+        "landscape": null,
+        "portrait": null,
+        "alt": "Chelsea",
+        "caption": "Chelsea"
+      },
+      "southKensington": {
+        "landscape": null,
+        "portrait": null,
+        "alt": "South Kensington",
+        "caption": "South Kensington"
+      },
+      "westKensington": {
+        "landscape": null,
+        "portrait": null,
+        "alt": "West Kensington",
+        "caption": "West Kensington"
+      }
+    },
+    "kensingtonGuide": {
+      "landscape": null,
+      "portrait": null,
+      "alt": "Kensington",
+      "caption": "Kensington"
+    }
+  },
+  "localBase": {
+    "streetAddress": "33 Gunterstone Road",
+    "locality": "West Kensington",
+    "city": "London",
+    "postcode": "W14 9BP",
+    "appointmentOnly": true
   }
 }
