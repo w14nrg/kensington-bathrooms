@@ -1,7 +1,7 @@
 import { areaMeta, areaHero, areaSplit, areaCards, areaClose } from '../../lib/area-page.mjs';
 export const meta = areaMeta('holland-park', 'Holland Park', 'W8 · W11', 'Bathroom renovation in Holland Park W8 and W11, including principal bathrooms and multi-room work in period houses and flats.');
-export function render() { return `
-${areaHero({ name:'Holland Park', postcodes:'W8 · W11', kicker:'Period homes and principal bathrooms', lede:'A principal bathroom should belong to the home around it. In Holland Park we can plan one carefully detailed room or the order of work across several bathrooms.' })}
+export function render(cfg) { return `
+${areaHero({ name:'Holland Park', postcodes:'W8 · W11', kicker:'Period homes and principal bathrooms', lede:'A principal bathroom should belong to the home around it. In Holland Park we can plan one carefully detailed room or the order of work across several bathrooms.', image:cfg.images?.areaHeroes?.hollandPark })}
 ${areaCards({ eyebrow:'More than one room', title:'Plan the sequence around your household.', cards:[
   ['Which bathroom stays in use?','If several rooms are being renewed, we discuss which one the household needs throughout the work and whether to finish one before opening another. The water supply and access for trades can change the sequence.'],
   ['When should the fittings arrive?','Stone, bespoke furniture and specialist brassware may have different lead times. We establish dimensions and connections before ordering so a late product decision does not hold up every room.']
