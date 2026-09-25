@@ -1,6 +1,6 @@
 export const meta={
   path:'/guides/mansion-block-bathroom-renovation/',
-  title:'Mansion Block Bathroom Renovation Guide | Kensington Bathrooms',
+  title:'Mansion Block Bathroom Guide | Kensington Bathrooms',
   description:'A practical guide to porters, managing agents, licences to alter, lifts, working hours, shared services and communal-area protection for mansion-block bathroom work.',
   schemaType:'Article',
   articleHeadline:'Mansion Block Bathroom Renovation: What to Arrange Before Work Starts',
