@@ -1,3 +1,20 @@
+@font-face{
+  font-family:"Inter Local";
+  font-style:normal;
+  font-weight:100 900;
+  font-display:swap;
+  src:url("/fonts/inter-latin-wght-normal.woff2") format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face{
+  font-family:"Libre Baskerville Local";
+  font-style:normal;
+  font-weight:400 700;
+  font-display:swap;
+  src:url("/fonts/libre-baskerville-latin-wght-normal.woff2") format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
 :root{
   --paper:#fbfaf7;
   --white:#fff;
@@ -9,8 +26,8 @@
   --green-2:#214a3c;
   --brass:#9a7742;
   --line:#d9d4cb;
-  --serif:Baskerville,"Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,serif;
-  --sans:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  --serif:"Libre Baskerville Local",Baskerville,"Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,serif;
+  --sans:"Inter Local",Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
   --max:1320px;
   --side:clamp(22px,4.8vw,76px);
 }
@@ -483,14 +500,12 @@ body:not(.is-map-home) a:focus-visible,body:not(.is-map-home) button:focus-visib
 .guide-hero{background:#1a2923;padding:clamp(72px,9vw,120px) 0;border-bottom:1px solid #455348}
 .guide-hero h1{font-size:clamp(2.7rem,5vw,5.2rem);line-height:1.04;max-width:15ch;color:#f2eee6}
 .guide-dek{max-width:760px;font-size:1.08rem;color:#bcc4bb}
-.guide-review-note{max-width:780px;margin-top:1.6rem;padding:1rem 1.1rem;border:1px solid #7c6b4c;background:#111512;color:#d5c5a7;font-size:.78rem}
 .guide-body{max-width:900px;padding-block:clamp(65px,8vw,105px)}
 .guide-body section{padding:0 0 2rem;margin:0 0 2rem;border-bottom:1px solid #455348}
 .guide-body h2{font-size:clamp(1.75rem,3vw,2.6rem);max-width:22ch}
 .guide-body p,.guide-body li{color:#b9c0b8}
 .guide-body ul{padding-left:1.2rem}
 .guide-source{font-size:.82rem}
-.review-flag{display:inline-block;margin-left:.35rem;padding:.14rem .4rem;border:1px solid #8b744c;color:#d3bb8d;font-size:.62rem;letter-spacing:.05em;text-transform:uppercase;vertical-align:middle}
 .guide-links{display:flex;flex-wrap:wrap;gap:.75rem 1.2rem;padding-top:.5rem}
 .guide-links a{font-size:.78rem;text-underline-offset:4px}
 .guide-index{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#58645a;border:1px solid #58645a}
