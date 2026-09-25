@@ -1,0 +1,140 @@
+name: Validate Kensington status-check branch
+
+on:
+  push:
+    branches:
+      - feature/chatgpt-premium-build
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact review commit
+        uses: actions/checkout@v6
+        with:
+          ref: 5d102ad1451c2d40e8ebf497472ea1d94c5db8e0
+          path: source
+
+      - name: Build and verify branch
+        working-directory: source
+        run: |
+          set -euo pipefail
+          npm run build
+
+          grep -Fq '"indexable": false' src/config/site.json
+          grep -Fq 'User-agent: *' dist/robots.txt
+          grep -Fq 'Disallow: /' dist/robots.txt
+
+          ! grep -R "7386" src dist
+          ! grep -R "en-suite.co.uk" src dist
+          ! grep -R "Consultations take place at your home" src dist
+          ! grep -R "consultation takes place at your home" src dist
+          ! grep -R "Home consultations are arranged at your property" src dist
+          ! grep -R "walk-in showroom" src dist
+
+          test -f dist/guides/index.html
+          test -f dist/guides/renovating-a-bathroom-in-kensington/index.html
+          test -f dist/guides/mansion-block-bathroom-renovation/index.html
+          test -f dist/guides/period-and-listed-home-bathrooms/index.html
+
+          python - <<'PY'
+          from pathlib import Path
+          import json,re
+
+          root=Path('dist')
+          pages=list(root.rglob('*.html'))
+          assert pages, 'no built pages'
+          for p in pages:
+              t=p.read_text()
+              assert '<meta name="robots" content="noindex, nofollow">' in t, f'noindex missing: {p}'
+              assert '33 Gunterstone Road' in t, f'local base missing from footer: {p}'
+              assert 'London W14 9BP' in t, f'local base postcode missing: {p}'
+
+          for rel in ['contact/index.html','about/index.html','privacy/index.html']:
+              t=(root/rel).read_text()
+              assert '33 Gunterstone Road' in t, rel
+              assert 'Home consultations, or design meetings by appointment at our base in West Kensington.' in t, rel
+
+          home=(root/'index.html').read_text()
+          assert 'Our local base in West Kensington. Home consultations, or design meetings by appointment.' in home
+          assert 'id="map-base-note"' in home
+          assert 'data-area-target="map-area-kensington"' in home
+
+          scripts=(root/'js/site.js').read_text()
+          assert "getElementById('map-base-note')" in scripts
+
+          jsonld=re.search(r'<script type="application/ld\+json">(.*?)</script>',home,re.S)
+          assert jsonld
+          graph=json.loads(jsonld.group(1))['@graph']
+          biz=next(x for x in graph if x.get('@id','').endswith('/#business'))
+          assert biz['address']['@type']=='PostalAddress'
+          assert biz['address']['streetAddress']=='33 Gunterstone Road'
+          assert biz['address']['addressLocality']=='London'
+          assert biz['address']['postalCode']=='W14 9BP'
+          assert 'legalName' not in biz
+
+          guide_paths=[
+            'guides/renovating-a-bathroom-in-kensington/index.html',
+            'guides/mansion-block-bathroom-renovation/index.html',
+            'guides/period-and-listed-home-bathrooms/index.html'
+          ]
+          for rel in guide_paths:
+              t=(root/rel).read_text()
+              assert t.count('<h1')==1, rel
+              data=json.loads(re.search(r'<script type="application/ld\+json">(.*?)</script>',t,re.S).group(1))
+              g=data['@graph']
+              page=next(x for x in g if x.get('@type')=='WebPage' and x.get('@id','').endswith('#webpage'))
+              article=next(x for x in g if x.get('@type')=='Article')
+              assert article['@id'] != page['@id']
+              assert article['mainEntityOfPage']['@id'] == page['@id']
+              assert article['author']=={'@type':'Person','name':'Nicholas'}
+              assert article['datePublished']=='2026-09-25'
+              assert article['dateModified']=='2026-09-25'
+
+          titles=[]
+          for rel in guide_paths:
+              t=(root/rel).read_text()
+              title=re.search(r'<title>(.*?)</title>',t,re.S).group(1)
+              titles.append((rel,title,len(title)))
+          print('GUIDE TITLES',titles)
+
+          source=''.join(Path(p).read_text() for p in [
+            'src/pages/guides/renovating-a-bathroom-in-kensington.mjs',
+            'src/pages/guides/mansion-block-bathroom-renovation.mjs',
+            'src/pages/guides/period-and-listed-home-bathrooms.mjs'
+          ])
+          print('NICHOLAS_MARKERS',source.count('Nicholas to confirm'))
+
+          fonts=[p for p in Path('.').rglob('*') if p.suffix.lower() in {'.woff','.woff2','.ttf','.otf'}]
+          print('SELF_HOSTED_FONT_FILES',len(fonts),[str(x) for x in fonts])
+          PY
+
+      - name: Check current live domain
+        run: |
+          set +e
+          echo "APEX_HTTPS"
+          curl -I -sS -L --max-redirs 5 -o /dev/null -w 'status=%{http_code} final=%{url_effective}\n' https://kensingtonbathrooms.uk/
+          echo "APEX_HTTP"
+          curl -I -sS -L --max-redirs 5 -o /dev/null -w 'status=%{http_code} final=%{url_effective}\n' http://kensingtonbathrooms.uk/
+          echo "WWW_HTTPS"
+          curl -I -sS -L --max-redirs 5 -o /dev/null -w 'status=%{http_code} final=%{url_effective}\n' https://www.kensingtonbathrooms.uk/
+          for p in / /our-approach/ /guides/ /guides/renovating-a-bathroom-in-kensington/ /guides/mansion-block-bathroom-renovation/ /guides/period-and-listed-home-bathrooms/; do
+            printf '%s ' "$p"
+            curl -sS -o /dev/null -w '%{http_code}\n' "https://kensingtonbathrooms.uk$p"
+          done
+          echo | openssl s_client -connect kensingtonbathrooms.uk:443 -servername kensingtonbathrooms.uk 2>/dev/null | openssl x509 -noout -subject -issuer -dates -ext subjectAltName 2>/dev/null
+
+      - name: Create Claude review zip
+        run: |
+          cd source
+          zip -qr ../kensington-bathrooms-status-check-5d102ad.zip . -x ".git/*" "dist/*"
+
+      - name: Upload Claude review zip
+        uses: actions/upload-artifact@v4
+        with:
+          name: kensington-bathrooms-status-check-5d102ad
+          path: kensington-bathrooms-status-check-5d102ad.zip
+          if-no-files-found: error
