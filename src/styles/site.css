@@ -516,3 +516,34 @@ body:not(.is-map-home) a:focus-visible,body:not(.is-map-home) button:focus-visib
  .map-reading__checklist li{font-size:14px;line-height:1.55}
  .map-home__legend span+span{margin-left:.8rem}
 }
+
+
+/* ===== Status-check fixes 2026-09-25 ===== */
+.local-base-address{font-style:normal;margin:1.25rem 0;font-family:var(--serif);font-size:1.08rem;line-height:1.5}
+.local-base-address strong{font-family:var(--sans);display:block;font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--brass);margin-bottom:.35rem}
+.appointment-note{font-size:.82rem!important}
+.map-base-note{background:var(--green);color:#eef0ea;padding:14px 20px 17px;border-top:1px solid #526359}
+.map-base-note p{margin:0 0 .45rem;font-size:.82rem;line-height:1.5}
+.map-base-note a{font-size:.75rem;text-underline-offset:4px}
+.page-hero--area-photo .page-hero__inner{display:grid;grid-template-columns:minmax(0,.9fr) minmax(340px,1.1fr);gap:clamp(35px,6vw,90px);align-items:center}
+.area-hero__media,.guide-hero__media{margin:0;overflow:hidden}
+.area-hero__media img,.guide-hero__media img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.area-hero__media figcaption,.guide-hero__media figcaption{font-size:.68rem;color:#aeb9b0;margin-top:.55rem}
+.guide-hero:has(.guide-hero__media){display:grid;grid-template-columns:minmax(0,.9fr) minmax(360px,1.1fr);gap:clamp(35px,6vw,90px);align-items:center;padding-inline:var(--side)}
+.guide-hero:has(.guide-hero__media)>.section-shell{width:auto;margin:0;max-width:760px}
+@media(max-width:760px){
+ .site-header,.is-map-home .site-header{min-height:56px}
+ .site-header__inner,.is-map-home .site-header__inner{min-height:56px!important;width:calc(100% - 32px)}
+ .wordmark__kensington,.is-map-home .site-header .wordmark__kensington{font-size:.98rem}
+ .wordmark__bathrooms,.is-map-home .site-header .wordmark__bathrooms{font-size:.46rem;letter-spacing:.22em}
+ .mobile-menu,.is-map-home .mobile-menu{top:56px}
+ .map-base-note{order:5}
+ .map-home__intro--continued{order:6}
+ .page-hero--area-photo .page-hero__inner{display:block}
+ .area-hero__media{margin-top:1.4rem}
+ .area-hero__media img,.guide-hero__media img{aspect-ratio:4/5}
+ .guide-hero:has(.guide-hero__media){display:block;padding-inline:0}
+ .guide-hero:has(.guide-hero__media)>.section-shell{width:calc(100% - 40px);margin:auto}
+ .guide-hero__media{margin:1.4rem 20px 0}
+ .consultation-split--contact{display:block}
+}
