@@ -13,4 +13,5 @@ ${areaSplit({ eyebrow:'The building itself', title:'Period character deserves ca
 ${areaSplit({ eyebrow:'Working through the home', title:'Protect the route as carefully as the room.', dark:true, paragraphs:[
   'Long finished hallways, stairs, runners and entrances can be part of the working route. We discuss how materials enter and waste leaves, then protect the surfaces present. This is especially important when more than one bathroom is involved and the household continues to live in the property.'
 ], link:{href:'/our-approach/',label:'Our approach to working in your home'} })}
+${areaSplit({ eyebrow:'Guide', title:'Working in a period or listed home?', paragraphs:['Our period-home guide covers drainage, older floors, ventilation and the planning or listed-building questions that should be checked before the design is treated as final.'], link:{href:'/guides/period-and-listed-home-bathrooms/',label:'Read the period and listed homes guide'} })}
 ${areaClose('Holland Park','We work in Holland Park and visit the property before recommending a layout, a programme or a product list. The plan should fit the home and the way you use it.')}`; }
