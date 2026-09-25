@@ -8,8 +8,11 @@ export function areaMeta(slug, name, postcodes, description) {
   };
 }
 
-export function areaHero({ name, postcodes, kicker, lede }) {
-  return `<section class="page-hero page-hero--compact"><div class="page-hero__inner"><p class="eyebrow">${postcodes} · ${kicker}</p><h1>Bathroom renovation in ${name}.</h1><p class="page-hero__lede">${lede}</p></div></section>`;
+export function areaHero({ name, postcodes, kicker, lede, image }) {
+  const landscape = image?.landscape || '';
+  const portrait = image?.portrait || landscape;
+  const media = landscape ? `<figure class="area-hero__media"><picture>${portrait ? `<source media="(max-width:760px)" srcset="${portrait}">` : ''}<img src="${landscape}" alt="${image.alt || name}" loading="eager" decoding="async"></picture>${image.caption ? `<figcaption>${image.caption}</figcaption>` : ''}</figure>` : '';
+  return `<section class="page-hero page-hero--compact${media ? ' page-hero--area-photo' : ''}"><div class="page-hero__inner"><div class="area-hero__copy"><p class="eyebrow">${postcodes} · ${kicker}</p><h1>Bathroom renovation in ${name}.</h1><p class="page-hero__lede">${lede}</p></div>${media}</div></section>`;
 }
 
 export function areaSplit({ eyebrow, title, paragraphs, link, dark = false }) {

@@ -8,7 +8,6 @@ export function schemaGraph(cfg, page) {
     '@type': 'HomeAndConstructionBusiness',
     '@id': bizId,
     name: cfg.brand.name,
-    legalName: cfg.company.legalName,
     url: `${base}/`,
     logo: `${base}/brand/monogram-green-bg.svg`,
     description:
@@ -20,6 +19,15 @@ export function schemaGraph(cfg, page) {
   };
   if (cfg.contact.phone) business.telephone = cfg.contact.phone;
   if (cfg.contact.email) business.email = cfg.contact.email;
+  if (cfg.localBase) {
+    business.address = {
+      '@type': 'PostalAddress',
+      streetAddress: cfg.localBase.streetAddress,
+      addressLocality: cfg.localBase.city,
+      postalCode: cfg.localBase.postcode,
+      addressCountry: 'GB',
+    };
+  }
   if (cfg.company.companyNumber) {
     business.identifier = {
       '@type': 'PropertyValue',
@@ -28,8 +36,9 @@ export function schemaGraph(cfg, page) {
     };
   }
 
+  const isArticle = page.schemaType === 'Article';
   const webpage = {
-    '@type': page.schemaType || 'WebPage',
+    '@type': isArticle ? 'WebPage' : (page.schemaType || 'WebPage'),
     '@id': `${base}${page.path}#webpage`,
     url: `${base}${page.path}`,
     name: page.title,
@@ -44,6 +53,23 @@ export function schemaGraph(cfg, page) {
     business,
     webpage,
   ];
+
+  if (isArticle && page.articleHeadline) {
+    const articleId = `${base}${page.path}#article`;
+    webpage.mainEntity = { '@id': articleId };
+    graph.push({
+      '@type': 'Article',
+      '@id': articleId,
+      headline: page.articleHeadline,
+      description: page.description,
+      mainEntityOfPage: { '@id': webpage['@id'] },
+      author: { '@type': 'Person', name: page.articleAuthor || 'Nicholas' },
+      datePublished: page.datePublished,
+      dateModified: page.dateModified,
+      publisher: { '@id': bizId },
+      inLanguage: cfg.site.language,
+    });
+  }
 
   if (page.serviceSchema) {
     const serviceId = `${base}${page.path}#service`;

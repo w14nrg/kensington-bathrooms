@@ -152,7 +152,15 @@
       trigger.addEventListener('click', function () {
         if (mobileMap.matches) {
           var targetId = trigger.getAttribute('data-area-target');
-          if (!targetId) return;
+          if (!targetId) {
+            var baseNote = document.getElementById('map-base-note');
+            if (baseNote) {
+              baseNote.hidden = false;
+              trigger.setAttribute('aria-expanded', 'true');
+              baseNote.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+            return;
+          }
           var row = document.getElementById(targetId);
           if (!row) return;
           row.open = true;

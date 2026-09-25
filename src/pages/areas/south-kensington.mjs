@@ -1,7 +1,7 @@
 import { areaMeta, areaHero, areaSplit, areaCards, areaClose } from '../../lib/area-page.mjs';
 export const meta = areaMeta('south-kensington', 'South Kensington', 'SW7', 'Bathroom renovation in South Kensington SW7 for portered flats, garden-square homes and period properties, with building access and installation carefully planned.');
-export function render() { return `
-${areaHero({ name:'South Kensington', postcodes:'SW7', kicker:'Flats, terraces and managed buildings', lede:'In South Kensington, the route to the bathroom can be as important to the programme as the room itself. We discuss the building arrangements at the home visit, then design around what we find.' })}
+export function render(cfg) { return `
+${areaHero({ name:'South Kensington', postcodes:'SW7', kicker:'Flats, terraces and managed buildings', lede:'In South Kensington, the route to the bathroom can be as important to the programme as the room itself. We discuss the building arrangements at the home visit, then design around what we find.', image:cfg.images?.areaHeroes?.southKensington })}
 ${areaSplit({ eyebrow:'Behind the front door', title:'First, understand the building.', dark:true, paragraphs:[
   'South Kensington includes large terraced houses, converted flats and mansion buildings around Queen’s Gate and its neighbouring streets. A flat may involve a porter, shared entrance or lift. We ask about deliveries, working hours and protection of communal areas before agreeing dates; we do not assume every building has the same rules.',
   'If an alteration needs a managing agent or freeholder’s approval, it is better to establish that before products are ordered. Where the flat relies on shared water services, isolation may also need to be coordinated with the building.'
@@ -14,4 +14,5 @@ ${areaCards({ eyebrow:'Before fixing a layout', title:'What would we check at th
 ${areaSplit({ eyebrow:'Finishes and access', title:'A precise finish needs a workable delivery plan.', paragraphs:[
   'Large tile formats, stone, fitted furniture and screens have to pass through the building and fit the room once there. We confirm clearances, dimensions and substrate preparation before treating the finish as decided. The result should feel considered without leaving practical questions to the installation day.'
 ], link:{href:'/bathroom-renovation/',label:'What a complete bathroom renovation includes'} })}
-${areaClose('South Kensington','We work in South Kensington and arrange consultations at your property. Nicholas talks through the room, its services and the building rules before suggesting a scope of work.')}`; }
+${areaSplit({ eyebrow:'Guide', title:'Planning work in a mansion block?', paragraphs:['Our mansion-block guide sets out the questions to ask about porters, managing agents, lifts, working hours, shared services and protection of communal areas before a start date is agreed.'], link:{href:'/guides/mansion-block-bathroom-renovation/',label:'Read the mansion-block bathroom guide'} })}
+${areaClose('South Kensington','We work in South Kensington. Home consultations, or design meetings by appointment at our base in West Kensington. Nicholas talks through the room, its services and the building rules before suggesting a scope of work.')}`; }

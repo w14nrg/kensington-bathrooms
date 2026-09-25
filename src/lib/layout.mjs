@@ -77,6 +77,7 @@ const select = (id, name, options, required = true) =>
 
 export function consultationForm(cfg, idPrefix = 'c') {
   const p = (s) => `${idPrefix}-${s}`;
+  if (!cfg.forms.endpoint) return '';
   return `
 <form class="form" data-kb-form="consultation" novalidate>
   <div class="form__grid">
@@ -100,7 +101,8 @@ export function drawer(cfg) {
   const c = cfg.contact;
   const direct = join(
     c.phone && `<a class="drawer__option" href="tel:${esc(c.phone)}" data-track="call_click"><span>Call</span><strong>${esc(c.phoneDisplay || c.phone)}</strong></a>`,
-    c.whatsapp && `<a class="drawer__option" href="https://wa.me/${esc(c.whatsapp)}" data-whatsapp data-track="whatsapp_click" target="_blank" rel="noopener"><span>WhatsApp</span><strong>Send photos and a short note</strong></a>`
+    c.whatsapp && `<a class="drawer__option" href="https://wa.me/${esc(c.whatsapp)}" data-whatsapp data-track="whatsapp_click" target="_blank" rel="noopener"><span>WhatsApp</span><strong>Send photos and a short note</strong></a>`,
+    c.email && `<a class="drawer__option" href="mailto:${esc(c.email)}"><span>Email</span><strong>${esc(c.email)}</strong></a>`
   );
   return `
 <dialog class="drawer" id="contact-drawer" aria-labelledby="drawer-title">
@@ -110,9 +112,10 @@ export function drawer(cfg) {
       <button type="button" class="drawer__close" data-close-drawer aria-label="Close">×</button>
     </div>
     <h2 id="drawer-title" class="drawer__title">Talk to a bathroom expert</h2>
-    <p class="drawer__intro">Speak directly with our bathroom team about the room, the property and the practical next step.${c.callbackHours ? ` Callbacks: ${esc(c.callbackHours)}.` : ''}</p>
+    <p class="drawer__intro">Home consultations, or design meetings by appointment at our base in West Kensington.${c.callbackHours ? ` Callbacks: ${esc(c.callbackHours)}.` : ''}</p>
+    ${cfg.localBase ? `<address class="local-base-address">${esc(cfg.localBase.streetAddress)}<br>${esc(cfg.localBase.city)} ${esc(cfg.localBase.postcode)}</address>` : ''}
     ${direct ? `<div class="drawer__options">${direct}</div>` : ''}
-    <div class="drawer__rule"></div>
+    ${cfg.forms.endpoint ? `<div class="drawer__rule"></div>
     <h3 class="drawer__subtitle">Request a callback</h3>
     <form class="form form--compact" data-kb-form="callback" novalidate>
       ${field('cb-name', 'Your name', '<input id="cb-name" name="name" autocomplete="name" required aria-describedby="cb-name-error">')}
@@ -121,8 +124,8 @@ export function drawer(cfg) {
       <div class="hp" aria-hidden="true"><label for="cb-website">Leave this empty</label><input id="cb-website" name="website" tabindex="-1" autocomplete="off"></div>
       <button class="button button--ink" type="submit">Request a callback</button>
       <p class="form__status" role="status" aria-live="polite"></p>
-    </form>
-    <p class="drawer__alt">Prefer a visit? <a href="/contact/">Arrange a home consultation</a></p>
+    </form>` : ''}
+    <p class="drawer__alt"><a href="/contact/">See consultation options</a></p>
   </div>
 </dialog>`;
 }
@@ -133,19 +136,21 @@ export function mobileBar() {
 
 export function footer(cfg, currentPath = '') {
   const co = cfg.company;
+  const base = cfg.localBase;
   return `
 <footer class="site-footer">
   <div class="site-footer__inner">
     <div class="site-footer__brand">
       ${wordmark(cfg, 'p')}
       <p>Bathroom renovation, design and installation across the neighbourhoods shown on our map.</p>
-      <p class="site-footer__note">Home consultations are arranged at your property.</p>
+      ${base ? `<address>${esc(base.streetAddress)}<br>${esc(base.city)} ${esc(base.postcode)}</address>` : ''}
+      <p class="site-footer__note">Home consultations, or design meetings by appointment at our base in West Kensington.</p>
     </div>
-    <nav class="site-footer__col" aria-label="Footer"><h2>Explore</h2><ul><li><a href="/bathroom-renovation/">Bathroom renovation</a></li><li><a href="/our-approach/">Our approach</a></li><li><a href="/projects/">Projects</a></li><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li></ul></nav>
+    <nav class="site-footer__col" aria-label="Footer"><h2>Explore</h2><ul><li><a href="/bathroom-renovation/">Bathroom renovation</a></li><li><a href="/our-approach/">Our approach</a></li><li><a href="/guides/">Guides</a></li><li><a href="/projects/">Projects</a></li><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li></ul></nav>
     <nav class="site-footer__col" aria-label="Areas"><h2>Areas</h2><ul>${cfg.areas.map((x) => `<li><a href="/areas/${x.slug}/">${esc(x.name)}</a></li>`).join('')}</ul></nav>
   </div>
   <div class="site-footer__legal">
-    <p>${esc(cfg.brand.name)} is a trading name of ${esc(co.legalName)} · Company ${esc(co.companyNumber)} · Registered in ${esc(co.registeredIn)}.</p>
+    <p>${esc(cfg.brand.name)} is a trading name of ${esc(co.legalName)} · Company ${esc(co.companyNumber)} · Registered in ${esc(co.registeredIn)}.${co.registeredOffice ? ` Registered office: ${esc(co.registeredOffice)}.` : ``}</p>
     <p><a href="/privacy/">Privacy</a><a href="/cookies/">Cookies</a><a href="/terms/">Terms</a><span>© ${new Date().getFullYear()} ${esc(co.legalName)}</span></p>
   </div>
 </footer>`;

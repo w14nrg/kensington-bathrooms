@@ -47,3 +47,35 @@
 - [ ] 404
 - [ ] No staging URLs indexed
 - [ ] No invented reviews/project locations/awards
+
+
+## 2026-09-25 consolidated launch blockers
+- [x] Mobile homepage brief retained on the live-site codebase.
+- [x] Draft Kensington, mansion-block and period/listed-home guides added to the feature branch for Nicholas + Claude review.
+- [ ] Final Kensington Bathrooms phone, WhatsApp and email must be supplied and added to config before launch.
+- [x] Enquiry and callback forms hidden while no production form endpoint is configured.
+- [x] UK GDPR privacy notice expanded with lawful bases, retention criteria, rights and contact details.
+- [x] Private operating/home address removed from site config.
+- [x] Unused Kynance Mews image/config references removed.
+- [ ] Registered office: confirm a non-private registered-office address with the accountant or a registered-office service, then add it to `company.registeredOffice` before launch.
+- [ ] HTTPS: GitHub Pages certificate must finish provisioning and **Enforce HTTPS** must be enabled in repository Settings → Pages. The connected GitHub integration cannot toggle this account setting; GitHub returned 403 when attempted.
+- [ ] Self-hosted fonts: confirm licensed serif and sans font files before adding them. The review ZIP intentionally contains no redistributed font binaries.
+- [ ] Nicholas to confirm all trade-experience statements marked in the guide drafts.
+- [ ] Claude to review the guide drafts and final branch ZIP before publication.
+- [ ] At launch only: set `site.indexable=true`; keep Projects noindex; verify Search Console and submit the sitemap.
+
+
+## 2026-09-25 status-check update
+- [x] Local base added as 33 Gunterstone Road, London W14 9BP; explicitly not the registered office.
+- [x] Local base added to visible footer, Contact, About and privacy wording, plus business JSON-LD PostalAddress.
+- [x] Consultation wording updated to include home consultations or design meetings by appointment at the West Kensington base.
+- [x] Mobile local-base marker now has a mobile note and Contact link.
+- [x] Guide titles shortened; Article schema now uses separate WebPage + Article nodes with Nicholas as author and 2026-09-25 publication/modification dates.
+- [x] Period/listed-home guide now includes RBKC's recessed-ceiling-light consent wording, attributed to the Council.
+- [x] Owner-photo slots prepared for Holland Park, Chelsea, South Kensington, West Kensington and the Kensington guide using landscape/portrait <picture> support.
+- [ ] Actual responsive image files cannot be generated until the owner supplies the photographs.
+- [ ] Self-hosted fonts are not present in the repository yet; licensed serif and sans font files are still required.
+- [ ] Kensington Bathrooms phone, WhatsApp and email remain null until supplied by the owner.
+- [ ] Registered office remains unset until supplied by the owner.
+- [ ] Guide confirmation flags remain until Nicholas approves/corrects the marked statements.
+- [ ] HTTPS on the custom domain still needs resolving before launch.
