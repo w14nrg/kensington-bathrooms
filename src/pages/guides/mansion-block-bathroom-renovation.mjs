@@ -1,9 +1,12 @@
 export const meta={
   path:'/guides/mansion-block-bathroom-renovation/',
-  title:'Mansion Block Bathroom Renovation: What to Arrange Before Work Starts | Kensington Bathrooms',
+  title:'Mansion Block Bathroom Renovation Guide | Kensington Bathrooms',
   description:'A practical guide to porters, managing agents, licences to alter, lifts, working hours, shared services and communal-area protection for mansion-block bathroom work.',
   schemaType:'Article',
   articleHeadline:'Mansion Block Bathroom Renovation: What to Arrange Before Work Starts',
+  articleAuthor:'Nicholas',
+  datePublished:'2026-09-25',
+  dateModified:'2026-09-25',
   breadcrumbs:[{name:'Home',path:'/'},{name:'Guides',path:'/guides/'},{name:'Mansion block bathroom renovation',path:'/guides/mansion-block-bathroom-renovation/'}]
 };
 export function render(){return `
