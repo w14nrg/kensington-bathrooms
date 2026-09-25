@@ -118,7 +118,7 @@ export function drawer(cfg) {
     <h2 id="drawer-title" class="drawer__title">Talk to a bathroom expert</h2>
     <p class="drawer__intro">Speak directly with our bathroom team about the room, the property and the practical next step.${c.callbackHours ? ` Callbacks: ${esc(c.callbackHours)}.` : ''}</p>
     ${direct ? `<div class="drawer__options">${direct}</div>` : ''}
-    <div class="drawer__rule"></div>
+    ${cfg.forms.endpoint ? `<div class="drawer__rule"></div>
     <h3 class="drawer__subtitle">Request a callback</h3>
     <form class="form form--compact" data-kb-form="callback" novalidate>
       ${field('cb-name', 'Your name', '<input id="cb-name" name="name" autocomplete="name" required aria-describedby="cb-name-error">')}
@@ -127,7 +127,7 @@ export function drawer(cfg) {
       <div class="hp" aria-hidden="true"><label for="cb-website">Leave this empty</label><input id="cb-website" name="website" tabindex="-1" autocomplete="off"></div>
       <button class="button button--ink" type="submit">Request a callback</button>
       <p class="form__status" role="status" aria-live="polite"></p>
-    </form>
+    </form>` : ''}
     <p class="drawer__alt">Prefer a visit? <a href="/contact/">Arrange a home consultation</a></p>
   </div>
 </dialog>`;
