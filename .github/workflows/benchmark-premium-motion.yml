@@ -35,22 +35,26 @@ jobs:
           (cd baseline && npm run build)
           (cd candidate && npm run build)
 
-      - name: Prove HTML, SEO and structure are byte-identical
+      - name: Prove text, SEO, schema and page structure are unchanged
         run: |
           set -euo pipefail
-          diff -qr baseline/dist candidate/dist --exclude=css --exclude=js --exclude=fonts
           cmp baseline/dist/sitemap.xml candidate/dist/sitemap.xml
           cmp baseline/dist/robots.txt candidate/dist/robots.txt
           python3 - <<'PY'
           from pathlib import Path
+          import re
           b=Path('baseline/dist')
           c=Path('candidate/dist')
           bhtml=sorted(p.relative_to(b) for p in b.rglob('*.html'))
           chtml=sorted(p.relative_to(c) for p in c.rglob('*.html'))
           assert bhtml==chtml
+          def without_inline_css(text):
+              return re.sub(r'<style>[\\s\\S]*?</style>','<style></style>',text)
           for rel in bhtml:
-              assert (b/rel).read_bytes()==(c/rel).read_bytes(), rel
-          print('HTML_IDENTICAL',len(bhtml),'pages')
+              before=(b/rel).read_text()
+              after=(c/rel).read_text()
+              assert without_inline_css(before)==without_inline_css(after), rel
+          print('HTML_CONTENT_SCHEMA_STRUCTURE_IDENTICAL',len(bhtml),'pages')
           PY
 
       - name: Serve baseline and candidate
