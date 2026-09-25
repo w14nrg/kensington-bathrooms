@@ -38,6 +38,11 @@ export function schemaGraph(cfg, page) {
     about: { '@id': bizId },
     inLanguage: cfg.site.language,
   };
+  if (page.schemaType === 'Article' && page.articleHeadline) {
+    webpage.headline = page.articleHeadline;
+    webpage.mainEntityOfPage = { '@id': `${base}${page.path}#webpage` };
+    webpage.publisher = { '@id': bizId };
+  }
 
   const graph = [
     { '@type': 'WebSite', '@id': siteId, url: `${base}/`, name: cfg.brand.name, inLanguage: cfg.site.language, publisher: { '@id': bizId } },
