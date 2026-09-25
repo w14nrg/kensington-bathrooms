@@ -49,7 +49,7 @@ jobs:
           chtml=sorted(p.relative_to(c) for p in c.rglob('*.html'))
           assert bhtml==chtml
           def without_inline_css(text):
-              return re.sub(r'<style>[\\s\\S]*?</style>','<style></style>',text)
+              return re.sub(r'<style>.*?</style>','<style></style>',text,flags=re.S)
           for rel in bhtml:
               before=(b/rel).read_text()
               after=(c/rel).read_text()
