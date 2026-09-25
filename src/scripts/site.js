@@ -189,4 +189,91 @@
       if (active) active.querySelector('[data-map-trigger]').focus();
     });
   }
+
+  // Premium motion: progressive enhancement only. Text remains in HTML and visible without JS.
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (!reduceMotion.matches) {
+    var root = document.documentElement;
+    root.classList.add('js-motion');
+
+    // The first-screen copy is never hidden. Only the homepage map animates on load.
+    if (document.querySelector('.map-home__map')) {
+      window.requestAnimationFrame(function () {
+        window.requestAnimationFrame(function () { root.classList.add('motion-ready'); });
+      });
+    }
+
+    var revealSelector = [
+      '.map-reading__lead',
+      '.map-reading__blocks article',
+      '.map-close__inner',
+      '.story-layout > *',
+      '.content-grid > *',
+      '.detail-grid article',
+      '.standard-list li',
+      '.project-run li',
+      '.protection-group',
+      '.guide-index article',
+      '.guide-body section',
+      '.area-close .section-shell',
+      '.project-card',
+      '.section-tail'
+    ].join(',');
+
+    var revealItems = Array.from(document.querySelectorAll(revealSelector)).filter(function (el) {
+      // Never hide or delay anything in a first-screen hero/map copy.
+      return !el.closest('.page-hero, .map-home__copy');
+    });
+
+    var groupIndex = new Map();
+    revealItems.forEach(function (el) {
+      var parent = el.parentElement;
+      var i = groupIndex.get(parent) || 0;
+      groupIndex.set(parent, i + 1);
+      el.style.setProperty('--motion-delay', Math.min(i, 5) * 70 + 'ms');
+      el.classList.add('motion-reveal');
+    });
+
+    if ('IntersectionObserver' in window) {
+      var revealObserver = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-motion-visible');
+          observer.unobserve(entry.target);
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+      revealItems.forEach(function (el) { revealObserver.observe(el); });
+    } else {
+      revealItems.forEach(function (el) { el.classList.add('is-motion-visible'); });
+    }
+
+    // Add interaction classes without changing or injecting any text/content.
+    document.querySelectorAll('.detail-grid article,.project-card,.guide-index article,.protection-group').forEach(function (el) {
+      el.classList.add('motion-card');
+    });
+    document.querySelectorAll('.button,.text-button,.expert-link,.map-home__primary,.map-home__secondary').forEach(function (el) {
+      el.classList.add('motion-lift');
+    });
+    document.querySelectorAll('.arrow-link,.content-copy a,.guide-body a,.site-footer a,.map-area-list a,.site-nav a,.area-lines--detailed a').forEach(function (el) {
+      if (!el.classList.contains('button')) el.classList.add('motion-underline');
+    });
+
+    // Photos below the first screen reveal softly. First-screen imagery is left untouched.
+    document.querySelectorAll('.area-hero__media,.guide-hero__media,.page-hero__media,.project-card figure,.project-card img,.work-preview figure').forEach(function (el) {
+      if (el.getBoundingClientRect().top <= window.innerHeight * 0.9) return;
+      el.classList.add('motion-photo');
+      if ('IntersectionObserver' in window) {
+        var photoObserver = new IntersectionObserver(function (entries, observer) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('is-motion-visible');
+            observer.unobserve(entry.target);
+          });
+        }, { rootMargin: '0px 0px -6% 0px', threshold: 0.08 });
+        photoObserver.observe(el);
+      } else {
+        el.classList.add('is-motion-visible');
+      }
+    });
+  }
 })();
