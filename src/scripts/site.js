@@ -196,12 +196,7 @@
     var root = document.documentElement;
     root.classList.add('js-motion');
 
-    // The first-screen copy is never hidden. Only the homepage map animates on load.
-    if (document.querySelector('.map-home__map')) {
-      window.requestAnimationFrame(function () {
-        window.requestAnimationFrame(function () { root.classList.add('motion-ready'); });
-      });
-    }
+    // The homepage map animates with CSS only (see site.css); nothing to do here.
 
     var revealSelector = [
       '.map-reading__lead',

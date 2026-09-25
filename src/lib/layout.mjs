@@ -21,6 +21,7 @@ export function head(cfg, page, assets) {
 <html lang="${cfg.site.language}">
 <head>
 <meta charset="utf-8">
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('js-motion')</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(page.title)}</title>
 <meta name="description" content="${esc(page.description)}">
