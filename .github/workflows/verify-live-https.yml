@@ -1,0 +1,57 @@
+name: Verify live publish and Pages HTTPS
+
+on:
+  push:
+    branches:
+      - feature/chatgpt-premium-build
+
+permissions:
+  contents: read
+  pages: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check live URLs
+        run: |
+          set -euo pipefail
+          paths=(
+            "/"
+            "/bathroom-renovation/"
+            "/our-approach/"
+            "/about/"
+            "/areas/"
+            "/areas/west-kensington/"
+            "/areas/holland-park/"
+            "/areas/south-kensington/"
+            "/areas/chelsea/"
+            "/projects/"
+            "/contact/"
+            "/guides/"
+            "/guides/renovating-a-bathroom-in-kensington/"
+            "/guides/mansion-block-bathroom-renovation/"
+            "/guides/period-and-listed-home-bathrooms/"
+          )
+          for p in "${paths[@]}"; do
+            code="$(curl -sS -o /dev/null -w '%{http_code}' "http://kensingtonbathrooms.uk${p}")"
+            echo "LIVE ${p} ${code}"
+            test "${code}" = "200"
+          done
+
+      - name: Check Pages settings
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          json="$(curl -fsSL             -H "Authorization: Bearer ${GH_TOKEN}"             -H "Accept: application/vnd.github+json"             -H "X-GitHub-Api-Version: 2022-11-28"             "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages")"
+          echo "${json}" | python3 -c 'import json,sys; j=json.load(sys.stdin); print("PAGES cname="+str(j.get("cname"))); print("PAGES https_enforced="+str(j.get("https_enforced"))); print("PAGES build_type="+str(j.get("build_type"))); print("PAGES status="+str(j.get("status"))); print("PAGES html_url="+str(j.get("html_url")))'
+
+      - name: Check redirects and certificate
+        run: |
+          set +e
+          echo "HTTP_APEX $(curl -I -sS -L --max-redirs 5 -o /dev/null -w 'status=%{http_code} final=%{url_effective}' http://kensingtonbathrooms.uk/)"
+          echo "HTTP_WWW $(curl -I -sS -L --max-redirs 5 -o /dev/null -w 'status=%{http_code} final=%{url_effective}' http://www.kensingtonbathrooms.uk/)"
+          echo "HTTPS_APEX_STRICT $(curl -I -sS -L --max-redirs 5 -o /dev/null -w 'status=%{http_code} final=%{url_effective}' https://kensingtonbathrooms.uk/)"
+          echo "HTTPS_WWW_STRICT $(curl -I -sS -L --max-redirs 5 -o /dev/null -w 'status=%{http_code} final=%{url_effective}' https://www.kensingtonbathrooms.uk/)"
+          echo | openssl s_client -connect kensingtonbathrooms.uk:443 -servername kensingtonbathrooms.uk 2>/dev/null | openssl x509 -noout -subject -issuer -dates -ext subjectAltName 2>/dev/null
