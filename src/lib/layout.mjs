@@ -77,6 +77,11 @@ const select = (id, name, options, required = true) =>
 
 export function consultationForm(cfg, idPrefix = 'c') {
   const p = (s) => `${idPrefix}-${s}`;
+  if (!cfg.forms.endpoint) {
+    const email = cfg.contact.email ? `<a href="mailto:${esc(cfg.contact.email)}">${esc(cfg.contact.email)}</a>` : '';
+    const phone = cfg.contact.phone ? `<a href="tel:${esc(cfg.contact.phone)}">${esc(cfg.contact.phoneDisplay || cfg.contact.phone)}</a>` : '';
+    return `<div class="form-unavailable"><p class="eyebrow">Direct contact</p><h3>Enquiry forms are not enabled yet.</h3><p>Until the secure form endpoint is connected, please contact us directly.</p><p>${phone}${phone && email ? ' · ' : ''}${email}</p></div>`;
+  }
   return `
 <form class="form" data-kb-form="consultation" novalidate>
   <div class="form__grid">
