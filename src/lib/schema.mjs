@@ -8,7 +8,6 @@ export function schemaGraph(cfg, page) {
     '@type': 'HomeAndConstructionBusiness',
     '@id': bizId,
     name: cfg.brand.name,
-    legalName: cfg.company.legalName,
     url: `${base}/`,
     logo: `${base}/brand/monogram-green-bg.svg`,
     description:
