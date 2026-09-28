@@ -2,7 +2,7 @@
   "_readme": "Single source of truth for business, contact and legal details. Unknown contact values remain null and are not rendered.",
   "site": {
     "url": "https://kensingtonbathrooms.uk",
-    "indexable": false,
+    "indexable": true,
     "language": "en-GB"
   },
   "brand": {
@@ -16,9 +16,9 @@
     "registeredIn": "England and Wales"
   },
   "contact": {
-    "phone": null,
-    "phoneDisplay": null,
-    "whatsapp": null,
+    "phone": "+447577764742",
+    "phoneDisplay": "07577 764742",
+    "whatsapp": "447577764742",
     "whatsappMessage": "Hi Kensington Bathrooms, I'm planning a bathroom project{postcode}.",
     "email": null,
     "callbackHours": null
