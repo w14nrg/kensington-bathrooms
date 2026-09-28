@@ -723,3 +723,10 @@ body:not(.is-map-home) a:focus-visible,body:not(.is-map-home) button:focus-visib
 .drawer__phone-reveal{display:block;margin-top:.25rem;padding:.8rem 0;text-align:center;font-family:var(--serif);font-size:1.2rem;color:inherit;text-decoration:none}
 .drawer__mobile-only{display:none}
 @media(max-width:760px){.drawer__desktop-only{display:none!important}.drawer__mobile-only{display:flex}}
+
+/* ===== About-page business trust section ===== */
+.about-business{align-items:center}
+.about-business__photo{margin:0}
+.about-business__photo img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.about-business__photo figcaption{margin-top:.6rem;font-size:.68rem;color:#aeb9b0}
+@media(max-width:760px){.about-business__photo{margin-bottom:.4rem}.about-business__photo img{aspect-ratio:4/5}}
