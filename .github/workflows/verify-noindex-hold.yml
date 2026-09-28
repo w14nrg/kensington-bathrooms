@@ -1,0 +1,25 @@
+name: Verify temporary noindex safeguard
+
+on:
+  push:
+    branches:
+      - hold-indexing-until-https-2026-09-28
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify current live safeguard
+        run: |
+          set -euo pipefail
+          curl -fsS https://kensingtonbathrooms.uk/ -o /tmp/home.html
+          curl -fsS https://kensingtonbathrooms.uk/about/ -o /tmp/about.html
+          curl -fsS https://kensingtonbathrooms.uk/robots.txt -o /tmp/robots.txt
+          grep -q 'noindex, nofollow' /tmp/home.html
+          grep -q '^Disallow: /$' /tmp/robots.txt
+          grep -q 'Speak directly to Nicholas, our founder' /tmp/home.html
+          grep -q 'The business behind Kensington Bathrooms' /tmp/about.html
+          test "$(curl -sS -o /dev/null -w '%{http_code}' https://kensingtonbathrooms.uk/contact/)" = "200"
