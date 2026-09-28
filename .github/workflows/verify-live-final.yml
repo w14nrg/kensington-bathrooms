@@ -1,0 +1,95 @@
+name: Verify live final launch
+
+on:
+  push:
+    branches:
+      - verify/live-launch-2026-09-28
+
+permissions:
+  contents: read
+  pages: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for Pages propagation
+        run: sleep 15
+
+      - name: Verify redirects and live pages
+        run: |
+          set -euo pipefail
+
+          final_url="$(curl -sS -L -o /dev/null -w '%{url_effective}' http://kensingtonbathrooms.uk/)"
+          echo "HTTP final URL: $final_url"
+          test "$final_url" = "https://kensingtonbathrooms.uk/"
+
+          final_www_http="$(curl -sS -L -o /dev/null -w '%{url_effective}' http://www.kensingtonbathrooms.uk/)"
+          echo "HTTP www final URL: $final_www_http"
+          test "$final_www_http" = "https://kensingtonbathrooms.uk/"
+
+          final_www_https="$(curl -sS -L -o /dev/null -w '%{url_effective}' https://www.kensingtonbathrooms.uk/)"
+          echo "HTTPS www final URL: $final_www_https"
+          test "$final_www_https" = "https://kensingtonbathrooms.uk/"
+
+          routes=(
+            /
+            /bathroom-renovation/
+            /our-approach/
+            /areas/
+            /areas/west-kensington/
+            /areas/holland-park/
+            /areas/south-kensington/
+            /areas/chelsea/
+            /about/
+            /contact/
+            /guides/
+            /guides/renovating-a-bathroom-in-kensington/
+            /guides/mansion-block-bathroom-renovation/
+            /guides/period-and-listed-home-bathrooms/
+            /projects/
+            /privacy/
+            /cookies/
+            /terms/
+          )
+
+          for route in "${routes[@]}"; do
+            code="$(curl -sS -o /tmp/page.html -w '%{http_code}' "https://kensingtonbathrooms.uk$route")"
+            echo "$code $route"
+            test "$code" = "200"
+          done
+
+          curl -fsSL https://kensingtonbathrooms.uk/ -o /tmp/home.html
+          curl -fsSL https://kensingtonbathrooms.uk/about/ -o /tmp/about.html
+          curl -fsSL https://kensingtonbathrooms.uk/projects/ -o /tmp/projects.html
+          curl -fsSL https://kensingtonbathrooms.uk/robots.txt -o /tmp/robots.txt
+          curl -fsSL https://kensingtonbathrooms.uk/sitemap.xml -o /tmp/sitemap.xml
+
+          echo "--- robots.txt ---"
+          cat /tmp/robots.txt
+
+          grep -q '^Allow: /' /tmp/robots.txt
+          grep -q 'Sitemap: https://kensingtonbathrooms.uk/sitemap.xml' /tmp/robots.txt
+          ! grep -q 'noindex, nofollow' /tmp/home.html
+          grep -q 'noindex, nofollow' /tmp/projects.html
+          ! grep -q '/projects/' /tmp/sitemap.xml
+
+          grep -q 'WhatsApp us' /tmp/home.html
+          grep -q 'data-track="whatsapp_click"' /tmp/home.html
+          grep -q 'https://wa.me/447577764742' /tmp/home.html
+          grep -q 'Talk to a bathroom expert' /tmp/home.html
+
+          grep -q 'src="/images/about/en-suites-shop-munster-road.webp"' /tmp/about.html
+          grep -q 'width="1050" height="1400"' /tmp/about.html
+          ! grep -q 'raw.githubusercontent.com/w14nrg/en-suite-bathrooms' /tmp/about.html
+
+          image_code="$(curl -sS -o /dev/null -w '%{http_code}' https://kensingtonbathrooms.uk/images/about/en-suites-shop-munster-road.webp)"
+          echo "$image_code self-hosted shop image"
+          test "$image_code" = "200"
+
+      - name: Check GitHub Pages setting
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          curl -fsSL -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages" | python3 -c 'import json,sys; d=json.load(sys.stdin); print("https_enforced =", d.get("https_enforced")); print("cname =", d.get("cname"))'
