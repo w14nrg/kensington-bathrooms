@@ -1,0 +1,34 @@
+name: Export current Kensington site for Claude
+
+on:
+  push:
+    branches:
+      - claude-review-export-2026-09-28
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout current main
+        uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - name: Create clean source zip
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/export/kensington-bathrooms
+          rsync -a --exclude='.git' --exclude='node_modules' --exclude='dist' ./ /tmp/export/kensington-bathrooms/
+          cd /tmp/export
+          zip -qr "$GITHUB_WORKSPACE/kensington-bathrooms-main-2026-09-28.zip" kensington-bathrooms
+
+      - name: Upload review zip
+        uses: actions/upload-artifact@v4
+        with:
+          name: kensington-bathrooms-main-2026-09-28
+          path: kensington-bathrooms-main-2026-09-28.zip
+          if-no-files-found: error
+          retention-days: 7
