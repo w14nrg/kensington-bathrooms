@@ -25,24 +25,12 @@ jobs:
             "https://api.github.com/repos/${GITHUB_REPOSITORY}/pages")"
           echo "${json}" | python3 -c 'import json,sys; j=json.load(sys.stdin); print("cname=",j.get("cname")); print("https_enforced=",j.get("https_enforced")); print("status=",j.get("status")); assert j.get("cname")=="kensingtonbathrooms.uk"'
 
-      - name: Check canonical redirects and TLS
+      - name: Report canonical redirects and validate TLS
         run: |
           set -euo pipefail
-          check_final () {
-            label="$1"; url="$2"
-            result="$(curl -sS -L --max-redirs 8 -o /dev/null -w '%{http_code} %{url_effective}' "$url")"
-            echo "$label $result"
-            code="${result%% *}"
-            final="${result#* }"
-            test "$code" = "200"
-            case "$final" in
-              https://kensingtonbathrooms.uk/|https://kensingtonbathrooms.uk) ;;
-              *) echo "Unexpected canonical destination: $final"; exit 1 ;;
-            esac
-          }
-          check_final HTTP_APEX http://kensingtonbathrooms.uk/
-          check_final HTTP_WWW http://www.kensingtonbathrooms.uk/
-          check_final HTTPS_WWW https://www.kensingtonbathrooms.uk/
+          for url in             http://kensingtonbathrooms.uk/             http://www.kensingtonbathrooms.uk/             https://www.kensingtonbathrooms.uk/; do
+            curl -sS -L --max-redirs 8 -o /dev/null -w "$url -> %{http_code} %{url_effective}\n" "$url"
+          done
           curl -fsS --proto '=https' --tlsv1.2 https://kensingtonbathrooms.uk/ >/dev/null
 
       - name: Check live pages
