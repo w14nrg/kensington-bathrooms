@@ -59,6 +59,17 @@
     });
   });
 
+  // Desktop-only phone reveal. The number is not visible until requested.
+  document.querySelectorAll('[data-reveal-phone]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var target = document.querySelector('[data-phone-reveal]');
+      if (!target) return;
+      target.textContent = btn.getAttribute('data-phone-display') || '';
+      target.hidden = false;
+      btn.setAttribute('aria-expanded', 'true');
+    });
+  });
+
   // Click tracking for call/WhatsApp links.
   document.querySelectorAll('[data-track]').forEach(function (el) {
     el.addEventListener('click', function () { track(el.getAttribute('data-track')); });
