@@ -1,0 +1,39 @@
+name: Verify final launch branch
+
+on:
+  push:
+    branches:
+      - fix/selfhost-shop-photo-phone-reveal-2026-09-28
+    paths:
+      - .github/workflows/verify-final-launch.yml
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: fix/selfhost-shop-photo-phone-reveal-2026-09-28
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 20
+      - name: Build and verify launch output
+        run: |
+          set -euo pipefail
+          npm run build
+          grep -q '"indexable": true' src/config/site.json
+          grep -q '^Allow: /' dist/robots.txt
+          grep -q 'https://kensingtonbathrooms.uk/sitemap.xml' dist/robots.txt
+          test -f dist/sitemap.xml
+          ! grep -q '/projects/' dist/sitemap.xml
+          grep -q 'noindex, nofollow' dist/projects/index.html
+          ! grep -q 'noindex, nofollow' dist/index.html
+          grep -q 'WhatsApp us' dist/index.html
+          grep -q 'data-track="whatsapp_click"' dist/index.html
+          grep -q '/images/about/en-suites-shop-munster-road.webp' dist/about/index.html
+          ! grep -q 'raw.githubusercontent.com/w14nrg/en-suite-bathrooms' dist/about/index.html
+          ! grep -R -q 'en-suite.co.uk' dist
+          ! grep -R -q '7386' dist
