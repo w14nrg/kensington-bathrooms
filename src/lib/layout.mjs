@@ -9,6 +9,8 @@ export const NAV = [
   { name: 'About', path: '/about/' },
 ];
 
+const whatsappIcon = `<svg class="whatsapp-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="#25D366" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.67.149-.198.297-.767.966-.94 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.297-.497.099-.198.05-.371-.025-.52-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.009-.371-.011-.57-.011-.198 0-.52.074-.792.371-.272.298-1.04 1.016-1.04 2.479s1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.693.625.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.981.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884a9.82 9.82 0 0 1 6.997 2.9 9.825 9.825 0 0 1 2.897 6.994c-.003 5.45-4.437 9.883-9.898 9.883m8.413-18.297A11.815 11.815 0 0 0 12.055 0C5.495 0 .16 5.335.157 11.893c0 2.096.547 4.142 1.588 5.945L.056 24l6.304-1.654a11.882 11.882 0 0 0 5.69 1.449h.005c6.559 0 11.894-5.335 11.897-11.893a11.821 11.821 0 0 0-3.488-8.414Z"/></svg>`;
+
 const wordmark = (cfg, tag = 'span') => `
   <${tag} class="wordmark">
     <span class="wordmark__kensington">Kensington</span>
@@ -55,12 +57,13 @@ export function header(cfg, currentPath) {
     <nav class="site-nav" aria-label="Main"><ul class="site-nav__list">${links}</ul></nav>
     <div class="site-header__actions">
       <button type="button" class="expert-link" data-open-drawer>Talk to an expert</button>
+      <a class="button button--small header-whatsapp" href="https://wa.me/${cfg.contact.whatsapp}" data-whatsapp data-track="whatsapp_click" target="_blank" rel="noopener">${whatsappIcon}<span>WhatsApp</span></a>
       <a class="button button--ink button--small" href="/contact/">Arrange a consultation</a>
     </div>
     <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="mobile-menu"><span class="menu-toggle__bars" aria-hidden="true"></span><span class="menu-toggle__label">Menu</span></button>
   </div>
   <div class="mobile-menu" id="mobile-menu" hidden>
-    <ul>${links}<li><a href="/contact/">Arrange a consultation</a></li></ul>
+    <ul>${links}<li><button type="button" class="mobile-menu__expert" data-open-drawer>Talk to a bathroom expert</button></li><li><a href="/contact/">Arrange a consultation</a></li></ul>
     <p class="mobile-menu__base">We're here</p>
   </div>
 </header>`;
@@ -135,8 +138,8 @@ export function drawer(cfg) {
 </dialog>`;
 }
 
-export function mobileBar() {
-  return `<div class="mobile-bar"><button type="button" class="mobile-bar__item" data-open-drawer><span>Talk to an expert</span></button><a class="mobile-bar__item mobile-bar__item--strong" href="/contact/"><span>Home consultation</span></a></div>`;
+export function mobileBar(cfg) {
+  return `<div class="mobile-bar"><a class="mobile-bar__item mobile-bar__whatsapp" href="https://wa.me/${esc(cfg.contact.whatsapp)}" data-whatsapp data-track="whatsapp_click" target="_blank" rel="noopener">${whatsappIcon}<span>WhatsApp us</span></a><a class="mobile-bar__item mobile-bar__item--strong" href="/contact/"><span>Home consultation</span></a></div>`;
 }
 
 export function footer(cfg, currentPath = '') {
@@ -162,5 +165,5 @@ export function footer(cfg, currentPath = '') {
 }
 
 export function page(cfg, pageMeta, assets, mainHtml) {
-  return `${head(cfg, pageMeta, assets)}<body class="${pageMeta.path === '/' ? 'is-map-home' : ''}">${header(cfg, pageMeta.path)}<main id="main">${mainHtml}</main>${footer(cfg, pageMeta.path)}${drawer(cfg)}${mobileBar()}<script>window.KB_CONFIG=${JSON.stringify({ formEndpoint: cfg.forms.endpoint, whatsappMessage: cfg.contact.whatsappMessage })};</script><script src="/js/site.js" defer></script></body></html>`;
+  return `${head(cfg, pageMeta, assets)}<body class="${pageMeta.path === '/' ? 'is-map-home' : ''}">${header(cfg, pageMeta.path)}<main id="main">${mainHtml}</main>${footer(cfg, pageMeta.path)}${drawer(cfg)}${mobileBar(cfg)}<script>window.KB_CONFIG=${JSON.stringify({ formEndpoint: cfg.forms.endpoint, whatsappMessage: cfg.contact.whatsappMessage })};</script><script src="/js/site.js" defer></script></body></html>`;
 }
