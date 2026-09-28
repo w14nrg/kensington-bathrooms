@@ -60,8 +60,5 @@ jobs:
           ok("no en-suite.co.uk domain in HTML", "en-suite.co.uk" not in all_html)
           ok("no old 7386 phone fragment in HTML", "7386" not in all_html)
 
-          css=Path("dist/assets/site.css").read_text() if Path("dist/assets/site.css").exists() else ""
-          if not css:
-              css="\n".join(p.read_text(errors="ignore") for p in Path("dist").rglob("*.css"))
-          ok("hidden phone reveal CSS", ".drawer__phone-reveal[hidden]" in css and "display:none" in css)
+          ok("hidden phone reveal CSS", ".drawer__phone-reveal[hidden]{display:none}" in home)
           PY
