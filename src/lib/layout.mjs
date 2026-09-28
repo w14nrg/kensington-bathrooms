@@ -100,11 +100,16 @@ export function consultationForm(cfg, idPrefix = 'c') {
 
 export function drawer(cfg) {
   const c = cfg.contact;
-  const direct = join(
-    c.phone && `<a class="drawer__option" href="tel:${esc(c.phone)}" data-track="call_click"><span>Call</span><strong>${esc(c.phoneDisplay || c.phone)}</strong></a>`,
-    c.whatsapp && `<a class="drawer__option" href="https://wa.me/${esc(c.whatsapp)}" data-whatsapp data-track="whatsapp_click" target="_blank" rel="noopener"><span>WhatsApp</span><strong>Send photos and a short note</strong></a>`,
-    c.email && `<a class="drawer__option" href="mailto:${esc(c.email)}"><span>Email</span><strong>${esc(c.email)}</strong></a>`
-  );
+  const mobileCall = c.phone
+    ? `<a class="drawer__contact-button drawer__mobile-only" href="tel:${esc(c.phone)}" data-track="call_click">Call</a>`
+    : '';
+  const whatsapp = c.whatsapp
+    ? `<a class="drawer__contact-button" href="https://wa.me/${esc(c.whatsapp)}" data-whatsapp data-track="whatsapp_click" target="_blank" rel="noopener">WhatsApp</a>`
+    : '';
+  const desktopPhone = c.phone
+    ? `<button type="button" class="drawer__contact-button drawer__desktop-only" data-reveal-phone data-phone-display="${esc(c.phoneDisplay || c.phone)}">Show phone number</button><a class="drawer__phone-reveal drawer__desktop-only" href="tel:${esc(c.phone)}" data-phone-reveal hidden aria-live="polite"></a>`
+    : '';
+  const direct = join(mobileCall, whatsapp, desktopPhone);
   return `
 <dialog class="drawer" id="contact-drawer" aria-labelledby="drawer-title">
   <div class="drawer__panel">
@@ -112,10 +117,9 @@ export function drawer(cfg) {
       <p class="eyebrow">Direct contact</p>
       <button type="button" class="drawer__close" data-close-drawer aria-label="Close">×</button>
     </div>
-    <h2 id="drawer-title" class="drawer__title">Talk to a bathroom expert</h2>
-    <p class="drawer__intro">Home consultations, or design meetings by appointment at our base in West Kensington.${c.callbackHours ? ` Callbacks: ${esc(c.callbackHours)}.` : ''}</p>
-    ${cfg.localBase ? `<address class="local-base-address">${esc(cfg.localBase.streetAddress)}<br>${esc(cfg.localBase.city)} ${esc(cfg.localBase.postcode)}</address>` : ''}
-    ${direct ? `<div class="drawer__options">${direct}</div>` : ''}
+    <h2 id="drawer-title" class="drawer__title">Speak directly to Nicholas, our founder</h2>
+    <p class="drawer__intro">Nicholas grew up locally and has decades of hands-on experience in bathrooms. You'll be talking to the person who plans your project.</p>
+    ${direct ? `<div class="drawer__contact-actions">${direct}</div>` : ''}
     ${cfg.forms.endpoint ? `<div class="drawer__rule"></div>
     <h3 class="drawer__subtitle">Request a callback</h3>
     <form class="form form--compact" data-kb-form="callback" novalidate>
