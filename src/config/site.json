@@ -2,7 +2,7 @@
   "_readme": "Single source of truth for business, contact and legal details. Unknown contact values remain null and are not rendered.",
   "site": {
     "url": "https://kensingtonbathrooms.uk",
-    "indexable": true,
+    "indexable": false,
     "language": "en-GB"
   },
   "brand": {
