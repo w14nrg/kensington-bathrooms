@@ -7,13 +7,13 @@ on:
 
 permissions:
   contents: read
-  pages: read
+  pages: write
 
 jobs:
   verify-live:
     runs-on: ubuntu-latest
     steps:
-      - name: Check GitHub Pages HTTPS setting
+      - name: Enforce and verify GitHub Pages HTTPS
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
