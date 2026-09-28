@@ -1,0 +1,52 @@
+name: Import approved shop photo
+
+on:
+  push:
+    branches:
+      - fix/selfhost-shop-photo-phone-reveal-2026-09-28
+    paths:
+      - .github/workflows/import-shop-photo.yml
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: fix/selfhost-shop-photo-phone-reveal-2026-09-28
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+
+      - name: Import and compress existing approved shop photo
+        run: |
+          set -euo pipefail
+          python -m pip install --quiet pillow
+          mkdir -p public/images/about
+          curl -fsSL "https://raw.githubusercontent.com/w14nrg/en-suite-bathrooms/main/assets/shop/shop-front.webp" -o /tmp/shop-front.webp
+          python - <<'PY'
+          from PIL import Image
+          src = Image.open('/tmp/shop-front.webp').convert('RGB')
+          print(f"SOURCE {src.width}x{src.height}")
+          max_width = 1200
+          if src.width > max_width:
+              h = round(src.height * max_width / src.width)
+              src = src.resize((max_width, h), Image.Resampling.LANCZOS)
+          out = 'public/images/about/en-suites-shop-munster-road.webp'
+          src.save(out, 'WEBP', quality=82, method=6)
+          print(f"OUTPUT {src.width}x{src.height}")
+          PY
+          ls -lh public/images/about/en-suites-shop-munster-road.webp
+
+      - name: Commit self-hosted image
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/images/about/en-suites-shop-munster-road.webp
+          git commit -m "Self-host approved About shop photo"
+          git push origin HEAD:fix/selfhost-shop-photo-phone-reveal-2026-09-28
