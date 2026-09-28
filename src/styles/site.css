@@ -721,6 +721,7 @@ body:not(.is-map-home) a:focus-visible,body:not(.is-map-home) button:focus-visib
 .drawer__contact-button{display:flex;align-items:center;justify-content:center;min-height:50px;width:100%;border:1px solid #58645a;background:transparent;color:inherit;text-decoration:none;font:650 .78rem/1 var(--sans);letter-spacing:.06em;cursor:pointer}
 .drawer__contact-button:hover,.drawer__contact-button:focus-visible{background:#22382f;color:#f2ede4;border-color:#708074}
 .drawer__phone-reveal{display:block;margin-top:.25rem;padding:.8rem 0;text-align:center;font-family:var(--serif);font-size:1.2rem;color:inherit;text-decoration:none}
+.drawer__phone-reveal[hidden]{display:none}
 .drawer__mobile-only{display:none}
 @media(max-width:760px){.drawer__desktop-only{display:none!important}.drawer__mobile-only{display:flex}}
 
