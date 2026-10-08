@@ -8,5 +8,5 @@ export function render(cfg){return `<article class="legal-page"><p class="eyebro
 <h2>How long we keep information</h2><p>We keep personal information only for as long as it is needed for the enquiry or project and for any legal, accounting, warranty or dispute-resolution obligations that apply afterwards. The retention period therefore depends on the type of record and whether an enquiry becomes a project.</p>
 <h2>Your rights</h2><p>Depending on the circumstances, UK data-protection law may give you rights to ask for access to your personal information, correction, deletion, restriction, portability, or to object to processing based on legitimate interests. Where processing is based on consent, you can withdraw that consent.</p>
 <h2>Complaints</h2><p>Please contact us first if you have a privacy concern so we can try to resolve it. You also have the right to complain to the UK Information Commissioner’s Office.</p>
-<h2>Local base</h2><p>Our local base is 33 Gunterstone Road, London W14 9BP, for design meetings by appointment.</p>
+<h2>Local base</h2><p>Our local base is 33d Gunterstone Road, London W14 9BP, for design meetings by appointment.</p>
 </article>`;}
