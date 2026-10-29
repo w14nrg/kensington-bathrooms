@@ -3,7 +3,7 @@ import { esc } from '../lib/util.mjs';
 export const meta={
   path:'/projects/',
   title:'Bathroom Projects | Kensington Bathrooms',
-  description:'Selected bathroom projects by the team behind Kensington Bathrooms, shown from before to strip-out to finish. Our full portfolio can be brought along to your survey on request.',
+  description:'Selected bathroom projects by the team behind Kensington Bathrooms, shown from before to finish. Our full portfolio can be brought along to your survey on request.',
   schemaType:'CollectionPage',
   noindex:true,
   breadcrumbs:[{name:'Home',path:'/'},{name:'Projects',path:'/projects/'}]
