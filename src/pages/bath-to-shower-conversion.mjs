@@ -1,7 +1,7 @@
 export const meta = {
   path: '/bath-to-shower-conversion/',
   title: 'Bath to Shower Conversion in Kensington | Kensington Bathrooms',
-  description: 'Replace a little-used bath with a generous shower in Kensington, Chelsea and nearby: the waste, walls, waterproofing and hot water reworked so the new shower works as well as it looks.',
+  description: 'Bath to shower conversions in Kensington, Chelsea and nearby. We replace the bath with a walk-in shower and rework the waste, walls and hot water to suit.',
   schemaType: 'WebPage',
   serviceSchema: { name: 'Bath to shower conversion', serviceType: 'Bath to shower conversion' },
   breadcrumbs: [{ name: 'Home', path: '/' }, { name: 'Bath to shower conversion', path: '/bath-to-shower-conversion/' }]
@@ -11,7 +11,7 @@ export function render() {
   return `
 <section class="page-hero page-hero--compact"><div class="page-hero__inner">
   <p class="eyebrow">Bath to shower conversion</p>
-  <h1>Swap the bath for a shower you'll use every day.</h1>
+  <h1>Bath to shower conversion: a shower you'll use every day.</h1>
   <p class="page-hero__lede">If the bath mostly holds a shower curtain, the space can work much harder. Taking it out usually leaves room for a long, comfortable shower with a single glass screen and no step to climb over.</p>
   <a class="button button--light" href="/contact/">Arrange a home consultation</a>
 </div></section>
@@ -36,7 +36,7 @@ export function render() {
 <section class="content-band content-band--deep"><div class="section-shell"><p class="eyebrow">Choosing a style</p><h2 class="section-heading">Traditional or modern?</h2><div class="style-split">
   <article><h3>Traditional</h3><p>An exposed shower valve and rigid riser in nickel or chrome, white metro or marble-effect tiles with a dado detail, and a framed screen that echoes period glazing. It keeps the character of a Victorian or Edwardian bathroom while losing the bath.</p></article>
   <article><h3>Modern</h3><p>A concealed valve with a rainfall head, large-format tiles running floor to ceiling, a frameless screen and a niche set into the old bath wall. A low tray or level floor finishes the look and makes the room read as one space.</p></article>
-</div><div class="section-tail"><p>Most conversions take the bath space as a walk-in shower. Our walk-in shower page covers trays, level floors and glass in more detail.</p><a class="arrow-link" href="/walk-in-showers/">Walk-in showers</a></div></div></section>
+</div><div class="section-tail"><p>Most conversions take the bath space as a walk-in shower. Our walk-in shower page covers trays, level floors and glass in more detail.</p><a class="arrow-link" href="/walk-in-showers/">Walk-in showers</a> <a class="arrow-link" href="/projects/">See before and after projects</a></div></div></section>
 
 <section class="area-close"><div class="section-shell"><p>We convert baths to showers across Kensington, West Kensington, Holland Park, South Kensington, Gloucester Road and Chelsea. Nicholas will check the waste, the walls and the hot water and tell you what the space will take.</p><a class="button button--light" href="/contact/">Talk through a bath to shower conversion</a></div></section>`;
 }

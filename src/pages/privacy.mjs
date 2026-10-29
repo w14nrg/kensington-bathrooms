@@ -1,4 +1,4 @@
-export const meta={path:'/privacy/',title:'Privacy | Kensington Bathrooms',description:'Privacy information for Kensington Bathrooms.',schemaType:'WebPage'};
+export const meta={path:'/privacy/',title:'Privacy | Kensington Bathrooms',description:'Privacy information for Kensington Bathrooms.',schemaType:'WebPage',noindex:true};
 export function render(cfg){return `<article class="legal-page"><p class="eyebrow">Legal</p><h1>Privacy notice</h1>
 <p>${cfg.brand.name} is a trading name of ${cfg.company.legalName} (company ${cfg.company.companyNumber}), which is the controller of the personal information described in this notice. Home consultations, or design meetings by appointment at our base in West Kensington.</p>
 <h2>Information we collect</h2><p>When you contact us we may collect your name, telephone number, email address, property postcode, project details, photographs you choose to send, appointment information and correspondence about the proposed or active project. If you become a customer, we may also keep quotation, contract, invoice and payment records.</p>

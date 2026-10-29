@@ -1,7 +1,7 @@
 export const meta = {
   path: '/bathroom-renovation/',
-  title: 'Complete Bathroom Renovation | Kensington Bathrooms',
-  description: 'Bathroom design, specification, supply and managed installation. How a first home visit turns your ideas into a buildable bathroom plan.',
+  title: 'Bathroom Refurbishment & Installation | Kensington Bathrooms',
+  description: 'Complete bathroom refurbishment in Kensington and Chelsea: design, supply and installation of bathrooms, en-suites, shower rooms and cloakrooms by one team.',
   schemaType: 'WebPage',
   serviceSchema: {
     name: 'Complete bathroom renovation',
@@ -17,7 +17,7 @@ export function render(cfg) {
   <div class="page-hero__inner page-hero__inner--split">
     <div class="page-hero__copy">
       <p class="eyebrow">Complete bathroom renovation</p>
-      <h1>A bathroom shaped around your home.</h1>
+      <h1>Complete bathroom refurbishment, shaped around your home.</h1>
       <p class="page-hero__lede">Tell us how you want to use the room. Nicholas visits, talks through what you have in mind and looks at what the property can support before a design becomes a specification.</p>
       <a class="button button--light" href="/contact/">Arrange a home consultation</a>
     </div>
@@ -43,5 +43,5 @@ export function render(cfg) {
   <article><h3>Bath to shower conversions</h3><p>A little-used bath replaced by a generous shower in the same space, with the waste, walls and hot water reworked to suit. <a class="inline-link" href="/bath-to-shower-conversion/">More on bath to shower conversions</a></p></article>
   <article><h3>Cloakrooms and guest WCs</h3><p>Compact rooms where clearances, door positions, waste routes and proportion matter as much as the finish.</p></article>
   <article><h3>Managed installation</h3><p>Preparation, plumbing, waterproofing, electrical coordination, tiling, carpentry and finishing sequenced as one project, with the agreed scope reviewed before work begins.</p></article>
-</div><div class="section-tail"><p>Every property is different, so every project starts with a visit to the room itself.</p><a class="button button--light" href="/contact/">Discuss your bathroom</a></div></div></section>`;
+</div><div class="section-tail"><p>Every property is different, so every project starts with a visit to the room itself. <a class="inline-link" href="/projects/">See before and after projects</a></p><a class="button button--light" href="/contact/">Discuss your bathroom</a></div></div></section>`;
 }

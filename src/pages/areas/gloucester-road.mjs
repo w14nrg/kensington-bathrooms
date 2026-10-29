@@ -1,7 +1,7 @@
 import { areaMeta, areaHero, areaSplit, areaCards, areaClose } from '../../lib/area-page.mjs';
 import { workFigure } from '../../lib/util.mjs';
 
-export const meta = { ...areaMeta('gloucester-road', 'Gloucester Road', 'SW7 · SW5', 'Bathroom renovation around Gloucester Road, SW7 and SW5: converted townhouse flats, garden-square buildings and lower-ground floors, with shared stairs protected and drainage planned first.'), title: 'Bathroom Renovation around Gloucester Road, SW7 | Kensington Bathrooms' };
+export const meta = { ...areaMeta('gloucester-road', 'Gloucester Road', 'SW7 · SW5', 'Bathroom renovation around Gloucester Road, SW7 and SW5, for converted townhouse flats and garden-square buildings. Shared stairs protected throughout.'), title: 'Bathroom Renovation Gloucester Road, SW7 & SW5 | Kensington Bathrooms' };
 
 export function render(cfg) { return `
 ${areaHero({ name:'Gloucester Road', heading:'Bathroom renovation around Gloucester Road.', postcodes:'SW7 · SW5', kicker:'Garden squares and converted townhouses', lede:'Around Gloucester Road, most bathrooms sit inside a tall stucco or red-brick house that has been divided into flats. The room is yours; the stairs, the drains and often the water supply are shared. We plan the bathroom with both in mind.', image:cfg.images?.areaHeroes?.gloucesterRoad })}

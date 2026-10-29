@@ -2,10 +2,9 @@ import { esc } from '../lib/util.mjs';
 
 export const meta={
   path:'/projects/',
-  title:'Bathroom Projects | Kensington Bathrooms',
-  description:'Selected bathroom projects by the team behind Kensington Bathrooms, shown from before to finish. Our full portfolio can be brought along to your survey on request.',
+  title:'Bathroom Projects: Before & After | Kensington Bathrooms',
+  description:'Before and after bathroom projects: a shower room rebuild, a steam cabin to walk-in shower and a loft en-suite, with videos of each finished room.',
   schemaType:'CollectionPage',
-  noindex:true,
   breadcrumbs:[{name:'Home',path:'/'},{name:'Projects',path:'/projects/'}]
 };
 

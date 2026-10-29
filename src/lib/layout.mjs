@@ -27,7 +27,7 @@ export function head(cfg, page, assets) {
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(page.title)}</title>
 <meta name="description" content="${esc(page.description)}">
-${cfg.site.indexable && !page.noindex ? '' : '<meta name="robots" content="noindex, nofollow">'}
+${!cfg.site.indexable ? '<meta name="robots" content="noindex, nofollow">' : page.noindex ? '<meta name="robots" content="noindex, follow">' : ''}
 ${page.noCanonical ? '' : `<link rel="canonical" href="${url}">`}
 <meta name="theme-color" content="#111512">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">

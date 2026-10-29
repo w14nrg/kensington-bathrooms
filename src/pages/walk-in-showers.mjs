@@ -1,7 +1,7 @@
 export const meta = {
   path: '/walk-in-showers/',
-  title: 'Walk-in Showers in Kensington | Kensington Bathrooms',
-  description: 'Walk-in showers designed and installed in Kensington, Holland Park, South Kensington and Chelsea homes: low trays, level floors, glass screens and the drainage and waterproofing behind them.',
+  title: 'Walk-in Shower Installation in Kensington | Kensington Bathrooms',
+  description: 'Walk-in shower installation in Kensington, Chelsea and nearby: low trays, level floors and glass screens, with the drainage and waterproofing done properly.',
   schemaType: 'WebPage',
   serviceSchema: { name: 'Walk-in shower installation', serviceType: 'Walk-in shower installation' },
   breadcrumbs: [{ name: 'Home', path: '/' }, { name: 'Walk-in showers', path: '/walk-in-showers/' }]
@@ -11,7 +11,7 @@ export function render() {
   return `
 <section class="page-hero page-hero--compact"><div class="page-hero__inner">
   <p class="eyebrow">Walk-in showers</p>
-  <h1>A shower you simply walk into.</h1>
+  <h1>Walk-in shower installation: a shower you simply walk into.</h1>
   <p class="page-hero__lede">No door, no high step and no curtain: a single glass screen and a floor that carries the water away. Walk-in showers suit large bathrooms and small ones alike, but they only look effortless when the drainage, falls and waterproofing beneath them are right.</p>
   <a class="button button--light" href="/contact/">Arrange a home consultation</a>
 </div></section>
@@ -41,7 +41,7 @@ export function render() {
 
 <section class="content-band content-band--ink"><div class="section-shell"><div class="content-grid"><div><p class="eyebrow">Replacing a bath?</p><h2>A walk-in shower in place of the bath.</h2></div><div class="content-copy">
   <p>The most common way to make room for a walk-in shower is to take out a bath that rarely gets used. The bath’s footprint usually becomes a long shower area with a single screen, and the space often feels larger than it did with the bath in place.</p>
-  <a class="arrow-link" href="/bath-to-shower-conversion/">Bath to shower conversions</a>
+  <a class="arrow-link" href="/bath-to-shower-conversion/">Bath to shower conversions</a> <a class="arrow-link" href="/projects/">See before and after projects</a>
 </div></div></div></section>
 
 <section class="area-close"><div class="section-shell"><p>We install walk-in showers across Kensington, West Kensington, Holland Park, South Kensington, Gloucester Road and Chelsea. Nicholas will look at the floor, the drainage and the water supply and tell you what the room will take.</p><a class="button button--light" href="/contact/">Talk through a walk-in shower</a></div></section>`;

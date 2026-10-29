@@ -814,3 +814,4 @@ body:not(.is-map-home) a:focus-visible,body:not(.is-map-home) button:focus-visib
 .compare__keys{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
 .compare:focus-within .compare__frame{outline:2px solid #c5a871;outline-offset:4px}
 .compare__hint{font-size:.74rem;color:#9ea197;margin:.8rem 0 0}
+.area-close .area-close__services{font-family:var(--sans);font-size:.92rem;line-height:1.7;max-width:none;margin:1rem 0 1.6rem;color:#c9cbc3}.area-close__services a{color:#f1e9da;text-underline-offset:4px}

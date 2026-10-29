@@ -1,7 +1,7 @@
 export function areaMeta(slug, name, postcodes, description) {
   return {
     path: `/areas/${slug}/`,
-    title: `Bathroom Renovation in ${name} | Kensington Bathrooms`,
+    title: `Bathroom Renovation in ${name}, ${postcodes.replace(' · ', ' & ')} | Kensington Bathrooms`,
     description,
     schemaType: 'WebPage',
     breadcrumbs: [{ name: 'Home', path: '/' }, { name: 'Areas', path: '/areas/' }, { name, path: `/areas/${slug}/` }]
@@ -24,5 +24,5 @@ export function areaCards({ eyebrow, title, cards, dark = true }) {
 }
 
 export function areaClose(name, body) {
-  return `<section class="area-close"><div class="section-shell"><p>${body}</p><a class="button button--light" href="/contact/">Talk through a bathroom in ${name}</a></div></section>`;
+  return `<section class="area-close"><div class="section-shell"><p>${body}</p><p class="area-close__services">Also in ${name}: <a href="/walk-in-showers/">walk-in showers</a> · <a href="/bath-to-shower-conversion/">bath to shower conversions</a> · <a href="/projects/">before and after projects</a></p><a class="button button--light" href="/contact/">Talk through a bathroom in ${name}</a></div></section>`;
 }

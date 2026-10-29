@@ -1,7 +1,7 @@
 export const meta = {
   path: '/about/',
   title: 'About Kensington Bathrooms | Nicholas and Our Local Story',
-  description: 'Meet Nicholas, the tradesperson behind Kensington Bathrooms. School near The Little Boltons, childhood visits around Kensington, family ties to Chelsea and decades of plumbing experience.',
+  description: 'Meet Nicholas, the bathroom fitter behind Kensington Bathrooms: schooled near The Little Boltons, family ties to Chelsea and decades in the trade locally.',
   schemaType: 'AboutPage',
   breadcrumbs: [{ name: 'Home', path: '/' }, { name: 'About', path: '/about/' }]
 };

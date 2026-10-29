@@ -1,5 +1,5 @@
 import { areaMeta, areaHero, areaSplit, areaCards, areaClose } from '../../lib/area-page.mjs';
-export const meta = areaMeta('south-kensington', 'South Kensington', 'SW7', 'Bathroom renovation in South Kensington SW7 for portered flats, garden-square homes and period properties, with building access and installation carefully planned.');
+export const meta = areaMeta('south-kensington', 'South Kensington', 'SW7', 'Bathroom renovation in South Kensington SW7 for portered flats, garden-square homes and period properties, with building access and installation planned.');
 export function render(cfg) { return `
 ${areaHero({ name:'South Kensington', postcodes:'SW7', kicker:'Flats, terraces and managed buildings', lede:'In South Kensington, the route to the bathroom can be as important to the programme as the room itself. We discuss the building arrangements at the home visit, then design around what we find.', image:cfg.images?.areaHeroes?.southKensington })}
 ${areaSplit({ eyebrow:'Behind the front door', title:'First, understand the building.', dark:true, paragraphs:[

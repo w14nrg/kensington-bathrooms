@@ -1,5 +1,5 @@
 import {consultationForm} from '../lib/layout.mjs';
-export const meta={path:'/contact/',title:'Arrange a Bathroom Consultation | Kensington Bathrooms',description:'Talk through your bathroom project with Nicholas at your home or by appointment at our West Kensington base.',schemaType:'ContactPage',breadcrumbs:[{name:'Home',path:'/'},{name:'Contact',path:'/contact/'}]};
+export const meta={path:'/contact/',title:'Arrange a Bathroom Consultation | Kensington Bathrooms',description:'Arrange a home consultation for your bathroom in Kensington or Chelsea. Call 020 7371 3333, WhatsApp us or send your details and Nicholas will call back.',schemaType:'ContactPage',breadcrumbs:[{name:'Home',path:'/'},{name:'Contact',path:'/contact/'}]};
 export function render(cfg){
   const form=consultationForm(cfg,'contact');
   const base=cfg.localBase;
