@@ -200,13 +200,13 @@
     {
       "id": "shower-room-2",
       "title": "Steam cabin to walk-in shower",
-      "summary": "A bulky steam shower cabin replaced with a sleek walk-in shower and a fully built-in bathroom in black and stone tones.",
+      "summary": "The customer no longer wanted his steam shower cabin and asked for something as close to a walk-in shower as possible, without the extra work of rebuilding the floor.",
       "points": [
-        "Old steam cabin removed and the room rebuilt around a walk-in shower with a black-framed fixed glass screen and a low black tray",
-        "A new tiled feature wall in dark porcelain, housing a concealed thermostatic valve and a recessed niche lined in black trim",
-        "Rainfall head on a black ceiling-angled arm, plus a handset on a riser rail",
-        "Wall-hung black WC with a concealed cistern, floating vanity with a stone-effect top and undermount basin, wall-mounted black tap and a black towel radiator",
-        "Large-format light porcelain to the floor and walls"
+        "Steam cabin removed and replaced with a low black tray and a black-framed fixed glass screen, giving an open, walk-in feel",
+        "Removing the cabin left pipework exposed, so we built a false wall to hide it",
+        "We turned that false wall into a feature: dark porcelain, a concealed thermostatic valve and a large mirrored niche",
+        "Rainfall head on a black arm, plus a handset on a riser rail",
+        "Wall-hung black WC with a concealed cistern, floating vanity with a stone-effect top, wall-mounted black tap and a black towel radiator"
       ],
       "stages": [
         {
@@ -217,7 +217,7 @@
         {
           "label": "During",
           "src": "/images/projects/shower-room-2/during",
-          "alt": "Fitting the shower valve and niche into the new dark tiled feature wall"
+          "alt": "Fitting the valve and mirrored niche into the new false wall, which hides the old pipework"
         },
         {
           "label": "After",
