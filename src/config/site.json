@@ -191,7 +191,11 @@
           "src": "/images/projects/shower-room-1/after",
           "alt": "The finished shower room with a brushed-brass framed shower, light porcelain tiles and a fluted wood vanity"
         }
-      ]
+      ],
+      "video": {
+        "src": "/videos/shower-room-1.mp4",
+        "poster": "/images/projects/shower-room-1/after-1200.webp"
+      }
     }
   ]
 }
