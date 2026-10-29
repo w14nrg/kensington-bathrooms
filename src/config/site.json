@@ -196,6 +196,43 @@
         "src": "/videos/shower-room-1.mp4",
         "poster": "/images/projects/shower-room-1/after-1200.webp"
       }
+    },
+    {
+      "id": "shower-room-2",
+      "title": "Steam cabin to walk-in shower",
+      "summary": "A bulky steam shower cabin replaced with a sleek walk-in shower and a fully built-in bathroom in black and stone tones.",
+      "points": [
+        "Old steam cabin removed and the room rebuilt around a walk-in shower with a black-framed fixed glass screen and a low black tray",
+        "A new tiled feature wall in dark porcelain, housing a concealed thermostatic valve and a recessed niche lined in black trim",
+        "Rainfall head on a black ceiling-angled arm, plus a handset on a riser rail",
+        "Wall-hung black WC with a concealed cistern, floating vanity with a stone-effect top and undermount basin, wall-mounted black tap and a black towel radiator",
+        "Large-format light porcelain to the floor and walls"
+      ],
+      "stages": [
+        {
+          "label": "Before",
+          "src": "/images/projects/shower-room-2/before",
+          "alt": "Bathroom before work: a large curved steam shower cabin with black back panels"
+        },
+        {
+          "label": "During",
+          "src": "/images/projects/shower-room-2/during",
+          "alt": "Fitting the shower valve and niche into the new dark tiled feature wall"
+        },
+        {
+          "label": "After",
+          "src": "/images/projects/shower-room-2/after",
+          "alt": "The finished bathroom with a black-framed walk-in shower, wall-hung black WC and floating stone-topped vanity"
+        }
+      ],
+      "video": {
+        "src": "/videos/shower-room-2.mp4",
+        "poster": "/images/projects/shower-room-2/after-1200.webp"
+      },
+      "split": [
+        50,
+        68
+      ]
     }
   ]
 }
