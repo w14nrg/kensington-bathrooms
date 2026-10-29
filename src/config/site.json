@@ -236,24 +236,25 @@
     },
     {
       "id": "shower-room-3",
-      "title": "Loft shower room",
-      "summary": "A tired loft shower room under a sloping ceiling and skylight, taken back to the joists and rebuilt in marble-effect porcelain and brushed brass.",
+      "title": "Loft en-suite",
+      "summary": "A loft en-suite under a sloping ceiling and skylight. When we lifted the floor we found a major problem: the previous installer had cut out a floor joist to fit the toilet pan connector.",
       "points": [
-        "Old enclosure, tiles and fittings stripped out, and the floorboards lifted to rework the waste and pipework between the joists",
-        "Walls and floor rebuilt and fully tiled in large-format marble-effect porcelain, worked around the slope of the roof",
+        "Old enclosure, tiles and fittings stripped out and the floorboards lifted, revealing the missing joist",
+        "Floor joist replaced to restore the structure before anything new went in, with the waste and pipework reworked between the joists",
+        "Shower area and walls fully tanked, then tiled in large-format marble-effect porcelain worked around the slope of the roof",
         "A brushed-brass offset quadrant enclosure with a concealed valve, overhead shower and brass handset",
-        "Back-to-wall WC with a concealed cistern unit, new basin, brushed-brass towel rail and an illuminated round mirror"
+        "Back-to-wall WC with a concealed cistern unit, new basin, brushed-brass towel rail, illuminated de-mist mirror and new lighting"
       ],
       "stages": [
         {
           "label": "Before",
           "src": "/images/projects/shower-room-3/before",
-          "alt": "Loft shower room before work: square shower enclosure, wood-effect floor tiles and a stone basin under a skylight"
+          "alt": "Loft en-suite before work: square shower enclosure, wood-effect floor tiles and a stone basin under a skylight"
         },
         {
           "label": "Strip-out",
           "src": "/images/projects/shower-room-3/stripout",
-          "alt": "The loft room stripped back, with the floorboards lifted to reach the waste pipe between the joists"
+          "alt": "The loft en-suite stripped back, with the floorboards lifted where a joist had been cut out by a previous installer"
         },
         {
           "label": "Fitting",
