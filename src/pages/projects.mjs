@@ -9,18 +9,22 @@ export const meta={
   breadcrumbs:[{name:'Home',path:'/'},{name:'Projects',path:'/projects/'}]
 };
 
-// Before → strip-out → after, switched with a three-stop slider. Works without JavaScript (radio inputs);
-// site.js adds swiping on the photo.
+// Before | strip-out | after in one frame, split by two bars you drag across (compare slider).
+// The two range inputs keep it usable by keyboard; site.js adds dragging anywhere on the photo.
 function stages(project) {
-  const name = `stage-${project.id}`;
-  const last = project.stages.length - 1;
-  const radios = project.stages.map((s, i) => `<input class="stages__radio" type="radio" name="${name}" id="${name}-${i}" value="${i}"${i === 0 ? ' checked' : ''}>`).join('');
-  const imgs = project.stages.map((s, i) => `<img class="stages__img" src="${s.src}-1200.webp" srcset="${s.src}-640.webp 640w, ${s.src}-1200.webp 1200w" sizes="(max-width: 760px) 100vw, 46vw" alt="${esc(s.alt)}" width="1200" height="1600" loading="${i === 0 ? 'eager' : 'lazy'}" decoding="async" draggable="false">`).join('');
-  const stops = project.stages.map((s, i) => `<label class="stages__stop" for="${name}-${i}"><span class="stages__dot" aria-hidden="true"></span><span class="stages__label">${esc(s.label)}</span></label>`).join('');
-  return `<div class="stages" data-stages data-last="${last}">
-  ${radios}
-  <div class="stages__frame" data-stages-frame>${imgs}${project.video ? `<a class="stages__play" href="${project.video.src}" data-play-video="${project.video.src}" data-poster="${project.video.poster || ''}"><span class="stages__play-icon" aria-hidden="true"></span><span>Watch the finished room</span></a>` : ''}</div>
-  <div class="stages__track" role="group" aria-label="${esc(project.title)}: choose a stage"><span class="stages__line" aria-hidden="true"><span class="stages__fill"></span></span>${stops}</div>
+  const id = `cmp-${project.id}`;
+  const [before, strip, after] = project.stages;
+  const img = (s, cls, eager) => `<img class="compare__img ${cls}" src="${s.src}-1200.webp" srcset="${s.src}-640.webp 640w, ${s.src}-1200.webp 1200w" sizes="(max-width: 760px) 100vw, 46vw" alt="${esc(s.alt)}" width="1200" height="1600" loading="${eager ? 'eager' : 'lazy'}" decoding="async" draggable="false">`;
+  const play = project.video ? `<a class="stages__play" href="${project.video.src}" data-play-video="${project.video.src}" data-poster="${project.video.poster || ''}"><span class="stages__play-icon" aria-hidden="true"></span><span>Watch the finished room</span></a>` : '';
+  return `<div class="compare" data-compare style="--a:22%;--b:48%">
+  <div class="compare__frame" data-compare-frame>
+    ${img(after, 'compare__img--after', true)}${img(strip, 'compare__img--strip', true)}${img(before, 'compare__img--before', true)}
+    <span class="compare__tag compare__tag--before" aria-hidden="true">${esc(before.label)}</span><span class="compare__tag compare__tag--strip" aria-hidden="true">${esc(strip.label)}</span><span class="compare__tag compare__tag--after" aria-hidden="true">${esc(after.label)}</span>
+    <span class="compare__bar compare__bar--a" aria-hidden="true"><span class="compare__grip"></span></span><span class="compare__bar compare__bar--b" aria-hidden="true"><span class="compare__grip"></span></span>
+    ${play}
+  </div>
+  <div class="compare__keys"><label for="${id}-a">Move the before / strip-out divider</label><input id="${id}-a" type="range" min="0" max="100" step="1" value="22" data-compare-a><label for="${id}-b">Move the strip-out / after divider</label><input id="${id}-b" type="range" min="0" max="100" step="1" value="48" data-compare-b></div>
+  <p class="compare__hint">Drag the bars across the photo to compare before, strip-out and after.</p>
 </div>`;
 }
 
@@ -42,7 +46,7 @@ export function render(cfg){
   <div class="page-hero__inner">
     <p class="eyebrow">Our work</p>
     <h1>Selected projects.</h1>
-    <p class="page-hero__lede">From the room as we found it, through the strip-out, to the finished bathroom. Slide through each stage. Our full portfolio can be brought along to your survey on request.</p>
+    <p class="page-hero__lede">From the room as we found it, through the strip-out, to the finished bathroom. Drag the bars across each photo. Our full portfolio can be brought along to your survey on request.</p>
   </div>
 </section>
 <section class="content-band content-band--deep"><div class="section-shell project-stories">

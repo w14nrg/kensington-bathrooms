@@ -283,17 +283,42 @@
     });
   }
 
-  // Projects: swipe or drag across a photo (or along the track) to move between before / strip-out / after.
-  document.querySelectorAll('[data-stages]').forEach(function (box) {
-    var radios = box.querySelectorAll('.stages__radio');
-    function current() { for (var i = 0; i < radios.length; i++) if (radios[i].checked) return i; return 0; }
-    function go(i) { i = Math.max(0, Math.min(radios.length - 1, i)); radios[i].checked = true; }
-    var frame = box.querySelector('[data-stages-frame]');
-    var startX = null;
+  // Projects: compare slider. Drag either bar (or anywhere on the photo: the nearest bar follows).
+  document.querySelectorAll('[data-compare]').forEach(function (box) {
+    var frame = box.querySelector('[data-compare-frame]');
+    var inA = box.querySelector('[data-compare-a]');
+    var inB = box.querySelector('[data-compare-b]');
+    var GAP = 4;
+    var a = Number(inA.value), b = Number(inB.value);
+    function draw() {
+      box.style.setProperty('--a', a + '%'); box.style.setProperty('--b', b + '%');
+      inA.value = Math.round(a); inB.value = Math.round(b);
+    }
+    function setA(v) { a = Math.max(0, Math.min(b - GAP, v)); draw(); }
+    function setB(v) { b = Math.min(100, Math.max(a + GAP, v)); draw(); }
+    inA.addEventListener('input', function () { setA(Number(inA.value)); });
+    inB.addEventListener('input', function () { setB(Number(inB.value)); });
+
+    var which = null;
+    function pct(e) { var r = frame.getBoundingClientRect(); return ((e.clientX - r.left) / r.width) * 100; }
+    frame.addEventListener('pointerdown', function (e) {
+      if (e.target.closest('[data-play-video], .stages__close, .stages__video')) return;
+      var x = pct(e);
+      which = Math.abs(x - a) <= Math.abs(x - b) ? 'a' : 'b';
+      if (which === 'a') setA(x); else setB(x);
+      try { frame.setPointerCapture(e.pointerId); } catch (err) {}
+    });
+    frame.addEventListener('pointermove', function (e) {
+      if (!which) return;
+      var x = pct(e);
+      if (which === 'a') setA(x); else setB(x);
+    });
+    function end() { which = null; }
+    frame.addEventListener('pointerup', end);
+    frame.addEventListener('pointercancel', end);
+
     var play = box.querySelector('[data-play-video]');
     if (play) {
-      play.addEventListener('pointerdown', function (e) { e.stopPropagation(); });
-      play.addEventListener('pointerup', function (e) { e.stopPropagation(); });
       play.addEventListener('click', function (e) {
         e.preventDefault();
         var v = document.createElement('video');
@@ -304,28 +329,10 @@
         close.type = 'button'; close.className = 'stages__close'; close.setAttribute('aria-label', 'Close video'); close.textContent = '×';
         function stop() { v.pause(); v.remove(); close.remove(); play.hidden = false; play.focus(); }
         close.addEventListener('click', stop);
-        close.addEventListener('pointerdown', function (ev) { ev.stopPropagation(); });
-        close.addEventListener('pointerup', function (ev) { ev.stopPropagation(); });
-        v.addEventListener('pointerdown', function (ev) { ev.stopPropagation(); });
-        v.addEventListener('pointerup', function (ev) { ev.stopPropagation(); });
         play.hidden = true;
         frame.appendChild(v); frame.appendChild(close);
-        var p = v.play(); if (p && p.catch) p.catch(function () {});
+        var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
       });
     }
-    frame.addEventListener('pointerdown', function (e) { startX = e.clientX; });
-    frame.addEventListener('pointerup', function (e) {
-      if (startX === null) return;
-      var dx = e.clientX - startX; startX = null;
-      if (Math.abs(dx) > 30) go(current() + (dx < 0 ? 1 : -1));
-      else go(current() + 1 > radios.length - 1 ? 0 : current() + 1); // a tap steps forward, then back to the start
-    });
-    frame.addEventListener('pointercancel', function () { startX = null; });
-    var track = box.querySelector('.stages__track');
-    function fromTrack(e) {
-      var r = track.getBoundingClientRect();
-      go(Math.floor(((e.clientX - r.left) / r.width) * radios.length));
-    }
-    track.addEventListener('pointermove', function (e) { if (e.buttons === 1) fromTrack(e); });
   });
 })();
