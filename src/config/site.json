@@ -84,14 +84,14 @@
         "alt": "Completed compact shower room with brushed brass fittings and floating vanity",
         "width": 756,
         "height": 1008,
-        "caption": "Lillie Road, Fulham · completed shower-room refurbishment"
+        "caption": "Completed shower room · brushed brass fittings"
       },
       {
         "src": "/images/projects/rr-finished-1.webp",
         "alt": "Marble-effect shower room with brushed metal enclosure and heated towel rail",
         "width": 756,
         "height": 1008,
-        "caption": "Rosaline Road, Fulham · completed bathroom work"
+        "caption": "Completed shower room · marble-effect porcelain"
       }
     ],
     "areaHeroes": {
@@ -163,5 +163,34 @@
     "city": "London",
     "postcode": "W14 9BP",
     "appointmentOnly": true
-  }
+  },
+  "projects": [
+    {
+      "id": "shower-room-1",
+      "title": "Shower room refurbishment",
+      "summary": "A dated quadrant shower room taken back to the walls and floor and rebuilt as a warm, modern shower room.",
+      "points": [
+        "Old enclosure, tiles and fittings stripped out; walls taken back and the floor opened to rework the waste and supply pipework",
+        "New shower area with a slimline tray, brushed-brass framed sliding door and a thermostatic rainfall shower",
+        "Large-format porcelain to the floor and half-height walls, with a fluted wood vanity, new WC and brass towel rail"
+      ],
+      "stages": [
+        {
+          "label": "Before",
+          "src": "/images/projects/shower-room-1/before",
+          "alt": "Shower room before work: quadrant shower enclosure, beige tiles and a vanity basin"
+        },
+        {
+          "label": "Strip-out",
+          "src": "/images/projects/shower-room-1/stripout",
+          "alt": "The same room stripped back to the walls, with the floor opened to reach the waste and water pipes"
+        },
+        {
+          "label": "After",
+          "src": "/images/projects/shower-room-1/after",
+          "alt": "The finished shower room with a brushed-brass framed shower, light porcelain tiles and a fluted wood vanity"
+        }
+      ]
+    }
+  ]
 }

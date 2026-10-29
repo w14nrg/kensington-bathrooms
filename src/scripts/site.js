@@ -282,4 +282,27 @@
       }
     });
   }
+
+  // Projects: swipe or drag across a photo (or along the track) to move between before / strip-out / after.
+  document.querySelectorAll('[data-stages]').forEach(function (box) {
+    var radios = box.querySelectorAll('.stages__radio');
+    function current() { for (var i = 0; i < radios.length; i++) if (radios[i].checked) return i; return 0; }
+    function go(i) { i = Math.max(0, Math.min(radios.length - 1, i)); radios[i].checked = true; }
+    var frame = box.querySelector('[data-stages-frame]');
+    var startX = null;
+    frame.addEventListener('pointerdown', function (e) { startX = e.clientX; });
+    frame.addEventListener('pointerup', function (e) {
+      if (startX === null) return;
+      var dx = e.clientX - startX; startX = null;
+      if (Math.abs(dx) > 30) go(current() + (dx < 0 ? 1 : -1));
+      else go(current() + 1 > radios.length - 1 ? 0 : current() + 1); // a tap steps forward, then back to the start
+    });
+    frame.addEventListener('pointercancel', function () { startX = null; });
+    var track = box.querySelector('.stages__track');
+    function fromTrack(e) {
+      var r = track.getBoundingClientRect();
+      go(Math.floor(((e.clientX - r.left) / r.width) * radios.length));
+    }
+    track.addEventListener('pointermove', function (e) { if (e.buttons === 1) fromTrack(e); });
+  });
 })();
