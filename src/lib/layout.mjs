@@ -165,5 +165,5 @@ export function footer(cfg, currentPath = '') {
 }
 
 export function page(cfg, pageMeta, assets, mainHtml) {
-  return `${head(cfg, pageMeta, assets)}<body class="${pageMeta.path === '/' ? 'is-map-home' : ''}">${header(cfg, pageMeta.path)}<main id="main">${mainHtml}</main>${footer(cfg, pageMeta.path)}${drawer(cfg)}${mobileBar(cfg)}<script>window.KB_CONFIG=${JSON.stringify({ formEndpoint: cfg.forms.endpoint, whatsappMessage: cfg.contact.whatsappMessage })};</script><script src="/js/site.js" defer></script></body></html>`;
+  return `${head(cfg, pageMeta, assets)}<body class="${pageMeta.path === '/' ? 'is-map-home' : ''}">${header(cfg, pageMeta.path)}<main id="main">${mainHtml}</main>${footer(cfg, pageMeta.path)}${drawer(cfg)}${mobileBar(cfg)}<script>window.KB_CONFIG=${JSON.stringify({ formEndpoint: cfg.forms.endpoint, whatsappMessage: cfg.contact.whatsappMessage })};</script><script src="/js/site.js" defer></script><script src="/js/live.js" defer></script></body></html>`;
 }
