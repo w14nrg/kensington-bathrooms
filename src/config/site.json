@@ -16,15 +16,15 @@
     "registeredIn": "England and Wales"
   },
   "contact": {
-    "phone": "+447577764742",
-    "phoneDisplay": "07577 764742",
-    "whatsapp": "447577764742",
+    "phone": "+442073713333",
+    "phoneDisplay": "020 7371 3333",
+    "whatsapp": "442073713333",
     "whatsappMessage": "Hi Kensington Bathrooms, I'm planning a bathroom project{postcode}.",
     "email": null,
     "callbackHours": null
   },
   "forms": {
-    "endpoint": null
+    "endpoint": "https://live-hub.nicholas-griffith-uk.workers.dev/e/enquiry"
   },
   "analytics": {
     "provider": null
@@ -46,6 +46,11 @@
       "postcodes": "SW7"
     },
     {
+      "slug": "gloucester-road",
+      "name": "Gloucester Road",
+      "postcodes": "SW7 · SW5"
+    },
+    {
       "slug": "chelsea",
       "name": "Chelsea",
       "postcodes": "SW3 · SW10"
@@ -61,6 +66,8 @@
     "Main bathroom",
     "En-suite",
     "Shower room",
+    "Walk-in shower",
+    "Bath to shower conversion",
     "Cloakroom",
     "More than one room"
   ],
@@ -118,6 +125,36 @@
       "portrait": null,
       "alt": "Kensington",
       "caption": "Kensington"
+    },
+    "work": {
+      "communalStair": {
+        "base": "/images/work/communal-stair-protection",
+        "width": 1200,
+        "height": 1595,
+        "alt": "Protective film laid over every stair tread and the landing carpet of a communal staircase before bathroom work starts",
+        "caption": "Communal staircase protected before work starts · Kensington"
+      },
+      "hallStair": {
+        "base": "/images/work/hall-stair-protection",
+        "width": 1200,
+        "height": 1176,
+        "alt": "Two of the team laying protective film down a carpeted communal stair towards the entrance hall",
+        "caption": "Laying stair protection on the route in · Kensington"
+      },
+      "carpetStair": {
+        "base": "/images/work/carpet-stair-protection",
+        "width": 1200,
+        "height": 1037,
+        "alt": "Grey stair carpet covered tread by tread with protective film inside a family home",
+        "caption": "Stair carpet protected inside the home · Kensington"
+      },
+      "landing": {
+        "base": "/images/work/landing-protection",
+        "width": 900,
+        "height": 1000,
+        "alt": "Team protecting a landing and timber floor in a lived-in house before starting a bathroom",
+        "caption": "Landing and floors protected before strip-out · Kensington"
+      }
     }
   },
   "localBase": {

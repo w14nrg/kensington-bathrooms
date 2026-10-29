@@ -10,6 +10,8 @@ const cfg = JSON.parse(await readFile('src/config/site.json', 'utf8'));
 const PAGES = [
   './src/pages/index.mjs',
   './src/pages/bathroom-renovation.mjs',
+  './src/pages/walk-in-showers.mjs',
+  './src/pages/bath-to-shower-conversion.mjs',
   './src/pages/our-approach.mjs',
   './src/pages/guides.mjs',
   './src/pages/guides/renovating-a-bathroom-in-kensington.mjs',
@@ -20,6 +22,7 @@ const PAGES = [
   './src/pages/areas/west-kensington.mjs',
   './src/pages/areas/holland-park.mjs',
   './src/pages/areas/south-kensington.mjs',
+  './src/pages/areas/gloucester-road.mjs',
   './src/pages/areas/chelsea.mjs',
   './src/pages/projects.mjs',
   './src/pages/contact.mjs',

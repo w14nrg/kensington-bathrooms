@@ -1,10 +1,10 @@
-import { esc } from '../lib/util.mjs';
+import { esc, workFigure } from '../lib/util.mjs';
 
 export const meta = {
   path: '/',
   title: 'Bathroom Renovation in Kensington | Kensington Bathrooms',
   ogTitle: 'Kensington Bathrooms — bathroom renovation, design and installation',
-  description: 'Bathroom renovation, design and installation across Kensington, West Kensington, Holland Park, South Kensington and Chelsea.',
+  description: 'Bathroom renovation, design and installation across Kensington, West Kensington, Holland Park, South Kensington, Gloucester Road and Chelsea.',
   schemaType: 'WebPage'
 };
 
@@ -12,6 +12,7 @@ const areas = [
   ['kensington', 'Kensington', 'W8', 'Stucco terraces, garden squares and mansion blocks within the area we work in.', '#kensington', 'Bathroom renovation in Kensington'],
   ['holland-park', 'Holland Park', 'W8 · W11', 'Large period houses, often with several bathrooms and long, finished hallways.', '/areas/holland-park/', 'Bathrooms in Holland Park'],
   ['south-kensington', 'South Kensington', 'SW7', 'Portered buildings and garden-square flats, where access is planned around the building.', '/areas/south-kensington/', 'Bathrooms in South Kensington'],
+  ['gloucester-road', 'Gloucester Road', 'SW7 · SW5', 'Garden squares and converted townhouses either side of the station, many with shared stairs.', '/areas/gloucester-road/', 'Bathrooms around Gloucester Road'],
   ['chelsea', 'Chelsea', 'SW3 · SW10', 'Mansion blocks and mews houses, many within managed buildings.', '/areas/chelsea/', 'Bathrooms in Chelsea'],
   ['west-kensington', 'West Kensington', 'W14', 'By West Kensington station: period houses, mansion flats and conversions.', '/areas/west-kensington/', 'Bathrooms in West Kensington'],
   ['local-base', "We're here", '', 'Our local base in West Kensington. Home consultations, or design meetings by appointment.', '/contact/', 'Contact Kensington Bathrooms']
@@ -27,17 +28,23 @@ const mapMarker = ([id, name, post, description, link, label]) => {
 </li>`;
 };
 
-export function render() {
+const installs = [
+  ['Complete bathroom renovation', 'Main and family bathrooms, en-suites and cloakrooms designed, supplied and installed as one project, from strip-out to the final clean.', '/bathroom-renovation/', 'Bathroom renovation'],
+  ['Walk-in showers', 'Open, screen-only showers with a low-profile tray or a level tiled floor where the building allows, planned around drainage, waterproofing and water supply.', '/walk-in-showers/', 'Walk-in showers'],
+  ['Bath to shower conversion', 'Replacing a little-used bath with a generous shower in the same space, with the waste, walls and hot water reworked to suit.', '/bath-to-shower-conversion/', 'Bath to shower conversion']
+];
+
+export function render(cfg) {
   return `<section class="map-home" aria-labelledby="map-home-title">
   <div class="map-home__copy">
     <p class="map-home__kicker">Bathroom renovation · Kensington</p>
     <h1 id="map-home-title">Bathroom design <br>and installation <br>in Kensington</h1>
-    <p class="map-home__intro">We design, supply and install complete bathrooms across Kensington, West Kensington, Holland Park, South Kensington and Chelsea, working from our local base within this area.</p>
+    <p class="map-home__intro">We design, supply and install complete bathrooms across Kensington, West Kensington, Holland Park, South Kensington, Gloucester Road and Chelsea, working from our local base within this area.</p>
     <p class="map-home__intro map-home__intro--continued">One team manages the whole project, from design and specification to plumbing, waterproofing, tiling and joinery.</p>
     <div class="map-home__actions"><a class="map-home__primary" href="/contact/">Arrange a home consultation</a><button type="button" data-open-drawer class="map-home__secondary">Talk to a bathroom expert</button></div>
   </div>
   <div class="map-home__map" aria-label="Illustrated map of the neighbourhoods Kensington Bathrooms serves">
-    <svg class="map-art" viewBox="0 0 1000 740" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustrated map showing Kensington, West Kensington by its station, Holland Park, South Kensington, Chelsea and where we are based">
+    <svg class="map-art" viewBox="0 0 1000 740" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustrated map showing Kensington, West Kensington by its station, Holland Park, South Kensington, Gloucester Road, Chelsea and where we are based">
       <defs><pattern id="map-streets" width="80" height="64" patternUnits="userSpaceOnUse" patternTransform="rotate(-12)"><path d="M0 0H80M0 32H80M0 0V64M40 0V64" fill="none" stroke="#666960" stroke-opacity=".2" stroke-width="1"/></pattern><linearGradient id="map-vignette"><stop stop-color="#101411" stop-opacity=".85"/><stop offset=".4" stop-color="#101411" stop-opacity=".04"/><stop offset="1" stop-color="#101411" stop-opacity=".08"/></linearGradient></defs>
       <rect width="1000" height="740" fill="#121714"/><path fill="#1a2420" d="M0 0h215l75 120-28 166-102 25L0 262zM865 0h135v210l-72 18-90-70zM645 320l138-57 144 94-78 174-149-34zM0 610l128-82 173 43 15 169H0z"/><path fill="#19251e" d="M0 132q125-84 254-43l101 96-19 79-165 89-171-18z"/><rect width="1000" height="740" fill="url(#map-streets)"/>
       <g fill="none" stroke="#8d8977" stroke-opacity=".3" stroke-width="2"><path d="M-60 236C215 186 359 166 625 146s314-18 440-60"/><path d="M-80 492c207-39 410-47 665-41 157 4 327 0 500-67"/><path d="M178 0c110 166 140 272 120 422-11 82-44 191-66 330"/><path d="M625-30c-14 154-28 304-17 455 8 109 45 219 91 352"/><path d="M-20 663c180-127 303-182 518-201 176-17 325-20 532-93"/><path d="M842 121c-92 163-135 302-126 451 4 67 33 151 56 197"/></g>
@@ -52,11 +59,12 @@ export function render() {
   <div class="map-base-note" id="map-base-note" hidden><p><strong>Our local base in West Kensington.</strong> Home consultations, or design meetings by appointment.</p><a href="/contact/">Contact Kensington Bathrooms</a></div>
 </section>
 <nav class="map-area-list" aria-label="Areas we serve"><p class="map-area-list__label">Areas we serve</p>${serviceAreas.map(([id, name, post, description, link, label]) => `<details class="map-area-list__item" id="map-area-${id}"><summary><span class="map-area-list__name">${esc(name)}</span><small>${esc(post)}</small><span class="map-area-list__chevron" aria-hidden="true">⌄</span></summary><div class="map-area-list__content"><p>${esc(description)}</p><a href="${link}">${esc(label)}</a></div></details>`).join('')}</nav>
-<section class="map-reading" aria-labelledby="map-reading-title"><div class="map-reading__inner"><div class="map-reading__lead"><p class="map-reading__kicker">Kensington Bathrooms</p><h2 id="map-reading-title">Bathroom renovation in Kensington, from first visit to final clean</h2></div><div class="map-reading__blocks">
+<section class="map-reading" aria-labelledby="map-reading-title"><div class="map-reading__inner"><div class="map-reading__lead"><p class="map-reading__kicker">Kensington Bathrooms</p><h2 id="map-reading-title">Bathroom renovation in Kensington, from first visit to final clean</h2>${workFigure(cfg.images.work.communalStair, { cls: 'map-reading__photo', sizes: '(max-width: 760px) 100vw, 34vw' })}</div><div class="map-reading__blocks">
   <article><span class="map-reading__number">01</span><div><h3>Design, supply and installation</h3><p>We renovate main bathrooms, en-suites, shower rooms and cloakrooms, from the complete refurbishment of a family bathroom to a new cloakroom. Each project starts with a survey of the room and the building: drainage, water supply, ventilation, and how the floor and walls are built. The layout and specification follow from what the room can support, and the plumbers, bathroom fitters, electricians, tilers and joiners on your project work to one programme, managed by us.</p><a href="/bathroom-renovation/">Our bathroom renovation service</a></div></article>
-  <article><span class="map-reading__number">02</span><div><h3>One connected area, different homes</h3><p>We renovate bathrooms in Kensington W8, West Kensington, Holland Park, South Kensington and Chelsea. The buildings differ, from converted flats and mansion blocks to mews houses and larger family homes, so the practical route to a finished bathroom changes from one property to the next.</p><a href="/areas/">Explore the areas we serve</a></div></article>
+  <article><span class="map-reading__number">02</span><div><h3>One connected area, different homes</h3><p>We renovate bathrooms in Kensington W8, West Kensington, Holland Park, South Kensington, Gloucester Road and Chelsea. The buildings differ, from converted flats and mansion blocks to mews houses and larger family homes, so the practical route to a finished bathroom changes from one property to the next.</p><a href="/areas/">Explore the areas we serve</a></div></article>
   <article id="kensington"><span class="map-reading__number">03</span><div><h3>Kensington W8: begin with the building</h3><p>Bathroom refurbishment in a Kensington mansion block calls for questions about the flat as well as the room. Where there are shared services, a porter, a lift or a managing agent, we establish the access, working arrangements and any approval needed before fixing a programme. A mews house or stucco terrace may have a very different route for people and materials, and older floor construction can limit where drainage can run.</p><div class="map-reading__checklist"><h4>What we check in Kensington</h4><ul><li><strong>Managed buildings:</strong> porter arrangements, lift use, working hours and any managing-agent approval are agreed before a start date.</li><li><strong>Conservation areas and listed buildings:</strong> anything visible from outside, such as a new vent, is checked for the relevant consent before work proceeds.</li><li><strong>Drainage in older floors:</strong> the soil-stack position and joist direction help decide whether a WC or shower can move.</li><li><strong>Getting materials in:</strong> stone, baths and long boards are measured against stairs, lifts and mews entrances before ordering.</li></ul></div><p>At the home visit we also look at the existing bathroom and hot-water system before advising on showers and taps. Nicholas explains what the survey can establish and what may need further investigation after opening up, then the installation is planned around the agreed design.</p><a href="/guides/renovating-a-bathroom-in-kensington/">Read our guide to renovating a bathroom in a Kensington home</a></div></article>
   <article><span class="map-reading__number">04</span><div><h3>Why homeowners choose us</h3><p>We are local: our founder grew up in this part of London, went to school in Kensington and Chelsea, and has spent decades working in the trade here. We focus on bathrooms. One team is accountable from the first visit to the final clean, and we look after the rest of your home while we work.</p><a href="/our-approach/">Our approach</a></div></article>
 </div></div></section>
+<section class="installs" aria-labelledby="installs-title"><div class="installs__inner"><p class="map-reading__kicker">What we install</p><h2 id="installs-title">Three ways to a better bathroom</h2><div class="installs__grid">${installs.map(([title, body, href, label]) => `<article><h3>${title}</h3><p>${body}</p><a href="${href}">${label}</a></article>`).join('')}</div></div></section>
 <section class="map-close"><div class="map-close__inner"><h2>Tell us about your bathroom</h2><div><a href="/contact/">Arrange a home consultation</a><button type="button" data-open-drawer>Talk to a bathroom expert</button></div></div></section>`;
 }

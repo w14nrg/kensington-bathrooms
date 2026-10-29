@@ -136,7 +136,7 @@
           form.reset();
           status.textContent = kind === 'callback'
             ? 'Thank you. We have your number and will call you back.'
-            : 'Thank you. We have your details and will be in touch to arrange a visit. If you have photos of the room, you can reply to our email with them.';
+            : 'Thank you. We have your details and will call you to arrange a visit.';
           track(kind === 'callback' ? 'callback_request' : 'consultation_submit');
         })
         .catch(function () {

@@ -86,7 +86,7 @@ export function consultationForm(cfg, idPrefix = 'c') {
 <form class="form" data-kb-form="consultation" novalidate>
   <div class="form__grid">
     ${field(p('name'), 'Your name', `<input id="${p('name')}" name="name" autocomplete="name" required aria-describedby="${p('name')}-error">`)}
-    ${field(p('email'), 'Email', `<input id="${p('email')}" name="email" type="email" autocomplete="email" required aria-describedby="${p('email')}-error">`)}
+    ${field(p('email'), 'Email (optional)', `<input id="${p('email')}" name="email" type="email" autocomplete="email" aria-describedby="${p('email')}-error">`)}
     ${field(p('tel'), 'Telephone', `<input id="${p('tel')}" name="telephone" type="tel" autocomplete="tel" required aria-describedby="${p('tel')}-error">`)}
     ${field(p('postcode'), 'Property postcode', `<input id="${p('postcode')}" name="postcode" autocomplete="postal-code" required aria-describedby="${p('postcode')}-error" inputmode="text">`)}
     ${field(p('type'), 'Project', select(p('type'), 'project_type', cfg.projectTypes))}
@@ -154,7 +154,7 @@ export function footer(cfg, currentPath = '') {
       ${base ? `<address>${esc(base.streetAddress)}<br>${esc(base.city)} ${esc(base.postcode)}</address>` : ''}
       <p class="site-footer__note">Home consultations, or design meetings by appointment at our base in West Kensington.</p>
     </div>
-    <nav class="site-footer__col" aria-label="Footer"><h2>Explore</h2><ul><li><a href="/bathroom-renovation/">Bathroom renovation</a></li><li><a href="/our-approach/">Our approach</a></li><li><a href="/guides/">Guides</a></li><li><a href="/projects/">Projects</a></li><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li></ul></nav>
+    <nav class="site-footer__col" aria-label="Footer"><h2>Explore</h2><ul><li><a href="/bathroom-renovation/">Bathroom renovation</a></li><li><a href="/walk-in-showers/">Walk-in showers</a></li><li><a href="/bath-to-shower-conversion/">Bath to shower</a></li><li><a href="/our-approach/">Our approach</a></li><li><a href="/guides/">Guides</a></li><li><a href="/projects/">Projects</a></li><li><a href="/about/">About</a></li><li><a href="/contact/">Contact</a></li></ul></nav>
     <nav class="site-footer__col" aria-label="Areas"><h2>Areas</h2><ul>${cfg.areas.map((x) => `<li><a href="/areas/${x.slug}/">${esc(x.name)}</a></li>`).join('')}</ul></nav>
   </div>
   <div class="site-footer__legal">

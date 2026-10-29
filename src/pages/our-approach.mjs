@@ -1,3 +1,4 @@
+import { workFigure } from '../lib/util.mjs';
 export const meta={path:'/our-approach/',title:'Our Bathroom Installation Approach | Kensington Bathrooms',description:'How Kensington Bathrooms plans, protects and manages bathroom projects in Kensington homes, mansion blocks and managed buildings.',schemaType:'WebPage',breadcrumbs:[{name:'Home',path:'/'},{name:'Our approach',path:'/our-approach/'}]};
 
 const projectSteps=[
@@ -29,7 +30,7 @@ const protectionGroups=[
   ]]
 ];
 
-export function render(){return `
+export function render(cfg){const w=cfg.images.work;return `
 <section class="page-hero"><div class="page-hero__inner"><p class="eyebrow">How we work</p><h1>The standard starts at the front door.</h1><p class="page-hero__lede">A bathroom renovation happens inside the rest of your home. Our process covers the room, the building and the route through it from the first conversation to handover.</p></div></section>
 <section class="content-band content-band--ink"><div class="section-shell"><div class="section-heading"><p class="eyebrow">How a project runs</p><h2>One sequence, from first call to handover.</h2></div><ol class="project-run">${projectSteps.map(([t,d],i)=>`<li><span>${String(i+1).padStart(2,'0')}</span><div><h3>${t}</h3><p>${d}</p></div></li>`).join('')}</ol></div></section>
-<section class="content-band content-band--deep"><div class="section-shell"><div class="section-heading"><p class="eyebrow">Property protection standard</p><h2>Before work starts, every day, and at handover.</h2></div><div class="protection-groups">${protectionGroups.map(([heading,items])=>`<section class="protection-group"><h3>${heading}</h3><div>${items.map(([t,d])=>`<article><h4>${t}</h4><p>${d}</p></article>`).join('')}</div></section>`).join('')}</div></div></section>`;}
+<section class="content-band content-band--deep"><div class="section-shell"><div class="section-heading"><p class="eyebrow">Property protection standard</p><h2>Before work starts, every day, and at handover.</h2></div><div class="work-photos">${workFigure(w.communalStair,{sizes:'(max-width: 760px) 100vw, 30vw'})}${workFigure(w.hallStair,{sizes:'(max-width: 760px) 100vw, 30vw'})}${workFigure(w.landing,{sizes:'(max-width: 760px) 100vw, 30vw'})}</div><div class="protection-groups">${protectionGroups.map(([heading,items])=>`<section class="protection-group"><h3>${heading}</h3><div>${items.map(([t,d])=>`<article><h4>${t}</h4><p>${d}</p></article>`).join('')}</div></section>`).join('')}</div></div></section>`;}

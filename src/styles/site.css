@@ -215,6 +215,7 @@ body{background:var(--paper);color:var(--ink)}
 .map-point--chelsea{left:82%;top:79%}
 .map-point--west-kensington{left:29%;top:71%}
 .map-point--local-base{left:14%;top:67%}
+.map-point--gloucester-road{left:60%;top:47%}
 .map-point__button{border:0;background:none;color:#eae5da;display:flex;align-items:center;flex-direction:column;gap:2px;padding:14px;cursor:pointer;white-space:nowrap;text-shadow:0 2px 10px #000}
 .map-point__symbol{display:block;width:7px;height:7px;background:#bd9b5b;transform:rotate(45deg);box-shadow:0 0 18px #bca572aa;margin-bottom:8px}
 .map-point__name{font-family:var(--serif);font-size:clamp(1.08rem,1.6vw,1.75rem);line-height:1.1}
@@ -224,7 +225,7 @@ body{background:var(--paper);color:var(--ink)}
 .map-point:is(:hover,:focus-within,.is-open) .map-point__symbol{box-shadow:0 0 0 9px #bd9b5b1e,0 0 23px #bd9b5bbb}
 .map-point:is(:hover,:focus-within,.is-open) .map-point__name{color:#efd6a1}
 .map-panel{position:absolute;z-index:10;top:75%;left:85%;width:min(265px,45vw);padding:1.25rem 1.4rem;background:#141a16;border:1px solid #6b593e;border-top:2px solid #bfa270;box-shadow:0 16px 40px #000a;color:#c4c4b8;display:none;text-shadow:none}
-.map-point--kensington .map-panel,.map-point--south-kensington .map-panel,.map-point--chelsea .map-panel{left:auto;right:85%}
+.map-point--kensington .map-panel,.map-point--south-kensington .map-panel,.map-point--gloucester-road .map-panel,.map-point--chelsea .map-panel{left:auto;right:85%}
 .map-point:is(:hover,:focus-within,.is-open) .map-panel{display:block}
 .map-panel__title{font-family:var(--serif);font-size:1.45rem;color:#f5f0e8;line-height:1.2;margin:0 0 .8rem}
 .map-panel__title small{display:block;font:600 .58rem var(--sans);color:#c8a975;letter-spacing:.14em;margin-top:.4rem}
@@ -289,6 +290,7 @@ body{background:var(--paper);color:var(--ink)}
  .map-point--south-kensington{left:54%;top:56%}
  .map-point--chelsea{left:66%;top:79%}
  .map-point--west-kensington{left:20%;top:70%}
+ .map-point--gloucester-road{left:28%;top:43%}
  .map-point--local-base{display:block;left:10%;top:58%}
  .map-panel{display:none!important}
  .map-home__legend{left:20px;bottom:.65rem;font-size:.45rem;letter-spacing:.13em;white-space:nowrap}
@@ -611,7 +613,8 @@ body:not(.is-map-home) a:focus-visible,body:not(.is-map-home) button:focus-visib
   html.js-motion .map-point:nth-child(3) .map-point__button{animation-delay:1.35s}
   html.js-motion .map-point:nth-child(4) .map-point__button{animation-delay:1.5s}
   html.js-motion .map-point:nth-child(5) .map-point__button{animation-delay:1.65s}
-  html.js-motion .map-point:nth-child(6) .map-point__button{animation-delay:1.95s}
+  html.js-motion .map-point:nth-child(6) .map-point__button{animation-delay:1.8s}
+  html.js-motion .map-point:nth-child(7) .map-point__button{animation-delay:1.95s}
   @keyframes kb-pin-drop{
     0%{opacity:0;transform:translateY(-26px)}
     60%{opacity:1}
@@ -737,3 +740,42 @@ body:not(.is-map-home) a:focus-visible,body:not(.is-map-home) button:focus-visib
 .header-whatsapp{gap:.45rem}
 .mobile-bar__whatsapp{gap:.45rem}
 .mobile-menu__expert{display:block;width:100%;appearance:none;border:0;background:none;color:inherit;text-align:left;font-family:var(--serif);font-size:1.7rem;padding:.75rem 0;cursor:pointer}
+
+/* Homepage: photo under the pinned heading fills the left column on desktop */
+.map-reading__lead{position:sticky;top:112px;align-self:start}
+.map-reading__photo{margin:2.6rem 0 0;max-width:420px}
+.map-reading__photo img{display:block;width:100%;height:auto;max-height:calc(100vh - 500px);min-height:240px;object-fit:cover;object-position:center 60%;filter:saturate(.9)}
+.map-reading__photo{margin-top:2rem}
+.map-reading__photo figcaption,.work-photo figcaption{font-size:.68rem;letter-spacing:.04em;color:#8f938a;margin-top:.6rem}
+
+/* Homepage: what we install */
+.installs{background:#151c18;border-top:1px solid #272b26;padding:clamp(4.5rem,8vw,7.5rem) 0}
+.installs__inner{width:min(1280px,calc(100% - 12vw));margin:auto}
+.installs h2{font-size:clamp(2.1rem,3.2vw,3.6rem);line-height:1.05;color:#f0ece5;max-width:16ch;margin:1.4rem 0 2.6rem}
+.installs__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,2.4vw,2.4rem)}
+.installs__grid article{border-top:1px solid #4b534b;padding-top:1.4rem;display:flex;flex-direction:column}
+.installs__grid h3{font-size:1.5rem;color:#eee8dd;margin:0 0 .8rem}
+.installs__grid p{color:#a8aaa2;font-size:.9rem;line-height:1.75;margin:0 0 1.2rem;flex:1}
+.installs__grid a{color:#e4ded2;text-decoration:underline;text-underline-offset:5px;font-size:.8rem;align-self:flex-start}
+
+/* Work photographs inside content pages */
+.work-photo{margin:0}
+.work-photo img{display:block;width:100%;height:auto}
+.work-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3rem}
+.work-photos .work-photo img{aspect-ratio:4/5;object-fit:cover}
+.guide-body .work-photo{margin:2rem 0 2.4rem;max-width:640px}
+.content-copy .work-photo{margin:0 0 1.8rem}
+
+/* Service pages: style comparison */
+.style-split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.4rem,3vw,3rem);margin-top:2.4rem}
+.style-split article{border-top:1px solid currentColor;border-color:rgba(127,127,120,.45);padding-top:1.3rem}
+.style-split h3{margin:0 0 .7rem}
+
+@media(max-width:760px){
+ .map-reading__lead{position:static}
+ .map-reading__photo{margin:0 0 2.6rem;max-width:none}
+ .map-reading__photo img{max-height:none;aspect-ratio:4/5}
+ .installs__inner{width:calc(100% - 40px)}
+ .installs__grid,.work-photos,.style-split{grid-template-columns:1fr}
+}
+.inline-link{color:inherit;text-decoration:underline;text-underline-offset:4px;white-space:nowrap}
