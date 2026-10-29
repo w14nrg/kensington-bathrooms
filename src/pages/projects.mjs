@@ -19,7 +19,7 @@ function stages(project) {
   const stops = project.stages.map((s, i) => `<label class="stages__stop" for="${name}-${i}"><span class="stages__dot" aria-hidden="true"></span><span class="stages__label">${esc(s.label)}</span></label>`).join('');
   return `<div class="stages" data-stages data-last="${last}">
   ${radios}
-  <div class="stages__frame" data-stages-frame>${imgs}</div>
+  <div class="stages__frame" data-stages-frame>${imgs}${project.video ? `<a class="stages__play" href="${project.video.src}" data-play-video="${project.video.src}" data-poster="${project.video.poster || ''}"><span class="stages__play-icon" aria-hidden="true"></span><span>Watch the finished room</span></a>` : ''}</div>
   <div class="stages__track" role="group" aria-label="${esc(project.title)}: choose a stage"><span class="stages__line" aria-hidden="true"><span class="stages__fill"></span></span>${stops}</div>
 </div>`;
 }

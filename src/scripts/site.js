@@ -290,6 +290,29 @@
     function go(i) { i = Math.max(0, Math.min(radios.length - 1, i)); radios[i].checked = true; }
     var frame = box.querySelector('[data-stages-frame]');
     var startX = null;
+    var play = box.querySelector('[data-play-video]');
+    if (play) {
+      play.addEventListener('pointerdown', function (e) { e.stopPropagation(); });
+      play.addEventListener('pointerup', function (e) { e.stopPropagation(); });
+      play.addEventListener('click', function (e) {
+        e.preventDefault();
+        var v = document.createElement('video');
+        v.className = 'stages__video'; v.src = play.getAttribute('data-play-video');
+        if (play.getAttribute('data-poster')) v.poster = play.getAttribute('data-poster');
+        v.controls = true; v.playsInline = true; v.setAttribute('playsinline', '');
+        var close = document.createElement('button');
+        close.type = 'button'; close.className = 'stages__close'; close.setAttribute('aria-label', 'Close video'); close.textContent = '×';
+        function stop() { v.pause(); v.remove(); close.remove(); play.hidden = false; play.focus(); }
+        close.addEventListener('click', stop);
+        close.addEventListener('pointerdown', function (ev) { ev.stopPropagation(); });
+        close.addEventListener('pointerup', function (ev) { ev.stopPropagation(); });
+        v.addEventListener('pointerdown', function (ev) { ev.stopPropagation(); });
+        v.addEventListener('pointerup', function (ev) { ev.stopPropagation(); });
+        play.hidden = true;
+        frame.appendChild(v); frame.appendChild(close);
+        var p = v.play(); if (p && p.catch) p.catch(function () {});
+      });
+    }
     frame.addEventListener('pointerdown', function (e) { startX = e.clientX; });
     frame.addEventListener('pointerup', function (e) {
       if (startX === null) return;

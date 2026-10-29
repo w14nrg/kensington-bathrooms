@@ -812,3 +812,10 @@ body:not(.is-map-home) a:focus-visible,body:not(.is-map-home) button:focus-visib
 @media(max-width:760px){.project-story{grid-template-columns:1fr}.stages{max-width:none}}
 @media(prefers-reduced-motion:reduce){.stages__img,.stages__fill{transition:none}}
 .stages__img{-webkit-user-drag:none;user-select:none}.stages__frame{cursor:grab;user-select:none}
+/* Projects: finished-room video, played inside the slider frame */
+.stages__play{position:absolute;left:1rem;bottom:1rem;z-index:2;display:inline-flex;align-items:center;gap:.7rem;padding:.6rem 1rem .6rem .6rem;background:rgba(17,21,18,.82);backdrop-filter:blur(6px);color:#f0ece5;text-decoration:none;font-size:.78rem;letter-spacing:.04em;border:1px solid rgba(197,168,113,.55)}
+.stages__play:hover,.stages__play:focus-visible{background:rgba(17,21,18,.95);border-color:#c5a871}
+.stages__play-icon{width:34px;height:34px;border-radius:50%;background:#c5a871;position:relative;flex:none}
+.stages__play-icon:after{content:"";position:absolute;left:13px;top:10px;border-left:11px solid #111512;border-top:7px solid transparent;border-bottom:7px solid transparent}
+.stages__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000;z-index:3}
+.stages__close{position:absolute;top:.8rem;right:.8rem;z-index:4;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:rgba(17,21,18,.75);color:#fff;font-size:1.3rem;line-height:1;cursor:pointer}
