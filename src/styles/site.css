@@ -205,7 +205,7 @@ body{background:var(--paper);color:var(--ink)}
 .map-home__secondary,.map-close button{padding:0 0 .25rem;border:0;border-bottom:1px solid #e2683b;background:none;color:#ececec;font-size:.74rem;cursor:pointer;white-space:nowrap}
 .map-home__secondary:hover,.map-close button:hover{color:#e4764e}
 .map-home__map{position:relative;min-width:0;min-height:600px;isolation:isolate;background:#121212}
-.map-home__map:before{position:absolute;content:"";z-index:1;inset:0;pointer-events:none;background:linear-gradient(90deg,#232323 0%,rgba(20,20,20,.7) 9%,transparent 27%,transparent 100%)}
+.map-home__map:before{position:absolute;content:"";z-index:1;inset:0;pointer-events:none;background:linear-gradient(90deg,#141414 0%,rgba(20,20,20,.7) 9%,transparent 27%,transparent 100%)}
 .map-art{width:100%;height:100%;position:absolute;inset:0}
 .map-points{position:absolute;z-index:3;inset:0;margin:0;padding:0;list-style:none}
 .map-point{position:absolute;transform:translate(-50%,-50%)}
@@ -827,3 +827,8 @@ body:not(.is-map-home) a:focus-visible,body:not(.is-map-home) button:focus-visib
 .map-close a,.map-close button,.area-close .button,.area-close .button--light{background:#0d0d0d;color:#fff;border-color:#0d0d0d}
 .compare__grip,.stages__play-icon{background:#db5521}
 body .site-header .site-header__actions a.button--ink,body .mobile-bar a.mobile-bar__item--strong{background:#db5521;color:#0d0d0d;border-color:#db5521;font-weight:700}
+/* Hero heading always fits beside the map; secondary call-to-action on the orange panel reads as a link */
+@media(min-width:761px){.map-home h1{font-size:clamp(2.2rem,calc((39vw - clamp(30px,6.8vw,110px) - 44px) / 8.4),5.35rem)}}
+@media(min-width:761px) and (max-width:1100px){.map-home h1{font-size:clamp(1.8rem,calc((40vw - 4vw - 44px) / 8.4),4rem)}}
+body .map-close button{background:none;color:#0d0d0d;border:0;border-bottom:1.5px solid #0d0d0d;padding:0 0 .25rem;font-weight:600}
+body .map-close button:hover{color:#fff;border-bottom-color:#fff}
